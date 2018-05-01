@@ -7,7 +7,7 @@
   "sideEffects": false,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dist": "cpx ./dist/bundle.js ../dist && cross-env webpack --config webpack.prod.js",
+    "dist": "cross-env webpack --config webpack.prod.js",
     "dev": " webpack --config webpack.dev.js --watch"
   },
   "repository": {
@@ -34,7 +34,6 @@
     "css-loader": "^0.28.8",
     "devel-localstorage": "^1.0.16",
     "devel-style": "^3.1.0",
-    "express": "^4.16.3",
     "html-webpack-plugin": "^3.2.0",
     "markdown-it": "^8.4.1",
     "node-sass": "^4.9.0",
@@ -55,6 +54,5 @@
     "webpack-merge": "^4.1.2",
     "webpack-module-hot-accept": "^1.0.4",
     "write-file-webpack-plugin": "^4.2.0"
-  },
-  "dependencies": {}
+  }
 }
