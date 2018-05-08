@@ -1,0 +1,134 @@
+// @Author: Morgan Andree Ray <DevelDoe>
+// @Date:   01-05-2018
+// @Email:  info@andreeray.se
+// @Filename: sidebar.scss
+// @Last modified by:   Morgan Andree Ray
+// @Last modified time: 08-05-2018
+// @License: MIT
+
+
+#sidebar {
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    flex: 0 0 250px;
+    height: 100%;
+    header {
+        background: rgba(0,119,204,1);
+        line-height: 40px;
+        height: 60px;
+        padding: 10px;
+        background-color: #343a40;
+        border-right: 1px solid #343a40;
+        h1 {
+            color: #FFD700;
+            font-size: 22px;
+        }
+    }
+    #user {
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        height: 80px;
+
+        background: $primaryDark;
+        img {
+            width: 65px;
+            border-radius: 50%;
+            padding: 2px;
+            border: 1px solid rgba(255,255,255,0.2);
+            margin: 5px;
+        }
+        div#info {
+            width: 100%;
+            .top {
+                div#info-username {
+                    font-size: 22px;
+                    line-height: 30px;
+                    padding: 6px 2px;
+                }
+                div#info-icon {
+                    .material-icons {
+                        font-size: 12px;
+                        margin-left: 3px;
+                        cursor: pointer;
+                    }
+                }
+            }
+            .bottom {
+                margin-top: -23px;
+                font-size: 9px;
+                margin-left: 3px;
+                color: #FFD700;
+            }
+        }
+    }
+    #mainnav {
+        height: calc(100% - 60px);
+        padding: 0;
+        .iconbar {
+            height: 100%;
+            background: #004575;
+            padding: 0;
+            width: 40px;
+            .material-icons {
+                font-size: 20px;
+                cursor: pointer;
+                padding: 10px;
+            }
+            .active {
+                color: #FFD700;
+            }
+        }
+
+        .navbarL1 {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            width: 210px;
+            div {
+                cursor: pointer;
+                line-height: 40px;
+                letter-spacing: 2px;
+                font-size: 20px;
+                background: #004575;
+                margin: 0;
+                padding: 0;
+            }
+            .active {
+                color: #FFD700;
+            }
+            .filler {
+                cursor:default;
+                background: #004575;
+                height:100%;
+                width: 100%;
+            }
+        }
+        .navbarL2 {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            width: 210px;
+            left: 40px;
+            height: calc(100% - 60px);
+            z-index: -1;
+            div {
+                cursor: pointer;
+                width: 0px;
+                line-height: 40px;
+                letter-spacing: 2px;
+                font-size: 20px;
+                background: #004575;
+                margin: 0;
+                padding: 0;
+            }
+            .active {
+                color: #FFD700;
+            }
+            .filler {
+                background: #004575;
+                height:100%;
+                width: 100%;
+            }
+        }
+    }
+}
