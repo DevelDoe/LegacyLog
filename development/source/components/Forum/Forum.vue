@@ -10,7 +10,7 @@
 <template lang="html">
     <div id="forum">
         <div class="online">
-            <h3>ONLINE:</h3> 
+            <h3>ONLINE:</h3>
             <ul>
                 <li id="messages" v-for="user in users">{{ user }}</li>
             </ul>
@@ -63,6 +63,9 @@ export default {
             this.$socket.emit('sendChat', this.message, this.username);
             this.message = ''
         }
+    },
+    mounted() {
+        this.$socket.emit('addUser', this.username);
     }
 }
 </script>
