@@ -43,7 +43,6 @@ export default {
     sockets:{
         connect() {
             // Fired when the socket connects.
-            this.$socket.emit('addUser', this.username);
             this.isConnected = true;
         },
         disconnect() {
