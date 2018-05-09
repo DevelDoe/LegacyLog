@@ -9,7 +9,7 @@
  */
 
 import Vue from 'vue'
-import App from './App.vue'
+import App from './components/Shell/App.vue'
 
 import '../node_modules/devel-style/devel-style.css'
 import './assets/css/app.scss'
@@ -84,8 +84,6 @@ const root = new Vue({
     },
     router,
     created() {
-        console.log('settings Page(release)')
-
         bus.$on('setResponse', response => {
             this.response = response
         })
