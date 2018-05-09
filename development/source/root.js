@@ -48,7 +48,9 @@ Object.defineProperty(Vue.prototype, '$markdown', { get() { return this.$root.ma
 import store from './store/store'
 
 import VueSocketio from 'vue-socket.io';
-Vue.use(VueSocketio, 'http://localhost:8080/', store)
+if( process.env.NODE_ENV === 'development' ) Vue.use(VueSocketio, 'http://localhost:8080/', store)
+if( process.env.NODE_ENV === 'production' ) Vue.use(VueSocketio, 'http://35.189.243.23:80/', store)
+
 
 const root = new Vue({
     el: '#app',

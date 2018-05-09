@@ -9,9 +9,13 @@
 -->
 <template lang="html">
     <div id="forum">
-        <ul>
-            <li id="messages" v-for="user in users">{{ user }}</li>
-        </ul>
+        <div class="online">
+            <h3>ONLINE:</h3> 
+            <ul>
+                <li id="messages" v-for="user in users">{{ user }}</li>
+            </ul>
+        </div>
+
         <ul>
             <li id="messages" v-for="msg in messages">{{ msg.name }}: {{ msg.msg }}</li>
         </ul>
@@ -43,7 +47,7 @@ export default {
             this.isConnected = true;
         },
         disconnect() {
-            
+
             this.isConnected = false;
         },
         updateChat(payload) {
