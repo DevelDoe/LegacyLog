@@ -49,7 +49,7 @@ const store = new Vux.Store({
         SOCKET_DISCONNECT(state) {
             state.isConnected = false;
         },
-        SOCKET_messageChannel(state, message) {
+        SOCKET_updateChat(state, message) {
             state.socketMessage = message
         }
     },
