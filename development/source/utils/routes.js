@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: routes.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 08-05-2018
+ * @Last modified time: 09-05-2018
  * @License: MIT
  */
 
@@ -31,7 +31,9 @@ import OrganisationDetails from '../components/Organisations/OrganisationDetails
 import Users from '../components/Users/Users.vue'
 import Dashboard from '../components/Dashboard/Dashboard.vue'
 
-import { store } from '../store/store'
+import Forum from '../components/Forum/Forum.vue'
+
+import store from '../store/store'
 
 function requireAuth(to, from, next) {
     if (store.getters.username != '') {
@@ -103,6 +105,11 @@ export default [{
         path: '/users',
         component: Users,
         name: 'users',
+        beforeEnter: requireAuth
+    },{
+        path: '/forum',
+        component: Forum,
+        name: 'forum',
         beforeEnter: requireAuth
     }
 ]

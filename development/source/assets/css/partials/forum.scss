@@ -1,0 +1,32 @@
+/**
+ * @Author: Morgan Andree Ray
+ * @Date:   09-05-2018
+ * @Email:  info@andreeray.se
+ * @Filename: forum.css
+// @Last modified by:   Morgan Andree Ray
+// @Last modified time: 09-05-2018
+ * @License: MIT
+ */
+#forum {
+    position: relative;
+    height: calc(100% - 60px);
+    .chat {
+        position: fixed;
+        bottom: 0;
+        height: 60px;
+        left: 0;
+        background: #343a40;
+        padding: 0;
+        margin: 0;
+        margin-left: 250px;
+        width: calc(100% - 250px);
+        input {
+            border-bottom: none;
+            height: 100%;
+            margin:0;
+            padding: 10px;
+            background: rgba(255,255,255,0.1);
+            font-size: 18px;
+        }
+    }
+}

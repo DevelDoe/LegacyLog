@@ -4,7 +4,7 @@
 @Email:  andreeray@live.com
 @Filename: App.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 08-05-2018
+@Last modified time: 09-05-2018
 -->
 <template>
     <div id="app" class="box">
@@ -40,7 +40,8 @@
                         </div>
                     </div>
                     <div class="bottom">
-                        ONLINE
+                        <span v-if="connected">ONLINE</span>
+                        <span v-else>OFFLINE</span>
                     </div>
                 </div>
             </div>
@@ -49,7 +50,7 @@
                     <i class="material-icons" @click="show = 'dashboard'; setActive('dashboard'); $router.push({name: 'dashboard'})" :class="{ 'active': activeLink === 'dashboard' || activeLink === 'users'}">
                         dashboard
                     </i>
-                    <i class="material-icons" @click="show = 'blog'; setActive('blog'); $router.push({name: 'Posts'})" :class="{ 'active': activeLink === 'blog' || activeLink === 'editor'}">
+                    <i class="material-icons" @click="show = 'forum'; setActive('forum'); $router.push({name: 'forum'})" :class="{ 'active': activeLink === 'forum' || activeLink === 'forum'}">
                         comment
                     </i>
                 </div>
@@ -78,15 +79,6 @@
                              :class="{ 'active': activeLink === 'users'}"
                              >USERS</div>
                     </transition>
-                    <transition
-                        v-on:before-enter="beforeEnter"
-                        v-on:enter="enter"
-                        v-on:leave="leave"
-                        v-on:after-leave="afterLeave"
-                        :css="false"
-                    >
-                        <div  v-if="show === 'dashboard'" class="filler"></div>
-                    </transition>
                 </div>
                 <div class="navbarL2">
                     <transition
@@ -97,32 +89,10 @@
                         :css="false"
                     >
                         <div
-                            v-if="show === 'blog'"
-                            @click="setActive('blog'); $router.push({name: 'Posts'})"
-                            :class="{ 'active': activeLink === 'blog'}"
-                            >POSTS</div>
-                    </transition>
-                    <transition
-                        v-on:before-enter="beforeEnter"
-                        v-on:enter="enter"
-                        v-on:leave="leave"
-                        v-on:after-leave="afterLeave"
-                        :css="false"
-                    >
-                        <div
-                            v-if="show === 'blog'"
-                            @click="setActive('editor'); $router.push({name: 'Editor'})"
-                            :class="{ 'active': activeLink === 'editor'}"
-                            >EDITOR</div>
-                    </transition>
-                    <transition
-                        v-on:before-enter="beforeEnter"
-                        v-on:enter="enter"
-                        v-on:leave="leave"
-                        v-on:after-leave="afterLeave"
-                        :css="false"
-                    >
-                        <div v-if="show === 'blog'" class="filler"></div>
+                            v-if="show === 'forum'"
+                            @click="setActive('forum'); $router.push({name: 'forum'})"
+                            :class="{ 'active': activeLink === 'forum'}"
+                            >FORUM</div>
                     </transition>
                 </div>
             </div>
@@ -200,6 +170,9 @@ export default {
         },
         username() {
             return this.$store.getters.username || null
+        },
+        connected() {
+            return this.$store.getters.connected || null
         }
     },
     methods: {
@@ -211,7 +184,7 @@ export default {
             el.style.display = 'block'
         },
         enter (el, done) {
-            $(el).animate({ width: '50px' }, 100).animate({ width: '210px'}, 50)
+            $(el).animate({ width: '50px' }, 100).animate({ width: '190px'}, 50)
             $(el).parent().css("zIndex", '1')
             done()
         },

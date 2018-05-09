@@ -3,7 +3,7 @@
 // @Email:  info@andreeray.se
 // @Filename: main.scss
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 08-05-2018
+// @Last modified time: 09-05-2018
 // @License: MIT
 
 #main {
@@ -32,8 +32,9 @@
     }
     #content {
         background: $primaryLight;
-        height: calc(100% - 60px);
+        height: calc(100% - 67px);
         width: 100%;
+        padding: 0;
         #mainnav {
             ul {
                 display: flex;

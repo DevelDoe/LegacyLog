@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: root.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 08-05-2018
+ * @Last modified time: 09-05-2018
  * @License: MIT
  */
 
@@ -45,7 +45,10 @@ Object.defineProperty(Vue.prototype, '$bus', { get() { return this.$root.bus } }
 const markdown = require('markdown-it')()
 Object.defineProperty(Vue.prototype, '$markdown', { get() { return this.$root.markdown } } )
 
-import { store } from './store/store'
+import store from './store/store'
+
+import VueSocketio from 'vue-socket.io';
+Vue.use(VueSocketio, 'http://localhost:8080/', store)
 
 const root = new Vue({
     el: '#app',

@@ -8,7 +8,7 @@
   "scripts": {
     "dist": "cpx source/assets/img/**/* ../../../servers/legacylog/img -C && cross-env TOKEN=true webpack --config webpack.prod.js",
     "dev": "cpx source/assets/img/**/* ../dist/img -C && webpack-dev-server --config webpack.dev.js ",
-    "token": "cross-env TOKEN=true webpack --config webpack.dev.js --watch"
+    "serve": "cpx source/assets/img/**/* ../../../servers/legacylog/img -C && cross-env TOKEN=true webpack --config webpack.dev.js --watch"
   },
   "repository": {
     "type": "git",
@@ -40,12 +40,14 @@
     "markdown-it": "^8.4.1",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",
+    "socket.io": "^2.1.0",
     "style-loader": "^0.19.1",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "vue": "^2.5.13",
     "vue-loader": "^14.2.2",
     "vue-resource": "^1.5.0",
     "vue-router": "^3.0.1",
+    "vue-socket.io": "^2.1.1-b",
     "vue-style-loader": "^3.0.3",
     "vue-template-compiler": "^2.5.13",
     "vuex": "^3.0.1",

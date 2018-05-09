@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: app.css
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 08-05-2018
+// @Last modified time: 09-05-2018
  * @License: MIT
  */
 
@@ -14,19 +14,30 @@
 @import './partials/sidebar';
 @import './partials/main';
 @import './partials/home';
+@import './partials/forum';
 
 article, aside, blockquote, body, br, button, canvas, caption, col, colgroup, dd, div, dl, dt, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, li, map, object, ol, output, p, pre, progress, section, table, tbody, textarea, tfoot, th, thead, tr, ul, video {
     outline: none;
     font-size: 16px;
     background: transparent;
+    border: none;
 }
 * { /* Not related to floats / clear both, used it for demo purpose only */
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
 }
+::-webkit-scrollbar {
+    display: none;
+}
 .box {
     display: flex;
+}
+a {
+    color: #ffffffb3;
+}
+input {
+    color: #ffffffb3;
 }
 #app {
     padding: 0;margin:0;
@@ -36,6 +47,7 @@ article, aside, blockquote, body, br, button, canvas, caption, col, colgroup, dd
     background: $primaryDark;
     font-family: 'Gothic A1', sans-serif;
     -webkit-font-smoothing: antialiased;
+    color: #ffffffb3;
 }
 .scroll {
     overflow-y: scroll;
