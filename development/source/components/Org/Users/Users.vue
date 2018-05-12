@@ -4,13 +4,13 @@
 @Email:  info@andreeray.se
 @Filename: Users.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 08-05-2018
+@Last modified time: 12-05-2018
 @License: MIT
 -->
 
 
 <template lang="html">
-    <div id='users'>
+    <div class='org'>
         <DevelModal modal="addUser">
             <div slot="header"><h2>Register new user</h2></div>
             <div slot="bread">

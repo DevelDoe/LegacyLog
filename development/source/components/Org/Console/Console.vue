@@ -8,7 +8,7 @@
 @License: MIT
 -->
 <template lang="html">
-    <div id="dashboard">
+    <div class="console">
         <h2>Console</h2>
     </div>
 </template>

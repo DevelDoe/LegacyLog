@@ -30,7 +30,8 @@
                     <nav>
                         <button @click="$router.push({ name: 'trade' })">TRADE</button>
                         <button @click="$router.push({ name: 'verse' })">VERSE</button>
-                        <button class="loginBtn" @click="openModal('login')">LOGIN</button>
+                        <button v-if="!token" class="loginBtn" @click="openModal('login')">LOGIN</button>
+                        <button v-else class="loginBtn" @click="$store.dispatch('logout')">LOGOUT</button>
                     </nav>
                 </div>
                 <div class="background">
@@ -86,7 +87,7 @@ export default {
                         })
                         this.$bus.$emit( 'setResponse', res.body.user + ' loged in')
                         this.$bus.$emit('toggleModal', modal )
-                        this.$router.push({ name : 'dashboard' })
+                        this.$router.push({ name : 'console' })
                     }
                     else  this.$bus.$emit( 'setResponse', res.body.message)
                     setTimeout( () => { this.$bus.$emit('setResponse', '') }, 4000)

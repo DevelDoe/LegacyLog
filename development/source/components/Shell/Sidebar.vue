@@ -36,14 +36,17 @@
 
         <div id="mainnav" class="box">
             <div class="iconbar" >
-                <i class="material-icons" @click="show = 'dashboard'; setActive('dashboard'); $router.push({name: 'dashboard'})" :class="{ 'active': activeLink === 'dashboard' || activeLink === 'users'}">
+                <i class="material-icons" @click="show = 'console'; setActive('console'); $router.push({name: 'console'})" :class="{ 'active': activeLink === 'console' || activeLink === 'users'}">
                     dashboard
                 </i>
-                <i class="material-icons" @click="show = 'forum'; setActive('forum'); $router.push({name: 'forum'})" :class="{ 'active': activeLink === 'forum' || activeLink === 'forum'}">
+                <i class="material-icons" @click="show = 'users'; setActive('users'); $router.push({name: 'users'})" :class="{ 'active': activeLink === 'users' }">
+                    people
+                </i>
+                <i class="material-icons" @click="show = 'forum'; setActive('forum'); $router.push({name: 'forum'})" :class="{ 'active': activeLink === 'forum' }">
                     comment
                 </i>
             </div>
-            <div class="navbarL1">
+            <div class="console">
                 <transition
                     v-on:before-enter="beforeEnter"
                     v-on:enter="enter"
@@ -51,25 +54,30 @@
                     v-on:after-leave="afterLeave"
                     :css="false"
                 >
-                    <div v-if="show === 'dashboard'"
-                         @click="setActive('dashboard'); $router.push({name: 'dashboard'})"
-                         :class="{ 'active': activeLink === 'dashboard'}"
-                         >DASHBOARD</div>
-                </transition>
-                <transition
-                    v-on:before-enter="beforeEnter"
-                    v-on:enter="enter"
-                    v-on:leave="leave"
-                    v-on:after-leave="afterLeave"
-                    :css="false"
-                >
-                    <div v-if="show === 'dashboard'"
-                         @click="setActive('users'); $router.push({name: 'users'})"
-                         :class="{ 'active': activeLink === 'users'}"
-                         >USERS</div>
+                    <div v-if="show === 'console'"
+                         @click="setActive('console'); $router.push({name: 'console'})"
+                         :class="{ 'active': activeLink === 'console'}"
+                         >CONSOLE</div>
                 </transition>
             </div>
-            <div class="navbarL2">
+
+            <div class="users">
+                <transition
+                    v-on:before-enter="beforeEnter"
+                    v-on:enter="enter"
+                    v-on:leave="leave"
+                    v-on:after-leave="afterLeave"
+                    :css="false"
+                >
+                    <div
+                        v-if="show === 'users'"
+                        @click="setActive('users'); $router.push({name: 'users'})"
+                        :class="{ 'active': activeLink === 'users'}"
+                        >USERS</div>
+                </transition>
+            </div>
+
+            <div class="forum">
                 <transition
                     v-on:before-enter="beforeEnter"
                     v-on:enter="enter"
@@ -96,8 +104,8 @@ export default {
     props: [ 'sidebar' ],
     data() {
         return {
-            activeLink  : 'dashboard',
-            show        : 'dashboard',
+            activeLink  : 'console',
+            show        : 'console',
         }
     },
     computed: {

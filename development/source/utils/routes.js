@@ -11,12 +11,12 @@
 
 
 
-import Trade from '../components/Console/Trade/Trade.vue'
-import Verse from '../components/Console/Verse/Verse.vue'
+import Trade   from '../components/Console/Trade/Trade.vue'
+import Verse   from '../components/Console/Verse/Verse.vue'
 
-import Dashboard from '../components/Org/Console/Console.vue'
-import Users from '../components/Org/Users/Users.vue'
-import Forum from '../components/Org/Forum/Forum.vue'
+import Console from '../components/Org/Console/Console.vue'
+import Users   from '../components/Org/Users/Users.vue'
+import Forum   from '../components/Org/Forum/Forum.vue'
 
 import store from '../store/store'
 
@@ -40,8 +40,8 @@ export default [
         name: 'verse'
     },{
         path: '/org/console',
-        component: Dashboard,
-        name: 'dashboard',
+        component: Console,
+        name: 'console',
         beforeEnter: requireAuth
     },{
         path: '/org/users',

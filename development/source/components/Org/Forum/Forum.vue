@@ -4,25 +4,27 @@
 @Email:  info@andreeray.se
 @Filename: Forum.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 09-05-2018
+@Last modified time: 12-05-2018
 @License: MIT
 -->
 <template lang="html">
-    <div id="forum">
-        <div class="online">
-            <h3>ONLINE:</h3>
-            <ul>
-                <li id="messages" v-for="user in users">{{ user }}</li>
-            </ul>
+    <div class="org">
+        <div class="wrap">
+            <div class="chat">
+                <div class="message" v-for="msg in messages">
+                    <div class="message-user"> <h6>{{ msg.name }}</h6>  </div>
+                    <div class="message-msg"> <p v-html="$markdown.render( msg.msg )">{{  }}</p> </div>
+                </div>
+            </div>
+            <div class="online">
+                <ul>
+                    <li id="messages" v-for="user in users">{{ user }}</li>
+                </ul>
+            </div>
         </div>
-
-        <ul>
-            <li id="messages" v-for="msg in messages">{{ msg.name }}: {{ msg.msg }}</li>
-        </ul>
-
-        <footer class="chat box">
-            <input id="m" autocomplete="off" v-model="message"/><button @click.prevent="clickButton()">Send</button>
-        </footer>
+        <div class="bottom">
+            <form><input id="m" autocomplete="off" v-model="message"/><button @click.prevent="clickButton()">Send</button></form>
+        </div>
     </div>
 </template>
 

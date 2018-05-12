@@ -48,6 +48,7 @@ const store = new Vux.Store({
     },
     mutations: {
         login:                 ( state , payload ) => { state.user.username = payload[0]; state.user.token = payload[1] },
+        logout:                ( state , payload ) => { state.user.username = ''; state.user.token = '' },
         setUsers:              ( state , payload ) => { state.users = payload },
         SOCKET_CONNECT         ( state ) { state.isConnected = true; },
         SOCKET_DISCONNECT      ( state ) { state.isConnected = false; },
@@ -71,6 +72,7 @@ const store = new Vux.Store({
     },
     actions: {
         login:               ( cxt , payload ) => { cxt.commit('login', payload) },
+        logout:              ( cxt , payload ) => { cxt.commit('logout') },
         setUsers:            ( cxt , payload ) => { cxt.commit('setUsers', payload) },
         setLocations:        ( ctx , payload ) => { ctx.commit( 'setLocations' , payload ) },
         delLocation:         ( ctx , payload ) => { ctx.commit( 'delLocation', payload) },

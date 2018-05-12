@@ -1,0 +1,67 @@
+/**
+ * @Author: Morgan Andree Ray
+ * @Date:   09-05-2018
+ * @Email:  info@andreeray.se
+ * @Filename: forum.css
+// @Last modified by:   Morgan Andree Ray
+// @Last modified time: 12-05-2018
+ * @License: MIT
+ */
+
+.org {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    background: #1f2224;
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    color: #ffffffb3;
+    padding: 0 0 0 2%;
+    .wrap {
+        display: grid;
+        grid-template-columns: 85% 15%;
+        height: 100%;
+        .chat {
+            padding: 2% 2% 0;
+            .message {
+                padding: .5%;
+                .message-user {
+                    color: #FFD700;
+                }
+                .message-msg {
+                    p {
+                        padding: 0.5%;
+                    }
+                }
+            }
+        }
+        .online {
+            padding: 10%;
+            background: #1c2022;
+            color: #FFD700;
+        }
+    }
+
+    .bottom{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 98%;
+        padding: 5px 15% 5px 5px;
+        background: transparent;
+        input {
+            color: #ffffffb3;
+            width: 90%;
+            font-size: 16px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            padding: 5px 10px;
+            line-height: 30px;
+        }
+        button {
+            width: 10%;
+        }
+        height: 6%;
+    }
+}

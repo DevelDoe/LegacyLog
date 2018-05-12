@@ -14,10 +14,12 @@
 
 @import './partials/shell/sidebar';
 @import './partials/shell/main';
-@import './partials/admin/forum';
+
+@import './partials/admin/org';
 
 @import './partials/trade';
 @import './partials/verse';
+
 
 article, aside, blockquote, body, br, button, canvas, caption, col, colgroup, dd, div, dl, dt, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, li, map, object, ol, output, p, pre, progress, section, table, tbody, textarea, tfoot, th, thead, tr, ul, video {
     outline: none;
@@ -38,7 +40,7 @@ body {
     -moz-font-smoothing: antialiased;
     font-smoothing: antialiased;
     font-weight: 300;
-    color: #333;
+    color: #ffffffb3 !important;
 }
 *, *:before, *:after {
     box-sizing: border-box;
@@ -52,7 +54,7 @@ body {
     display: flex;
 }
 a {
-    color: #333;
+    color: #ffffffb3 !important;
 }
 h1, h2 , h3 {
     font-family: 'Audiowide', cursive;

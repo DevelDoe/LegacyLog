@@ -3,7 +3,7 @@
 // @Email:  info@andreeray.se
 // @Filename: sidebar.scss
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 10-05-2018
+// @Last modified time: 12-05-2018
 // @License: MIT
 
 
@@ -76,7 +76,7 @@
             }
         }
 
-        .navbarL1 {
+        .console {
             position: relative;
             margin: 0;
             padding: 0;
@@ -93,7 +93,26 @@
                 color: #FFD700;
             }
         }
-        .navbarL2 {
+        .users {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            width: 190px;
+            left: 40px;
+            z-index: -1;
+            div {
+                cursor: pointer;
+                line-height: 11px;
+                letter-spacing: 2px;
+                font-size: 20px;
+                margin: 20px;
+                padding: 0;
+            }
+            .active {
+                color: #FFD700;
+            }
+        }
+        .forum {
             position: absolute;
             margin: 0;
             padding: 0;
