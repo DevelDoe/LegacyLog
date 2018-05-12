@@ -4,11 +4,25 @@
 @Email:  info@andreeray.se
 @Filename: Main.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 10-05-2018
+@Last modified time: 12-05-2018
 @License: MIT
 -->
 <template lang="html">
     <div id="main">
+
+        <DevelToast :response="response"/>
+        <DevelModal modal="login">
+            <div slot="header"><h2>SIGN IN</h2></div>
+            <div slot="bread">
+                <input v-model="user.username" placeholder="Username">
+                <input v-model="user.password" type="password" placeholder="Password">
+            </div>
+            <div slot="footer">
+                <div class="form-control">
+                    <button  @click="login( 'login' )">SIGN IN</button>
+                </div>
+            </div>
+        </DevelModal :open="open">
 
         <div id="wrapper">
             <div class="box">
@@ -16,18 +30,11 @@
                     <nav>
                         <button @click="$router.push({ name: 'trade' })">TRADE</button>
                         <button @click="$router.push({ name: 'verse' })">VERSE</button>
+                        <button class="loginBtn" @click="openModal('login')">LOGIN</button>
                     </nav>
                 </div>
                 <div class="background">
-                    <router-view
-                        :resources="resources"
-                        :locations="locations"
-                        :location_types="location_types"
-                        :missions="missions"
-                        :characters="characters"
-                        :organisations="organisations"
-                        :meta_data="meta_data"
-                        :bus="bus" />
+                    <router-view />
                 </div>
             </div class="box">
 
@@ -36,12 +43,63 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
-    props: [ 'resources', 'locations', 'location_types', 'missions', 'organisations', 'characters', 'meta_data', 'bus' ],
+    name: 'Main',
+    data() {
+        return {
+            user: {
+                username: '',
+                password: ''
+            },
+            sidebar: false
+        }
+    },
+    computed: {
+        ...mapGetters([ 'meta_data' , 'token' ]),
+    },
     methods: {
         openModal( modal ) {
             this.$bus.$emit('toggleModal', modal )
         },
+        login( modal ) {
+            const valid = this.validate( this.meta_data.validation_rules.login, this.user, 'users')
+            if ( valid === 'true' ) {
+
+                this.$http.post('login/', this.user).then( res => {
+                    if(res.body.token) {
+                        this.$store.dispatch('login', [res.body.user, res.body.token ])
+                        this.$develLS.set('store', [{
+                            username: res.body.user,
+                            token: res.body.token
+                        }])
+                        this.$http.get('users/', { headers: { 'Authorization': this.token, 'Accept': 'application/json' }}).then(res => {
+                            const users = res.data.map(user => {
+                                return {
+                                    name: user.name,
+                                    username: user.username,
+                                    email: user.email,
+                                    image_src: user.image_src
+                                }
+                            })
+                            this.$store.dispatch( 'setUsers' , users)
+                        })
+                        this.$bus.$emit( 'setResponse', res.body.user + ' loged in')
+                        this.$bus.$emit('toggleModal', modal )
+                        this.$router.push({ name : 'dashboard' })
+                    }
+                    else  this.$bus.$emit( 'setResponse', res.body.message)
+                    setTimeout( () => { this.$bus.$emit('setResponse', '') }, 4000)
+                })
+            }
+        },
+        logout( ) {
+            this.$store.dispatch('login', ['', '' ])
+            this.$develLS.set('store', [{}])
+            this.$router.push({ name: 'home' })
+            this.$bus.$emit( 'setResponse', 'loged out')
+            setTimeout( () => { this.$bus.$emit('setResponse', '') }, 4000)
+        }
     }
 }
 </script>

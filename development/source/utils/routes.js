@@ -4,19 +4,19 @@
  * @Email:  info@andreeray.se
  * @Filename: routes.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 10-05-2018
+ * @Last modified time: 12-05-2018
  * @License: MIT
  */
 
 
 
 
-import Trade from '../components/Trade/Trade.vue'
-import Verse from '../components/Verse/Verse.vue'
+import Trade from '../components/Console/Trade/Trade.vue'
+import Verse from '../components/Console/Verse/Verse.vue'
 
-import Users from '../components/Users/Users.vue'
-import Dashboard from '../components/Dashboard/Dashboard.vue'
-import Forum from '../components/Forum/Forum.vue'
+import Dashboard from '../components/Org/Console/Console.vue'
+import Users from '../components/Org/Users/Users.vue'
+import Forum from '../components/Org/Forum/Forum.vue'
 
 import store from '../store/store'
 
@@ -35,21 +35,21 @@ export default [
         component: Trade,
         name: 'trade'
     },{
-        path: '/verse',
+        path: '/console/verse',
         component: Verse,
         name: 'verse'
     },{
-        path: '/dashboard',
+        path: '/org/console',
         component: Dashboard,
         name: 'dashboard',
         beforeEnter: requireAuth
     },{
-        path: '/users',
+        path: '/org/users',
         component: Users,
         name: 'users',
         beforeEnter: requireAuth
     },{
-        path: '/forum',
+        path: '/org/forum',
         component: Forum,
         name: 'forum',
         beforeEnter: requireAuth

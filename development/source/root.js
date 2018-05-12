@@ -61,7 +61,7 @@ const root = new Vue({
     el: '#app',
     store: store,
     data () {
-        let data = { bus, markdown, }
+        let data = { bus, markdown, develLS}
         return data
     },
     render (h) {

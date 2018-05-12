@@ -4,11 +4,11 @@
 @Email:  info@andreeray.se
 @Filename: Sidebar.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 09-05-2018
+@Last modified time: 12-05-2018
 @License: MIT
 -->
 <template>
-    <div v-if="token && sidebar" id="sidebar">
+    <div v-if="token" id="sidebar">
 
         <header>
             <h1>LEGACY FLEET</h1>

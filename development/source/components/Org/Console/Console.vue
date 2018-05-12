@@ -4,12 +4,12 @@
 @Email:  info@andreeray.se
 @Filename: Dashboard.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 08-05-2018
+@Last modified time: 12-05-2018
 @License: MIT
 -->
 <template lang="html">
     <div id="dashboard">
-        <h2>Dashboard</h2>
+        <h2>Console</h2>
     </div>
 </template>
 
