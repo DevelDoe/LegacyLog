@@ -3,8 +3,8 @@
 @Date:   27-04-2018
 @Email:  info@andreeray.se
 @Filename: DevelModal.vue
-@Last modified by:   DevelDoe
-@Last modified time: 01-05-2018
+@Last modified by:   Morgan Andree Ray
+@Last modified time: 12-05-2018
 @License: MIT
 -->
 
@@ -46,25 +46,29 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="scss">
     .d-modal {
         display: none;
         position: fixed; left: 0; top: 0; height: 100%; width: 100%; z-index: 1; overflow: auto;
-        background: rgba(0,0,0,0.7);
+        background: rgba(0, 0, 0, 0.7) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAYAAACddGYaAAAAD0lEQVQIW2NkQABjRmQOAAM+AGkQsDBSAAAAAElFTkSuQmCC) repeat;
     }
     .d-modal-open {
         display: block;
     }
     .d-modal-content {
-        background: rgb(0, 119, 204);
+        background: rgba(255,255,255,0.1);
         margin: 20% auto;
         width: 70%;
         box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.2);
         animation-name: modal-open;
         animation-duration: .3s;
+        input {
+            width: 70%
+        }
     }
     .d-modal-content header {
         padding: 15px;
+
     }
     .d-modal-body {
         padding: 10px 20px;
@@ -84,7 +88,7 @@ export default {
     }
     .d-modal-close:hover, .d-modal-close:focus {
         cursor: pointer;
-        color: rgb(0, 119, 204);
+        color: white;
         text-decoration: none;
     }
 </style>

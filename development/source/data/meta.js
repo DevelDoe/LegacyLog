@@ -1,3 +1,14 @@
+/**
+ * @Author: Morgan Andree Ray
+ * @Date:   27-04-2018
+ * @Email:  info@andreeray.se
+ * @Filename: meta.js
+ * @Last modified by:   Morgan Andree Ray
+ * @Last modified time: 11-05-2018
+ * @License: MIT
+ */
+
+
 export default {
     validation_rules: {
         resource: {
@@ -151,5 +162,13 @@ export default {
         'Moon',
         'Station',
         'Outpost'
+    ],
+    location_types: [
+        'Sytem',
+        'Star',
+        'Planet',
+        'Station',
+        'Moon',
+        'Outpost',
     ]
 }

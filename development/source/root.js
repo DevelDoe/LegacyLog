@@ -4,14 +4,13 @@
  * @Email:  info@andreeray.se
  * @Filename: root.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 09-05-2018
+ * @Last modified time: 12-05-2018
  * @License: MIT
  */
 
 import Vue from 'vue'
 import App from './components/Shell/App.vue'
 
-import '../node_modules/devel-style/devel-style.css'
 import './assets/css/app.scss'
 
 import develLS from  'devel-localstorage'
@@ -45,38 +44,24 @@ Object.defineProperty(Vue.prototype, '$bus', { get() { return this.$root.bus } }
 const markdown = require('markdown-it')()
 Object.defineProperty(Vue.prototype, '$markdown', { get() { return this.$root.markdown } } )
 
+Vue.directive('md', {
+    inserted( el , binding ) {
+        el.innerHTML = markdown.render(binding.value)
+    }
+})
+
 import store from './store/store'
 
 import VueSocketio from 'vue-socket.io';
-if( process.env.NODE_ENV === 'development' ) Vue.use(VueSocketio, 'http://localhost:8080/', store)
-if( process.env.NODE_ENV === 'production' ) Vue.use(VueSocketio, 'http://35.189.243.23:80/', store)
+Vue.use(VueSocketio, 'http://35.189.243.23:80/', store)
 
+import metaData from './data/meta.js'
 
 const root = new Vue({
     el: '#app',
     store: store,
     data () {
-        let data = {
-            resources: [],
-            locations: [],
-            location_types: [
-                'Sytem',
-                'Star',
-                'Planet',
-                'Station',
-                'Moon',
-                'Outpost',
-            ],
-            missions: [],
-            characters: [],
-            organisations: [],
-            response: '',
-            meta_data: {},
-            bus,
-            markdown,
-            users: [],
-            develLS
-        }
+        let data = { bus, markdown, }
         return data
     },
     render (h) {
@@ -87,14 +72,12 @@ const root = new Vue({
         bus.$on('setResponse', response => {
             this.response = response
         })
-        this.$http.get('resources/').then(res => { this.resources = res.data })
-        this.$http.get('locations/').then(res => { this.locations = res.data })
-        this.$http.get('characters/').then(res => { this.characters = res.data })
-        this.$http.get('missions/').then(res => { this.missions = res.data })
-        this.$http.get('organisations/').then(res => { this.organisations = res.data })
+        store.dispatch( 'setMetaData' , metaData )
+        this.$http.get( 'resources/' ).then(res => { store.dispatch( 'setResources' , res.data ) })
+        this.$http.get( 'locations/' ).then(res => { store.dispatch( 'setLocations' , res.data ) })
+        this.$http.get( 'characters/' ).then(res => { store.dispatch( 'setCharacters' , res.data ) })
+        this.$http.get( 'missions/' ).then(res => { store.dispatch( 'setMissions' , res.data ) })
+        this.$http.get( 'organisations/' ).then(res => {  store.dispatch( 'setOrganisations' , res.data ) })
     },
 
 })
-
-import metaData from './data/meta.js'
-root.meta_data = metaData

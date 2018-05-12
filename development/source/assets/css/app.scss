@@ -4,25 +4,43 @@
  * @Email:  info@andreeray.se
  * @Filename: app.css
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 09-05-2018
+// @Last modified time: 12-05-2018
  * @License: MIT
  */
 
+@import 'reset';
 @import 'variables';
 @import 'transitions';
 
-@import './partials/sidebar';
-@import './partials/main';
-@import './partials/home';
-@import './partials/forum';
+@import './partials/shell/sidebar';
+@import './partials/shell/main';
+@import './partials/admin/forum';
+
+@import './partials/trade';
+@import './partials/verse';
 
 article, aside, blockquote, body, br, button, canvas, caption, col, colgroup, dd, div, dl, dt, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, li, map, object, ol, output, p, pre, progress, section, table, tbody, textarea, tfoot, th, thead, tr, ul, video {
     outline: none;
     font-size: 16px;
-    background: transparent;
     border: none;
 }
-* { /* Not related to floats / clear both, used it for demo purpose only */
+html, body {
+    height: 100%;
+    margin: 0; padding: 0;
+}
+html {
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Gothic A1', sans-serif;
+    /* font-size base 10 */
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    font-weight: 300;
+    color: #333;
+}
+*, *:before, *:after {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -34,28 +52,89 @@ article, aside, blockquote, body, br, button, canvas, caption, col, colgroup, dd
     display: flex;
 }
 a {
-    color: #ffffffb3;
+    color: #333;
+}
+h1, h2 , h3 {
+    font-family: 'Audiowide', cursive;
+}
+h1 {
+    font-size: 2.7em;
+}
+h2 {
+    font-size: 2em;
+}
+h3 {
+    font-size: 1.5em;
+}
+h4 {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+h5 {
+    font-size: 1.1em;
+}
+h6 {
+    font-size: 1em;
 }
 input {
-    color: #ffffffb3;
+    color: #333;
 }
 #app {
-    padding: 0;margin:0;
-    height: 100%;
-    font-size: 18px !important;
-    letter-spacing: .01em !important;
-    background: $primaryDark;
-    font-family: 'Gothic A1', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    color: #ffffffb3;
+
 }
 .scroll {
     overflow-y: scroll;
+    overflow: auto;
     height:100%;
     width: 100%;
 }
 .main-scroll {
     overflow-y: scroll;
-    height:94%;
+    height:100%;
     width: 100%;
+}
+
+input, textarea {
+    background: transparent;
+    border: none;
+    width: 100%;
+    font-size: 100%;
+    color: white;
+    font-family: 'Gothic A1', sans-serif;
+    /* font-size base 10 */
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    font-weight: 300;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+.screen {
+    background: rgba(8, 34, 45, .0) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAYAAACddGYaAAAAD0lEQVQIW2NkQABjRmQOAAM+AGkQsDBSAAAAAElFTkSuQmCC) repeat;
+    width: 100%;
+    height: 100%;
+    font-weight: 300;
+    color: #d9d9d9;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    letter-spacing: 2px;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: rgba(169, 169, 169, 0.9) 0px 0px 8px;
+}
+button {
+    font-weight: 300;
+    color: #d9d9d9;
+    line-height: 1.6;
+    text-rendering: optimizeLegibility;
+    letter-spacing: 2px;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: rgba(169, 169, 169, 0.9) 0px 0px 8px;
+    font-family: 'Gothic A1', sans-serif;
+    background: transparent;
+    &:hover {
+        color: white;
+    }
 }

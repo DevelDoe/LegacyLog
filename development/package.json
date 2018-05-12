@@ -6,8 +6,8 @@
   "main": "index.js",
   "sideEffects": false,
   "scripts": {
-    "dist": "cpx source/assets/img/**/* ../../../servers/legacylog/img -C && cross-env TOKEN=true webpack --config webpack.prod.js",
-    "dev": "cpx source/assets/img/**/* ../dist/img -C && webpack-dev-server --config webpack.dev.js ",
+    "build": "cpx source/assets/img/**/* ../../../servers/legacylog/img -C  && cross-env TOKEN=true webpack --config webpack.prod.js",
+    "devel": "cpx source/assets/img/**/* ../build/img -C && webpack-dev-server --config webpack.dev.js ",
     "serve": "cpx source/assets/img/**/* ../../../servers/legacylog/img -C && cross-env TOKEN=true webpack --config webpack.dev.js --watch"
   },
   "repository": {
@@ -37,6 +37,7 @@
     "devel-style": "^3.1.0",
     "html-webpack-plugin": "^3.2.0",
     "jquery": "^3.3.1",
+    "lodash": "^4.17.10",
     "markdown-it": "^8.4.1",
     "node-sass": "^4.9.0",
     "sass-loader": "^7.0.1",

@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: webpack.dev.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 02-05-2018
+ * @Last modified time: 09-05-2018
  * @License: MIT
  */
 
@@ -17,7 +17,7 @@
 module.exports = merge(common, {
     devtool: 'inlinesourcemap',
     devServer: {
-        contentBase: path.join(__dirname, "../dist"),
+        contentBase: path.join(__dirname, "../build"),
         compress: false,
         inline: true,
         port: 3001

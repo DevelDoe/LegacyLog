@@ -1,0 +1,87 @@
+// @Author: Morgan Andree Ray
+// @Date:   09-05-2018
+// @Email:  info@andreeray.se
+// @Filename: trade.scss
+// @Last modified by:   DevelDoe
+// @Last modified time: 11-05-2018
+// @License: MIT
+#headbar {
+    height: 60px;
+    border-top-left-radius: 10px;
+    .wrapper {
+        h2 {
+            line-height: 60px;
+            padding-left: 10px;
+        }
+        width: 100%;
+        display: grid;
+        grid-template-columns: 30% 50% 20%;
+        button {
+            width: 16%;
+            font-size: 12px;
+        }
+    }
+}
+#trade {
+    height: calc(100% - 60px);
+    .wrapper {
+        display: grid;
+        grid-template-columns: 23% 38% 33%;
+        margin: 0;
+        padding: 0;
+        height:  100%;
+        #leftbar {
+            padding: 2%;
+            .top {
+                h3 {
+                    border-top: 2px solid rgba(255,255,255,0.5);
+                    border-bottom: 2px solid rgba(255,255,255,0.5);
+                }
+                .nav {
+                    padding: 20px 0;
+                    select {
+                        background: transparent;
+                        width: 100%;
+                        border-radius: 5px;
+                        color: white;
+                        padding: 5px;
+                        outline: none;
+                        option {
+                            color: #333;
+                            font-family: 'Gothic A1', sans-serif;
+                            background-color: transparent;
+                        }
+                    }
+                }
+
+            }
+            .main {
+            }
+            .bottom {
+                button {
+                    background: rgba(255,255,255,0.1);
+                    padding: 10px;
+                    width: 100%;
+                    &:hover {
+                        background: rgba(255,255,255,0.2);
+                    }
+                }
+            }
+        }
+        #content {
+            padding: 2%;
+            .route {
+                flex: 0 0 10px
+            }
+        }
+        #rightbar {
+            padding: 2%;
+            .top {
+                height: 60%
+            }
+            .bottom {
+                height: 40%;
+            }
+        }
+    }
+}

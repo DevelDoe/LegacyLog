@@ -1,3 +1,14 @@
+/**
+ * @Author: Morgan Andree Ray
+ * @Date:   27-04-2018
+ * @Email:  info@andreeray.se
+ * @Filename: helperFunctions.js
+ * @Last modified by:   Morgan Andree Ray
+ * @Last modified time: 11-05-2018
+ * @License: MIT
+ */
+
+import store from '../store/store'
 const helperFunctions = {
     install(Vue, options) {
         Vue.mixin({
@@ -21,7 +32,7 @@ const helperFunctions = {
                     })
                 },
 
-                mixinsValidate() {
+                validate() {
                     const args = (arguments.length === 1 ? [arguments[0]] : Array.apply(null, arguments))
 
                     const validationRules = args.shift() || null
@@ -95,8 +106,8 @@ const helperFunctions = {
                 },
 
                 isDuplicate(collection, value, index, key ) {
-
-                    var names = this[collection].map(function(item){
+                    let data = store.getters[collection]
+                    var names = data.map(function(item){
                         return item[key].toLowerCase()
                     })
 

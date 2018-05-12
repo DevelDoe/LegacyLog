@@ -3,8 +3,8 @@
 @Date:   27-04-2018
 @Email:  info@andreeray.se
 @Filename: DevelToast.vue
-@Last modified by:   DevelDoe
-@Last modified time: 01-05-2018
+@Last modified by:   Morgan Andree Ray
+@Last modified time: 11-05-2018
 @License: MIT
 -->
 
@@ -20,7 +20,7 @@
 <script>
 export default {
     name: 'DevelToast',
-    props: [ 'response' ]
+    computed: { response() { return this.$store.getters.response }}
 }
 </script>
 

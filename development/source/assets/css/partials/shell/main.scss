@@ -1,0 +1,128 @@
+// @Author: Morgan Andree Ray <DevelDoe>
+// @Date:   01-05-2018
+// @Email:  info@andreeray.se
+// @Filename: main.scss
+// @Last modified by:   Morgan Andree Ray
+// @Last modified time: 12-05-2018
+// @License: MIT
+
+#main {
+
+    height: 100%;width: 100%;
+    padding:0;margin:0;
+    #topbar {
+        background: $black;
+        height: 60px;
+        padding:0;margin:0;
+        form {
+            width: 100%;
+            padding: 0;
+            input {
+                border:none;
+                font-size: 18px;
+                background: rgba(255,255,255,0.1);
+                padding: 10px;
+                height: 100%;
+            }
+        }
+
+        button {
+            border: none;
+            width: 130px;
+        }
+    }
+    #wrapper {
+        height: 100%;
+        width: 100%;
+        padding: 2% 0% 0 0;
+        background: #1c2022;
+        .box {
+            height: 100%;
+            .catselector {
+                width: 100px;
+                height: 100%;
+                padding-top: 60px;
+                button {
+                    width: 100%;
+                    height: 80px;
+                    background: #24282b;
+                    color: #757575;
+                    border-left: 2px solid rgba(132, 132, 132, 0.5);
+                    box-shadow: none;
+                    text-shadow: none;
+                    border-top: 1px solid #262a2d;
+                    border-bottom: 1px solid #2e3235;
+                    margin-top: 10px;
+                    &:hover {
+                        border-left: 2px solid rgba(255,255,255,1);
+                        color: white;
+                    }
+                }
+            }
+            .background {
+                background-image: url("/img/sc.jpg");
+                background-size: cover;
+                height: 100%;
+                border-top-left-radius: 10px;
+                width: 100%;
+                #headbar {
+                    height: 60px;
+                    border-top-left-radius: 10px;
+                    .wrapper {
+                        h2 {
+                            line-height: 60px;
+                            padding-left: 10px;
+                        }
+                        width: 100%;
+                        display: grid;
+                        grid-template-columns: 30% 50% 20%;
+                        button {
+                            font-size: 15px;
+                            line-height: 14px;
+                            padding: 11px;
+                            background: transparent;
+                            margin: 5px;
+                            border-radius: 21px;
+                            box-shadow: none;
+                            border: 0px solid rgba(57, 57, 57, 0.9);
+                            color: #929292;
+                            text-shadow: none;
+                            width: fit-content;
+                            &:hover {
+                                color: white;
+                            }
+                        }
+                    }
+                }
+                .wrapper {
+                    display: grid;
+                    grid-template-columns: 25% 35% 40%;
+                    margin: 0;
+                    padding: 0;
+                    height: 100%;
+                    #leftbar {
+                        .top {
+                            height: 15%
+                        }
+                        .main {
+                            height: 60%;
+                        }
+                        .bottom {
+                            height: 25%;
+                        }
+                    }
+                    #content {
+                    }
+                    #rightbar {
+                        .top {
+                            height: 60%
+                        }
+                        .bottom {
+                            height: 40%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

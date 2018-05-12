@@ -20,67 +20,33 @@
                     <button  @click="login( 'login' )">SIGN IN</button>
                 </div>
             </div>
-        </DevelModal>
+        </DevelModal :open="open">
 
-        <Sidebar />
+        <i id="sb" class="material-icons" @click="sidebar = !sidebar"> close </i>
+        <Sidebar :sidebar="sidebar"  />
+        <Main :resources="resources" :locations="locations" :location_types="location_types" :missions="missions" :organisations="organisations" :characters="characters" :meta_data="meta_data" :bus="bus"/>
 
-        <div id="main">
-            <div id="topbar" class="box">
-                <form >
-                    <input type="text" name="search" placeholder="Search"/>
-                </form>
-
-                <button v-if="!token" @click="openModal( 'login' )">SIGN IN</button>
-                <button v-else @click="logout">SIGN OUT</button>
-            </div>
-            <div id="content">
-                <nav id="mainnav">
-                    <ul>
-                        <li class="link"><router-link :to="{ name: 'home' }">HOME</router-link></li>
-                        <li><router-link :to="{ name: 'resources' }">RESOURCES</router-link></li>
-                        <li><router-link :to="{ name: 'locations' }">LOCATIONS</router-link></li>
-                        <li><router-link :to="{ name: 'missions' }">MISSIONS</router-link></li>
-                        <li><router-link :to="{ name: 'characters' }">CHARACTERS</router-link></li>
-                        <li><router-link :to="{ name: 'organisations' }">ORGANISATIONS</router-link></li>
-                    </ul>
-                </nav>
-                <router-view
-                    :resources="resources"
-                    :locations="locations"
-                    :location_types="location_types"
-                    :missions="missions"
-                    :characters="characters"
-                    :organisations="organisations"
-                    :meta_data="meta_data"
-                    :bus="bus" />
-            </div>
-        </div>
     </div>
 </template>
 
 <script>
 import Sidebar from './Sidebar.vue'
-
+import Main from './Main.vue'
+import { mapGetters } from 'vuex'
 export default {
     name: 'app',
-    props: [
-        'resources',
-        'locations',
-        'location_types',
-        'missions',
-        'response',
-        'organisations',
-        'characters',
-        'meta_data',
-        'bus'
-    ],
+    props: [ 'resources', 'locations', 'location_types', 'missions', 'response', 'organisations', 'characters', 'meta_data', 'bus' ],
     data() {
         return {
             user: {
                 username: '',
                 password: ''
             },
+            sidebar: false
         }
+    },
+    computed: {
+        ...mapGetters([ 'token' ])
     },
     methods: {
         openModal( modal ) {
@@ -125,8 +91,14 @@ export default {
             setTimeout( () => { this.$bus.$emit('setResponse', '') }, 4000)
         }
     },
-    components: {
-        Sidebar
-    }
+    components: { Sidebar, Main }
 }
 </script>
+<style media="screen">
+    #sb {
+        position: fixed;
+        bottom:0;
+        left:0;
+        cursor: pointer;
+    }
+</style>

@@ -43,11 +43,10 @@ export default {
     sockets:{
         connect() {
             // Fired when the socket connects.
-            this.isConnected = true;
+            this.isConnected = true
         },
         disconnect() {
-
-            this.isConnected = false;
+            this.isConnected = false
         },
         updateChat(payload) {
             this.messages.push(payload)
@@ -59,12 +58,16 @@ export default {
     methods: {
         clickButton: function(){
             // $socket is socket.io-client instance
-            this.$socket.emit('sendChat', this.message, this.username);
+            this.$socket.emit('sendChat', this.message, this.username)
             this.message = ''
         }
     },
     mounted() {
-        this.$socket.emit('addUser', this.username);
+        this.$socket.emit('addUser', this.username)
+        this.$socket.emit('getUsers')
+    },
+    destroyed() {
+        this.$socket.emit('removeUser')
     }
 }
 </script>

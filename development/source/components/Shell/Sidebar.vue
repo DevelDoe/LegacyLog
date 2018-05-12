@@ -8,10 +8,12 @@
 @License: MIT
 -->
 <template>
-    <div v-if="token" id="sidebar">
+    <div v-if="token && sidebar" id="sidebar">
+
         <header>
             <h1>LEGACY FLEET</h1>
         </header>
+
         <div id="user" class="box">
             <img src="/img/profile.jpg" alt="">
             <div id="info" >
@@ -31,6 +33,7 @@
                 </div>
             </div>
         </div>
+
         <div id="mainnav" class="box">
             <div class="iconbar" >
                 <i class="material-icons" @click="show = 'dashboard'; setActive('dashboard'); $router.push({name: 'dashboard'})" :class="{ 'active': activeLink === 'dashboard' || activeLink === 'users'}">
@@ -90,6 +93,7 @@ import { mapGetters } from 'vuex'
 import jQuery from 'jquery'
 export default {
     name: 'Sidebar',
+    props: [ 'sidebar' ],
     data() {
         return {
             activeLink  : 'dashboard',

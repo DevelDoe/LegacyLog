@@ -1,3 +1,14 @@
+/**
+ * @Author: Morgan Andree Ray
+ * @Date:   27-04-2018
+ * @Email:  info@andreeray.se
+ * @Filename: api.js
+ * @Last modified by:   DevelDoe
+ * @Last modified time: 11-05-2018
+ * @License: MIT
+ */
+
+import store from '../store/store'
 const helperFunctions = {
     install(Vue, options) {
         Vue.mixin({
@@ -69,10 +80,8 @@ const helperFunctions = {
 
                     this.$http.delete(`${collection}/${id}`)
                         .then(res => {
-                            this[collection].splice(index, 1)
                             this.$bus.$emit('setResponse', res.body.model + ' deleted')
                             setTimeout( () => { this.$bus.$emit('setResponse', '') }, 4000 )
-                            this.$router.push({ path: collection })
                         }).catch(function(error){
                             this.$bus.$emit( 'setResponse', 'Connection error' )
                             setTimeout( () => { this.$bus.$emit('setResponse', '') }, 4000 )
