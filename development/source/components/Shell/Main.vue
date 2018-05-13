@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Main.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 12-05-2018
+@Last modified time: 13-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -14,12 +14,14 @@
         <DevelModal modal="login">
             <div slot="header"><h2>SIGN IN</h2></div>
             <div slot="bread">
-                <input v-model="user.username" placeholder="Username">
-                <input v-model="user.password" type="password" placeholder="Password">
+                <form id="login-form">
+                    <input v-model="user.username" placeholder="Username">
+                    <input v-model="user.password" type="password" placeholder="Password">
+                </form>
             </div>
             <div slot="footer">
                 <div class="form-control">
-                    <button  @click="login( 'login' )">SIGN IN</button>
+                    <button form="login-form"  @click="login( 'login' )">SIGN IN</button>
                 </div>
             </div>
         </DevelModal :open="open">
@@ -69,6 +71,7 @@ export default {
 
                 this.$http.post('login/', this.user).then( res => {
                     if(res.body.token) {
+                        this.$bus.$emit( 'setResponse', res.body.user + ' loged in')
                         this.$store.dispatch('login', [res.body.user, res.body.token ])
                         this.$develLS.set('store', [{
                             username: res.body.user,
@@ -85,7 +88,6 @@ export default {
                             })
                             this.$store.dispatch( 'setUsers' , users)
                         })
-                        this.$bus.$emit( 'setResponse', res.body.user + ' loged in')
                         this.$bus.$emit('toggleModal', modal )
                         this.$router.push({ name : 'console' })
                     }
@@ -96,6 +98,7 @@ export default {
         },
         logout( ) {
             this.$store.dispatch('login', ['', '' ])
+            this.$socket.emit('removeUser')
             this.$develLS.set('store', [{}])
             this.$router.push({ name: 'home' })
             this.$bus.$emit( 'setResponse', 'loged out')

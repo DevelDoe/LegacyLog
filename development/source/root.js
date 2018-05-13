@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: root.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 12-05-2018
+ * @Last modified time: 13-05-2018
  * @License: MIT
  */
 
@@ -23,6 +23,7 @@ import routes from './utils/routes'
 const router = new VueRouter({
     routes
 })
+
 
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
@@ -44,6 +45,9 @@ Object.defineProperty(Vue.prototype, '$bus', { get() { return this.$root.bus } }
 const markdown = require('markdown-it')()
 Object.defineProperty(Vue.prototype, '$markdown', { get() { return this.$root.markdown } } )
 
+var moment = require('moment')
+Object.defineProperty(Vue.prototype, '$moment', { get() { return this.$root.moment } } )
+
 Vue.directive('md', {
     inserted( el , binding ) {
         el.innerHTML = markdown.render(binding.value)
@@ -57,11 +61,12 @@ Vue.use(VueSocketio, 'http://35.189.243.23:80/', store)
 
 import metaData from './data/meta.js'
 
+
 const root = new Vue({
     el: '#app',
     store: store,
     data () {
-        let data = { bus, markdown, develLS}
+        let data = { bus, markdown, develLS, moment}
         return data
     },
     render (h) {

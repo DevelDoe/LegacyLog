@@ -3,7 +3,7 @@
 // @Email:  info@andreeray.se
 // @Filename: trade.scss
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 12-05-2018
+// @Last modified time: 13-05-2018
 // @License: MIT
 #headbar {
     height: 60px;
@@ -33,7 +33,7 @@
         #leftbar {
             padding: 2%;
             .top {
-                height: 15% !important;
+                height: 13% !important;
                 h3 {
                     border-top: 2px solid rgba(255,255,255,0.5);
                     border-bottom: 2px solid rgba(255,255,255,0.5);
@@ -57,7 +57,7 @@
 
             }
             .filters {
-                height: 60%;
+                height: 57%;
                 .location-filter {
                     margin: 5px;
                     text-align: center;
@@ -66,7 +66,7 @@
                 }
             }
             .tools {
-                height: 25%;
+                height: 30%;
                 button {
                     background: rgba(255,255,255,0.1);
                     padding: 10px;

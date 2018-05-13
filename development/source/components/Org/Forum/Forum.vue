@@ -4,16 +4,20 @@
 @Email:  info@andreeray.se
 @Filename: Forum.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 12-05-2018
+@Last modified time: 13-05-2018
 @License: MIT
 -->
 <template lang="html">
     <div class="org">
         <div class="wrap">
             <div class="chat">
-                <div class="message" v-for="msg in messages">
-                    <div class="message-user"> <h6>{{ msg.name }}</h6>  </div>
-                    <div class="message-msg"> <p v-html="$markdown.render( msg.msg )">{{  }}</p> </div>
+                <div class="hide-scroll">
+                    <div class="viewport" ref="picker">
+                        <div class="message" v-for="msg in chats">
+                            <div class="message-user"> <h6>{{ msg.name }}</h6>  </div>
+                            <div class="message-msg"> <span v-html="$markdown.render( msg.msg )">{{  }}</span> </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="online">
@@ -23,24 +27,25 @@
             </div>
         </div>
         <div class="bottom">
-            <form><input id="m" autocomplete="off" v-model="message"/><button @click.prevent="clickButton()">Send</button></form>
+            <form><input id="m" autocomplete="off" v-model="message"/><button @click.prevent="clickButton()" hidden>Send</button></form>
         </div>
     </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
     name: 'forum',
     data() {
         return {
             isConnected: false,
             message: '',
-            messages: [],
             users: []
         }
     },
     computed: {
-        username() { return this.$store.getters.username || null }
+        username() { return this.$store.getters.username || null },
+        ...mapGetters([ 'chats' ])
     },
     sockets:{
         connect() {
@@ -51,26 +56,42 @@ export default {
             this.isConnected = false
         },
         updateChat(payload) {
-            this.messages.push(payload)
+            this.chats.push(payload)
         },
         updateUsers(payload) {
             this.users = payload
         }
     },
     methods: {
+        pageScroll() {
+            this.$refs.picker.scrollTop = this.$refs.picker.scrollHeight
+        },
         clickButton: function(){
             // $socket is socket.io-client instance
             this.$socket.emit('sendChat', this.message, this.username)
+            const chat = {
+                name: this.username,
+                msg:this.message,
+                room: 'Main',
+                created_at: this.$moment().unix()
+            }
+            this.apiSave('chats', chat)
             this.message = ''
         }
     },
     mounted() {
+        this.$http.get('http://35.189.243.23:4000/chats/').then( res => {
+            this.$store.dispatch( 'setChats', res.data)
+        })
         this.$socket.emit('addUser', this.username)
         this.$socket.emit('getUsers')
     },
     destroyed() {
         this.$socket.emit('removeUser')
-    }
+    },
+    updated() {
+        this.pageScroll(this.$refs.picker)
+    },
 }
 </script>
 

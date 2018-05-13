@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Users.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 12-05-2018
+@Last modified time: 13-05-2018
 @License: MIT
 -->
 
@@ -44,9 +44,9 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
     name: 'users',
-    props: [ 'meta_data' ],
     data() {
         return {
             user: {
@@ -59,16 +59,14 @@ export default {
         }
     },
     computed: {
-        users() {
-            return this.$store.getters.users || null
-        }
+        ...mapGetters([ 'users' , 'meta_data' ])
     },
     methods: {
         openModal( modal ) {
             this.$bus.$emit( 'toggleModal', modal )
         },
         save( modal ) {
-            const valid = this.mixinsValidate( this.meta_data.validation_rules.users, this.user, 'users')
+            const valid = this.validate( this.meta_data.validation_rules.users, this.user, 'users')
             if( valid === 'true' ) {
                 this.apiSave( 'users', this.user, modal )
                 this.user.name     = ''

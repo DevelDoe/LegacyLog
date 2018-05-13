@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: forum.css
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 12-05-2018
+// @Last modified time: 13-05-2018
  * @License: MIT
  */
 
@@ -23,15 +23,32 @@
         grid-template-columns: 85% 15%;
         height: 100%;
         .chat {
-            padding: 2% 2% 0;
-            .message {
-                padding: .5%;
-                .message-user {
-                    color: #FFD700;
-                }
-                .message-msg {
-                    p {
-                        padding: 0.5%;
+            padding: 0% 2% 0;
+            .hide-scroll {
+                height: 94%;
+                width: 100%;
+                overflow: hidden;
+                position: relative;
+                .viewport {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: -17px; /* Increase/Decrease this value for cross-browser compatibility */
+                    overflow-y: scroll;
+                    .message {
+
+                        border-top: 1px solid rgba(255,255,255,0.04);
+                        padding: 16px;
+                        width: 100%;
+                        .message-user {
+                            color: #FFD700;
+                        }
+                        .message-msg {
+                            p {
+                                padding: 5px;
+                            }
+                        }
                     }
                 }
             }
@@ -42,22 +59,23 @@
             color: #FFD700;
         }
     }
-
     .bottom{
         position: absolute;
         bottom: 0;
-        right: 0;
-        width: 98%;
-        padding: 5px 15% 5px 5px;
+        left: 4%;
+        width: 80%;
+        padding: 5px 5px 5px 5px;
         background: transparent;
+        border-top: 1px solid rgba(255,255,255,0.04);
         input {
             color: #ffffffb3;
-            width: 90%;
+            width: 100%;
             font-size: 16px;
             background: rgba(255,255,255,0.1);
             border-radius: 5px;
             padding: 5px 10px;
-            line-height: 30px;
+            line-height: 28px;
+
         }
         button {
             width: 10%;

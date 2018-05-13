@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: routes.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 12-05-2018
+ * @Last modified time: 13-05-2018
  * @License: MIT
  */
 
@@ -20,14 +20,19 @@ import Forum   from '../components/Org/Forum/Forum.vue'
 
 import store from '../store/store'
 
-function requireAuth(to, from, next) {
-    if (store.getters.username != '') {
+function beforeEnter(to, from, next) {
+    // refresh?
+    if(!from.name)  {
+        console.log(to)
+        store.dispatch('setActiveOrgLink', to.name);
+    }
+    // Auth
+    if (store.getters.username !== '') {
         next();
     } else {
         next('/');
     }
 }
-
 
 export default [
     {
@@ -42,16 +47,17 @@ export default [
         path: '/org/console',
         component: Console,
         name: 'console',
-        beforeEnter: requireAuth
+        beforeEnter: beforeEnter,
     },{
         path: '/org/users',
         component: Users,
         name: 'users',
-        beforeEnter: requireAuth
+        beforeEnter: beforeEnter,
+
     },{
         path: '/org/forum',
         component: Forum,
         name: 'forum',
-        beforeEnter: requireAuth
+        beforeEnter: beforeEnter,
     }
 ]

@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Verse.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 12-05-2018
+@Last modified time: 13-05-2018
 @License: MIT
 -->
 
@@ -44,10 +44,14 @@
                 </div>
             </section>
             <section id="content" class="screen">
-                <Locations      v-if="selected === 'Locations'" />
-                <Organisations  v-if="selected === 'Organisations'" />
-                <Characters     v-if="selected === 'Characters'" />
-                <Missions       v-if="selected === 'Missions'" />
+                <div class="hide-scroll">
+                    <div class="viewport">
+                        <Locations      v-if="selected === 'Locations'" />
+                        <Organisations  v-if="selected === 'Organisations'" />
+                        <Characters     v-if="selected === 'Characters'" />
+                        <Missions       v-if="selected === 'Missions'" />
+                    </div>
+                </div>
             </section>
             <section id="rightbar" class="screen">
                 <div class="top">

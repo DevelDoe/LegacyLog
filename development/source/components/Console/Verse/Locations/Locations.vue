@@ -3,18 +3,14 @@
 @Date:   10-05-2018
 @Email:  info@andreeray.se
 @Filename: Locations.vue
-@Last modified by:   DevelDoe
-@Last modified time: 11-05-2018
+@Last modified by:   Morgan Andree Ray
+@Last modified time: 13-05-2018
 @License: MIT
 -->
 <template lang="html">
     <div id="locations">
-        <div class="hide-scroll">
-            <div class="viewport">
-                <div v-for="(location, index) in filterSearch"  >
-                    <button @click="$bus.$emit('setId', [location._id, location.type])">{{ location.name }}</button>
-                </div>
-            </div>
+        <div v-for="(location, index) in filterSearch"  >
+            <button @click="$bus.$emit('setId', [location._id, location.type])">{{ location.name }}</button>
         </div>
     </div>
 </template>

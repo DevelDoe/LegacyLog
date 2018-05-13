@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: store.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 12-05-2018
+ * @Last modified time: 13-05-2018
  * @License: MIT
  */
 import Vue from 'vue'
@@ -27,7 +27,9 @@ const store = new Vux.Store({
         characters: [],
         characters_search: '',
         missions: [],
-        missions_search: ''
+        missions_search: '',
+        chats: [],
+        active_org_link: ''
     },
     getters: {
         username:            state => { return state.user.username },
@@ -44,7 +46,9 @@ const store = new Vux.Store({
         characters:          state => { return state.characters },
         characters_search:   state => { return state.characters_search },
         missions:            state => { return state.missions },
-        missions_search:     state => { return state.missions_search }
+        missions_search:     state => { return state.missions_search },
+        chats:               state => { return state.chats },
+        active_org_link:     state => { return state.active_org_link}
     },
     mutations: {
         login:                 ( state , payload ) => { state.user.username = payload[0]; state.user.token = payload[1] },
@@ -68,7 +72,9 @@ const store = new Vux.Store({
         setCharactersSearch:   ( state , payload ) => { state.characters_search = payload },
         setMissions:           ( state , payload ) => { state.missions = payload },
         delMission:            ( state , payload ) => { state.missions.splice( payload , 1 ) },
-        setMissionsSearch:     ( state , payload ) => { state.missions_search = payload }
+        setMissionsSearch:     ( state , payload ) => { state.missions_search = payload },
+        setChats:              ( state , payload ) => { state.chats = payload },
+        setActiveOrgLink:      ( state , payload ) => { state.active_org_link = payload }
     },
     actions: {
         login:               ( cxt , payload ) => { cxt.commit('login', payload) },
@@ -89,7 +95,9 @@ const store = new Vux.Store({
         setCharactersSearch: ( ctx , payload ) => { ctx.commit( 'setCharactersSearch' , payload ) },
         setMissions:         ( ctx , payload ) => { ctx.commit( 'setMissions' , payload ) },
         delMission:          ( ctx , payload ) => { ctx.commit( 'delMission', payload) },
-        setMissionsSearch:   ( ctx , payload ) => { ctx.commit( 'setMissionsSearch' , payload ) }
+        setMissionsSearch:   ( ctx , payload ) => { ctx.commit( 'setMissionsSearch' , payload ) },
+        setChats:            ( ctx , payload ) => { ctx.commit( 'setChats' , payload ) },
+        setActiveOrgLink:    ( ctx , payload ) => { ctx.commit( 'setActiveOrgLink', payload )}
 
     },
     plugins: [createPersistedState()]

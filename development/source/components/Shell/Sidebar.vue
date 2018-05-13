@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Sidebar.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 12-05-2018
+@Last modified time: 13-05-2018
 @License: MIT
 -->
 <template>
@@ -36,61 +36,42 @@
 
         <div id="mainnav" class="box">
             <div class="iconbar" >
-                <i class="material-icons" @click="show = 'console'; setActive('console'); $router.push({name: 'console'})" :class="{ 'active': activeLink === 'console' || activeLink === 'users'}">
+                <i class="material-icons" @click=" $store.dispatch('setActiveOrgLink', 'console'); $router.push({name: 'console'})" :class="{ 'active': active_org_link === 'console'}">
                     dashboard
                 </i>
-                <i class="material-icons" @click="show = 'users'; setActive('users'); $router.push({name: 'users'})" :class="{ 'active': activeLink === 'users' }">
+                <i class="material-icons" @click=" $store.dispatch('setActiveOrgLink', 'users'); $router.push({name: 'users'})" :class="{ 'active': active_org_link === 'users' }">
                     people
                 </i>
-                <i class="material-icons" @click="show = 'forum'; setActive('forum'); $router.push({name: 'forum'})" :class="{ 'active': activeLink === 'forum' }">
+                <i class="material-icons" @click=" $store.dispatch('setActiveOrgLink', 'forum'); $router.push({name: 'forum'})" :class="{ 'active': active_org_link === 'forum' }">
                     comment
                 </i>
             </div>
             <div class="console">
-                <transition
-                    v-on:before-enter="beforeEnter"
-                    v-on:enter="enter"
-                    v-on:leave="leave"
-                    v-on:after-leave="afterLeave"
-                    :css="false"
-                >
-                    <div v-if="show === 'console'"
-                         @click="setActive('console'); $router.push({name: 'console'})"
-                         :class="{ 'active': activeLink === 'console'}"
-                         >CONSOLE</div>
-                </transition>
+
+                    <div v-if="active_org_link === 'console'"
+                         @click="$store.dispatch('setActiveOrgLink', 'console'); $router.push({name: 'console'})"
+                         :class="{ 'active': active_org_link === 'console'}"
+                         >CONSOLE
+                     </div>
             </div>
 
             <div class="users">
-                <transition
-                    v-on:before-enter="beforeEnter"
-                    v-on:enter="enter"
-                    v-on:leave="leave"
-                    v-on:after-leave="afterLeave"
-                    :css="false"
-                >
                     <div
-                        v-if="show === 'users'"
-                        @click="setActive('users'); $router.push({name: 'users'})"
-                        :class="{ 'active': activeLink === 'users'}"
-                        >USERS</div>
-                </transition>
+                        v-if="active_org_link === 'users'"
+                        @click="$store.dispatch('setActiveOrgLink', 'users'); $router.push({name: 'users'})"
+                        :class="{ 'active': active_org_link === 'users'}"
+                        >USERS
+                    </div>
             </div>
 
             <div class="forum">
-                <transition
-                    v-on:before-enter="beforeEnter"
-                    v-on:enter="enter"
-                    v-on:leave="leave"
-                    v-on:after-leave="afterLeave"
-                    :css="false"
-                >
+
                     <div
-                        v-if="show === 'forum'"
-                        @click="setActive('forum'); $router.push({name: 'forum'})"
-                        :class="{ 'active': activeLink === 'forum'}"
-                        >FORUM</div>
-                </transition>
+                        v-if="active_org_link === 'forum'"
+                        @click="$store.dispatch('setActiveOrgLink', 'forum'); $router.push({name: 'forum'})"
+                        :class="{ 'active': active_org_link === 'forum'}"
+                        >FORUM
+                    </div>
             </div>
         </div>
     </div>
@@ -102,38 +83,9 @@ import jQuery from 'jquery'
 export default {
     name: 'Sidebar',
     props: [ 'sidebar' ],
-    data() {
-        return {
-            activeLink  : 'console',
-            show        : 'console',
-        }
-    },
     computed: {
-        ...mapGetters([ 'token', 'username', 'connected' ])
+        ...mapGetters([ 'token', 'username', 'connected', 'active_org_link' ])
     },
-    methods: {
-        setActive( link ) {
-            this.activeLink = link
-        },
-        beforeEnter (el) {
-            el.style.width = "0px";
-            el.style.display = 'block'
-        },
-        enter (el, done) {
-            $(el).animate({ width: '50px' }, 100).animate({ width: '190px'}, 50)
-            $(el).parent().css("zIndex", '1')
-            done()
-        },
-        leave (el, done) {
-            $(el).animate({
-                width:'0px'
-            }, 100);
-            done()
-        },
-        afterLeave (el) {
-            $(el).parent().css("zIndex", '-1')
-        },
-    }
 }
 </script>
 
