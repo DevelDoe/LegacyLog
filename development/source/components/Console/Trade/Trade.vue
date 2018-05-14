@@ -3,8 +3,8 @@
 @Date:   09-05-2018
 @Email:  info@andreeray.se
 @Filename: Trade.vue
-@Last modified by:   DevelDoe
-@Last modified time: 11-05-2018
+@Last modified by:   Morgan Andree Ray
+@Last modified time: 14-05-2018
 @License: MIT
 -->
 <template>
@@ -45,7 +45,7 @@
             </section>
             <section id="rightbar" class="screen">
                 <div class="top">
-                    <RouteDetails v-if="selected === 'Trade Routes'" v-for="(route , i) in tradeRoutes" :key="i" :route="route" :id="showRoute"/>
+                    <RouteDetails v-if="selected === 'Trade Routes'" v-for="(route , i) in tradeRoutes" :key="i" :route="route" :route_id="showRoute"/>
                     <ResourceDetails v-if="selected === 'Resources'" v-for="(resource , i) in resources" :key="i" :resource="resource"  :resource_id="resource_id"/>
                 </div>
                 <div class="bottom">

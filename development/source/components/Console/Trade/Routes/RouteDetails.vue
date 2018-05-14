@@ -4,11 +4,11 @@
 @Email:  info@andreeray.se
 @Filename: TradeDetails.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 10-05-2018
+@Last modified time: 14-05-2018
 @License: MIT
 -->
 <template lang="html">
-    <div id="route" v-if="route.id === id">
+    <div id="route" v-if="route.id === route_id">
         <h3> {{ route.resource }} </h3>
         <h4> {{ route.buy_name}} </h4>
         <p> price: {{ route.buy }} aUEC </p>
@@ -22,9 +22,6 @@
 <script>
 export default {
     name: 'RouteDetails',
-    props: [ 'route', 'id' ]
+    props: [ 'route', 'route_id' ]
 }
 </script>
-
-<style lang="css">
-</style>

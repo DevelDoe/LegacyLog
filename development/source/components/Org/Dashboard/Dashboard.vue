@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Dashboard.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 13-05-2018
+@Last modified time: 14-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -33,7 +33,7 @@
             </div>
             <div class="details">
                 <div class="about">
-                    about
+                    <UsersDetails />
                 </div>
                 <div class="buttons">
                     buttons
@@ -49,18 +49,28 @@ import { mapGetters } from 'vuex'
 import Users          from './Users/Users.vue'
 import UsersFilter    from './Users/UsersFilter.vue'
 import UsersTools     from './Users/UsersTools.vue'
+import UsersDetails   from './Users/UsersDetails.vue'
 
 export default {
     name: 'Dashboard',
     data() {
         return {
-            selected: ''
+            selected: '',
+            id: ''
         }
+    },
+    mounted() {
+        this.$bus.$on('setId', payload => {
+            let args = (payload.length === 1 ? [payload[0]] : Array.apply(null, payload) )
+            let id   = args.shift() || null
+            this.id = id
+        })
     },
     components: {
         Users,
         UsersFilter,
-        UsersTools
+        UsersTools,
+        UsersDetails
     }
 }
 </script>
