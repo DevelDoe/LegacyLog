@@ -17,12 +17,12 @@
         <div id="user" class="box">
 
             <div class="">
-                <img v-if="user.image" :src="user.image" alt="">
+                <img :src="logged.image_src" alt="">
             </div>
 
             <div id="info" >
                 <div class="info-user">
-                    <h3> {{ user.username }} </h3>
+                    <h3> {{ logged.username }} </h3>
                     <i class="material-icons">
                         settings
                     </i>
@@ -56,7 +56,10 @@ export default {
     name: 'Sidebar',
     props: [ 'sidebar' ],
     computed: {
-        ...mapGetters([ 'token', 'user', 'active_org_link', 'show_nav' ])
+        ...mapGetters([ 'token', 'user', 'users' , 'active_org_link', 'show_nav' ]),
+        logged() {
+            return this.users.find(user => user._id === this.user.id) || null 
+        }
     },
 }
 </script>

@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: api.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 14-05-2018
+ * @Last modified time: 15-05-2018
  * @License: MIT
  */
 
@@ -28,7 +28,6 @@ const helperFunctions = {
                         .then( res => {
 
                             if(res.body.message) {
-                                debugger
                                 this.$bus.$emit('setResponse', res.body.message)
                             }
                             else {

@@ -72,7 +72,7 @@ export default {
                 this.$http.post('login/', this.user).then( res => {
                     if(res.body.token) {
                         this.$bus.$emit( 'setResponse', res.body.user + ' loged in')
-                        this.$store.dispatch('login', [res.body.user.username, res.body.token, res.body.user.image_src ])
+                        this.$store.dispatch('login', [res.body.user._id, res.body.token ])
                         this.$develLS.set('store', [{
                             username: res.body.user.username,
                             token: res.body.token,
@@ -81,8 +81,10 @@ export default {
                         let token = res.body.token || this.token
                         this.$http.get('users/', { headers: { 'Authorization': token, 'Accept': 'application/json' }}).then(res => {
                             this.$store.dispatch( 'setUsers' , res.data)
+
                         })
                         this.$bus.$emit('toggleModal', modal )
+                        document.location.reload(true)
                         this.$router.push({ name : 'console' })
                     }
                     else  this.$bus.$emit( 'setResponse', res.body.message)

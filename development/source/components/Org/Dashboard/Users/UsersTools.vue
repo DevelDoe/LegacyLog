@@ -73,6 +73,7 @@ export default {
                 image_src: this.inputs.image_src,
                 role: this.inputs.role,
             }
+            if(user.image_src === "") user.image_src = "https://art.placefull.com/Content/Properties/shared/images/no-profile-image.png"
             const valid = this.validate( this.meta_data.validation_rules.user, user, 'users')
             if ( valid === 'true' ) {
                 this.apiSave( 'users', user, modal  )

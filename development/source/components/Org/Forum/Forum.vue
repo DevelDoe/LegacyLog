@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Forum.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 14-05-2018
+@Last modified time: 15-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -22,7 +22,7 @@
             </div>
             <div class="online">
                 <ul>
-                    <li class="user box" v-for="user in users">
+                    <li class="user box" v-for="user in chat_users">
                         <div class=""> <img :src="user.image" alt="user"> </div>
                         <div class="username">{{ user.username }}</div>
                     </li>
@@ -42,20 +42,21 @@ export default {
     data() {
         return {
             message: '',
-            users: []
+            chat_users: []
         }
     },
     computed: {
-        username() { return this.$store.getters.user.username || null },
-        userImage() { return this.$store.getters.user.image },
-        ...mapGetters([ 'chats' ])
+        logged() {
+            return this.users.find(user => user._id === this.user.id) || null
+        },
+        ...mapGetters([ 'chats' , 'user' , 'users'])
     },
     sockets:{
         updateChat(payload) {
             this.chats.push(payload)
         },
         updateUsers(payload) {
-            this.users = (payload)
+            this.chat_users = (payload)
         }
     },
     methods: {
@@ -64,9 +65,9 @@ export default {
         },
         clickButton: function(){
             // $socket is socket.io-client instance
-            this.$socket.emit('sendChat', this.message, this.username)
+            this.$socket.emit('sendChat', this.message, this.logged.username)
             const chat = {
-                name: this.username,
+                name: this.logged.username,
                 msg:this.message,
                 room: 'Main',
                 created_at: this.$moment().unix()
@@ -79,17 +80,14 @@ export default {
         this.$http.get('http://35.189.243.23:4000/chats/').then( res => {
             this.$store.dispatch( 'setChats', res.data)
         })
-        this.$socket.emit('addUser', this.username, this.userImage)
+        this.$socket.emit('addUser', this.logged.username, this.logged.image_src)
         this.$socket.emit('getUsers')
     },
     destroyed() {
-        this.$socket.emit('removeUser')
+        this.$socket.emit('removeUser', this.logged.username)
     },
     updated() {
         this.pageScroll(this.$refs.picker)
     },
 }
 </script>
-
-<style lang="css">
-</style>

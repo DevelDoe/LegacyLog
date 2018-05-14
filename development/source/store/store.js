@@ -13,7 +13,7 @@ import createPersistedState from 'vuex-persistedstate'
 Vue.use(Vux)
 const store = new Vux.Store({
     state: {
-        user: { username: '', token: '', image: '' },
+        user: { id: '', token: '' },
         users: '',
         user_search: '',
         socketMessage: '',
@@ -53,7 +53,7 @@ const store = new Vux.Store({
         show_nav:            state => { return state.show_nav}
     },
     mutations: {
-        login:                 ( state , payload ) => { state.user.username = payload[0]; state.user.token = payload[1]; state.user.image = payload[2] },
+        login:                 ( state , payload ) => { state.user.id = payload[0]; state.user.token = payload[1]; },
         logout:                ( state , payload ) => { state.user = {}; state.user.token = '' },
         setUsers:              ( state , payload ) => { state.users = payload },
         addUser:               ( state , payload ) => { state.users.push(payload) },
