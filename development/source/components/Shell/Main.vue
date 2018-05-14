@@ -80,6 +80,7 @@ export default {
                         this.$http.get('users/', { headers: { 'Authorization': this.token, 'Accept': 'application/json' }}).then(res => {
                             const users = res.data.map(user => {
                                 return {
+                                    _id: user._id,
                                     name: user.name,
                                     username: user.username,
                                     email: user.email,

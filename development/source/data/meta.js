@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: meta.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 11-05-2018
+ * @Last modified time: 14-05-2018
  * @License: MIT
  */
 
@@ -120,7 +120,7 @@ export default {
                 unique: false
             }
         },
-        users: {
+        user: {
             name: {
                 type : 'String',
                 required: false,
@@ -143,6 +143,16 @@ export default {
             },
             image_src: {
                 type: 'String',
+                required: false,
+                unique: false
+            },
+            role: {
+                type: 'String',
+                required: true,
+                unique: false
+            },
+            certs: {
+                type: 'Array',
                 required: false,
                 unique: false
             }
@@ -170,5 +180,11 @@ export default {
         'Station',
         'Moon',
         'Outpost',
+    ],
+    roles: [
+        'Admin',
+        'Trainer',
+        'Member',
+        'Reqruit'
     ]
 }

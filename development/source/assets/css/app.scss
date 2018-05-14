@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: app.css
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 12-05-2018
+// @Last modified time: 14-05-2018
  * @License: MIT
  */
 
@@ -16,6 +16,7 @@
 @import './partials/shell/main';
 
 @import './partials/admin/org';
+@import './partials/admin/dashboard';
 
 @import './partials/trade';
 @import './partials/verse';
@@ -60,26 +61,37 @@ h1, h2 , h3 {
     font-family: 'Audiowide', cursive;
 }
 h1 {
-    font-size: 2.7em;
+    font-size: 1.4em;
 }
 h2 {
-    font-size: 2em;
+    font-size: 1.35em;
 }
 h3 {
-    font-size: 1.5em;
+    font-size: 1.3em;
 }
 h4 {
-    font-size: 1.2em;
+    font-size: 1.25em;
     font-weight: bold;
 }
 h5 {
-    font-size: 1.1em;
+    font-size: 1.2em;
 }
 h6 {
-    font-size: 1em;
+    font-size: 1.15em;
 }
 input {
     color: #333;
+}
+label {
+    color: #ffffffb3 !important;
+}
+select {
+    background: #1c2022;
+    color: #ffffffb3;
+}
+option {
+    background: #1c2022;
+    color: #ffffffb3;
 }
 #app {
 

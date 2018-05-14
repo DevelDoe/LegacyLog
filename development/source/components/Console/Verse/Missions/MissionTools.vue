@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: OrganisationTools.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 12-05-2018
+@Last modified time: 14-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -23,7 +23,7 @@
                     <div class="">
                         <select v-model="inputs.giver_id">
                             <option value="" selected>Mission giver</option>
-                            <option v-for="( giver, i ) in charactersAndEntities" :id=" 'giv' +i " :value=" giver._id ">{{ giver.name }}</option>
+                            <option v-for="( giver, i ) in charactersAndEntities" :key=" 'giv' +i " :value=" giver._id ">{{ giver.name }}</option>
                         </select>
                     </div>
 

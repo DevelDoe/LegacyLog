@@ -4,12 +4,11 @@
 @Email:  info@andreeray.se
 @Filename: Routes.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 10-05-2018
+@Last modified time: 14-05-2018
 @License: MIT
 -->
 <template lang="html">
     <div id="routes">
-        <input v-model="filter_search" placeholder="search">
         <div class="scroll">
             <span v-for="(trade_route, index) in filterSearch"  >
                 <span v-if="trade_route.sell.length > 0">

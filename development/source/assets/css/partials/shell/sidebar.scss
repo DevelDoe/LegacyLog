@@ -3,7 +3,7 @@
 // @Email:  info@andreeray.se
 // @Filename: sidebar.scss
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 13-05-2018
+// @Last modified time: 14-05-2018
 // @License: MIT
 
 
@@ -16,118 +16,68 @@
     background: #1c2022;
     color: #fff;
     header {
-        line-height: 40px;
-        height: 60px;
+        padding: 8px 5px;
         padding: 10px;
-        border-right: 1px solid #343a40;
-        h1 {
+        border-bottom: 1px solid rgba(255,255,255,0.04);
+        border-right: 1px solid rgba(255,255,255,0.04);
+        h2 {
             color: #FFD700;
         }
     }
     #user {
-        border-bottom: 1px solid rgba(181, 225, 239, 0.1);
-        height: 80px;
+        border-bottom: 1px solid rgba(255,255,255,0.04);
+        border-right: 1px solid rgba(255,255,255,0.04);
+            padding: 8px 5px;
 
         img {
-            width: 65px;
+            width: 50px;
             border-radius: 50%;
             padding: 2px;
-            border: 1px solid rgba(181, 225, 239, 0.1);
+            border: 1px solid rgba(255,255,255,0.04);
             margin: 5px;
         }
         #info {
             width: 100%;
-            .top {
-                #info-username {
-                    font-size: 22px;
-                    line-height: 30px;
-                    padding: 6px 2px;
+            .info-user {
+                    padding: 18px 0;
+                h3{
+                    display: inline;
                 }
-                #info-icon {
-                    .material-icons {
-                        font-size: 12px;
-                        margin-left: 3px;
-                        cursor: pointer;
-                    }
+                .material-icons {
+                    font-size: 16px;
+                    cursor: pointer;
+
+                }
+                .bottom {
+                    font-size: 9px;
+                    color: #FFD700;
                 }
             }
-            .bottom {
-                margin-top: -23px;
-                font-size: 9px;
-                margin-left: 3px;
-                color: #FFD700;
-            }
+
+
         }
     }
     #mainnav {
         height: 100%;
-        padding: 0;
-        .iconbar {
-            height: 100%;
-            padding: 0;
-            width: 40px;
+        padding: 17px;
+        border-right: 1px solid rgba(255,255,255,0.04);
+        .menu-item {
+            cursor: pointer;
+            height: 32px;
             .material-icons {
-                font-size: 20px;
-                cursor: pointer;
-                padding: 10px;
+
             }
-            .active {
-                color: #FFD700;
+
+            div {
+                display: inline;
+                margin-top: 5px;
+                position: absolute;
+                margin-left: 4px;
             }
         }
 
-        .console {
-            position: relative;
-            margin: 0;
-            padding: 0;
-            width: 190px;
-            div {
-                cursor: pointer;
-                line-height: 11px;
-                letter-spacing: 2px;
-                font-size: 20px;
-                margin: 20px;
-                padding: 0;
-            }
-            .active {
-                color: #FFD700;
-            }
-        }
-        .users {
-            position: absolute;
-            margin: 0;
-            padding: 0;
-            width: 190px;
-            left: 40px;
-            div {
-                cursor: pointer;
-                line-height: 11px;
-                letter-spacing: 2px;
-                font-size: 20px;
-                margin: 20px;
-                padding: 0;
-            }
-            .active {
-                color: #FFD700;
-            }
-        }
-        .forum {
-            position: absolute;
-            margin: 0;
-            padding: 0;
-            width: 190px;
-            left: 40px;
-            div {
-                cursor: pointer;
-                line-height: 11px;
-                letter-spacing: 2px;
-                font-size: 20px;
-                margin: 20px;
-                padding: 0;
-            }
-            .active {
-                color: #FFD700;
-            }
+        .active {
+            color: #FFD700;
         }
     }
 }

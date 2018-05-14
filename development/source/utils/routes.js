@@ -11,19 +11,18 @@
 
 
 
-import Trade   from '../components/Console/Trade/Trade.vue'
-import Verse   from '../components/Console/Verse/Verse.vue'
+import Trade     from '../components/Console/Trade/Trade.vue'
+import Verse     from '../components/Console/Verse/Verse.vue'
 
-import Console from '../components/Org/Console/Console.vue'
-import Users   from '../components/Org/Users/Users.vue'
-import Forum   from '../components/Org/Forum/Forum.vue'
+import Console   from '../components/Org/Console/Console.vue'
+import Dashboard from '../components/Org/Dashboard/Dashboard.vue'
+import Forum     from '../components/Org/Forum/Forum.vue'
 
-import store from '../store/store'
+import store     from '../store/store'
 
 function beforeEnter(to, from, next) {
     // refresh?
     if(!from.name)  {
-        console.log(to)
         store.dispatch('setActiveOrgLink', to.name);
     }
     // Auth
@@ -49,9 +48,9 @@ export default [
         name: 'console',
         beforeEnter: beforeEnter,
     },{
-        path: '/org/users',
-        component: Users,
-        name: 'users',
+        path: '/org/dashbord',
+        component: Dashboard,
+        name: 'dashboard',
         beforeEnter: beforeEnter,
 
     },{

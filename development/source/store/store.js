@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: store.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 13-05-2018
+ * @Last modified time: 14-05-2018
  * @License: MIT
  */
 import Vue from 'vue'
@@ -15,7 +15,7 @@ const store = new Vux.Store({
     state: {
         user: { username: '', token: '' },
         users: '',
-        isConnected: false,
+        user_search: '',
         socketMessage: '',
         meta_data: [],
         locations: [],
@@ -29,13 +29,14 @@ const store = new Vux.Store({
         missions: [],
         missions_search: '',
         chats: [],
-        active_org_link: ''
+        active_org_link: '',
+        show_nav: ''
     },
     getters: {
         username:            state => { return state.user.username },
         token:               state => { return state.user.token },
         users:               state => { return state.users },
-        connected:           state => { return state.isConnected },
+        user_search:         state => { return state.user_search},
         meta_data:           state => { return state.meta_data },
         resources:           state => { return state.resources },
         resource_search:     state => { return state.resource_search },
@@ -48,14 +49,13 @@ const store = new Vux.Store({
         missions:            state => { return state.missions },
         missions_search:     state => { return state.missions_search },
         chats:               state => { return state.chats },
-        active_org_link:     state => { return state.active_org_link}
+        active_org_link:     state => { return state.active_org_link},
+        show_nav:            state => { return state.show_nav}
     },
     mutations: {
         login:                 ( state , payload ) => { state.user.username = payload[0]; state.user.token = payload[1] },
         logout:                ( state , payload ) => { state.user.username = ''; state.user.token = '' },
         setUsers:              ( state , payload ) => { state.users = payload },
-        SOCKET_CONNECT         ( state ) { state.isConnected = true; },
-        SOCKET_DISCONNECT      ( state ) { state.isConnected = false; },
         SOCKET_updateChat      ( state , message ) { state.socketMessage = message },
         setLocations:          ( state , payload ) => { state.locations = payload },
         delLocation:           ( state , payload ) => { state.locations.splice( payload , 1 ) },
@@ -74,7 +74,9 @@ const store = new Vux.Store({
         delMission:            ( state , payload ) => { state.missions.splice( payload , 1 ) },
         setMissionsSearch:     ( state , payload ) => { state.missions_search = payload },
         setChats:              ( state , payload ) => { state.chats = payload },
-        setActiveOrgLink:      ( state , payload ) => { state.active_org_link = payload }
+        setActiveOrgLink:      ( state , payload ) => { state.active_org_link = payload },
+        setShowNav:            ( state , payload ) => { state.show_nav = payload },
+        setUserSearch:         ( state , payload ) => { state.user_search = payload}
     },
     actions: {
         login:               ( cxt , payload ) => { cxt.commit('login', payload) },
@@ -97,8 +99,9 @@ const store = new Vux.Store({
         delMission:          ( ctx , payload ) => { ctx.commit( 'delMission', payload) },
         setMissionsSearch:   ( ctx , payload ) => { ctx.commit( 'setMissionsSearch' , payload ) },
         setChats:            ( ctx , payload ) => { ctx.commit( 'setChats' , payload ) },
-        setActiveOrgLink:    ( ctx , payload ) => { ctx.commit( 'setActiveOrgLink', payload )}
-
+        setActiveOrgLink:    ( ctx , payload ) => { ctx.commit( 'setActiveOrgLink', payload )},
+        setShowNav:          ( ctx , payload ) => { ctx.commit( 'setShowNav', payload )},
+        setUserSearch:       ( ctx , payload ) => { ctx.commit( 'setUserSearch', payload )}
     },
     plugins: [createPersistedState()]
 })

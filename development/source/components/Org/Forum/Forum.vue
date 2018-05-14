@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Forum.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 13-05-2018
+@Last modified time: 14-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -22,7 +22,10 @@
             </div>
             <div class="online">
                 <ul>
-                    <li id="messages" v-for="user in users">{{ user }}</li>
+                    <li class="user box" v-for="user in users">
+                        <div class=""> <img src="/img/profile.jpg" alt="user"> </div>
+                        <div class="username">{{ user }}</div>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -38,7 +41,6 @@ export default {
     name: 'forum',
     data() {
         return {
-            isConnected: false,
             message: '',
             users: []
         }
@@ -48,13 +50,6 @@ export default {
         ...mapGetters([ 'chats' ])
     },
     sockets:{
-        connect() {
-            // Fired when the socket connects.
-            this.isConnected = true
-        },
-        disconnect() {
-            this.isConnected = false
-        },
         updateChat(payload) {
             this.chats.push(payload)
         },

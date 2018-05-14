@@ -25,7 +25,7 @@
                     <h3>The Verse</h3>
                     <div class="nav">
                         <select v-model="selected">
-                            <option disabled value="">Please select one</option>
+                            <option disabled >Please select one</option>
                             <option>Locations</option>
                             <option>Organisations</option>
                             <option>Characters</option>

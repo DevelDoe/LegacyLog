@@ -57,6 +57,19 @@
             padding: 10%;
             background: #1c2022;
             color: #FFD700;
+            .user {
+                padding: 5px;
+                img {
+                    width: 35px;
+                    border-radius: 50%;
+                    padding: 2px;
+                    border: 1px solid rgba(181, 225, 239, 0.1);
+                    margin: 5px;
+                }
+                .username {
+                    line-height: 45px;
+                }
+            }
         }
     }
     .bottom{
