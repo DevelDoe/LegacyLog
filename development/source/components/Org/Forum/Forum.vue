@@ -23,8 +23,8 @@
             <div class="online">
                 <ul>
                     <li class="user box" v-for="user in users">
-                        <div class=""> <img src="/img/profile.jpg" alt="user"> </div>
-                        <div class="username">{{ user }}</div>
+                        <div class=""> <img :src="user.image" alt="user"> </div>
+                        <div class="username">{{ user.username }}</div>
                     </li>
                 </ul>
             </div>
@@ -46,7 +46,8 @@ export default {
         }
     },
     computed: {
-        username() { return this.$store.getters.username || null },
+        username() { return this.$store.getters.user.username || null },
+        userImage() { return this.$store.getters.user.image },
         ...mapGetters([ 'chats' ])
     },
     sockets:{
@@ -54,7 +55,7 @@ export default {
             this.chats.push(payload)
         },
         updateUsers(payload) {
-            this.users = payload
+            this.users = (payload)
         }
     },
     methods: {
@@ -78,7 +79,7 @@ export default {
         this.$http.get('http://35.189.243.23:4000/chats/').then( res => {
             this.$store.dispatch( 'setChats', res.data)
         })
-        this.$socket.emit('addUser', this.username)
+        this.$socket.emit('addUser', this.username, this.userImage)
         this.$socket.emit('getUsers')
     },
     destroyed() {

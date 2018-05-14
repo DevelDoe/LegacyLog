@@ -78,7 +78,7 @@ export default {
                 this.apiSave( 'users', user, modal  )
                 this.inputs.name = ''
                 this.inputs.username = ''
-                this.inputs.passwod = ''
+                this.inputs.password = ''
                 this.inputs.email = ''
                 this.inputs.image_src = ''
                 this.inputs.role = ''

@@ -54,7 +54,7 @@ const store = new Vux.Store({
     },
     mutations: {
         login:                 ( state , payload ) => { state.user.username = payload[0]; state.user.token = payload[1]; state.user.image = payload[2] },
-        logout:                ( state , payload ) => { state.user.username = ''; state.user.token = '' },
+        logout:                ( state , payload ) => { state.user = {}; state.user.token = '' },
         setUsers:              ( state , payload ) => { state.users = payload },
         addUser:               ( state , payload ) => { state.users.push(payload) },
         removeUser:            ( state , payload ) => { state.users.splice( payload , 1 ) },

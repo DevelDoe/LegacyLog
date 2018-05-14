@@ -78,7 +78,8 @@ export default {
                             token: res.body.token,
                             image: res.body.user.image_src
                         }])
-                        this.$http.get('users/', { headers: { 'Authorization': this.token, 'Accept': 'application/json' }}).then(res => {
+                        let token = res.body.token || this.token
+                        this.$http.get('users/', { headers: { 'Authorization': token, 'Accept': 'application/json' }}).then(res => {
                             this.$store.dispatch( 'setUsers' , res.data)
                         })
                         this.$bus.$emit('toggleModal', modal )

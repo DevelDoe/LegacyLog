@@ -17,12 +17,12 @@
         <div id="user" class="box">
 
             <div class="">
-                <img :src="user.image" alt="">
+                <img v-if="user.image" :src="user.image" alt="">
             </div>
 
             <div id="info" >
                 <div class="info-user">
-                    <h3>{{ user.username }} </h3>
+                    <h3> {{ user.username }} </h3>
                     <i class="material-icons">
                         settings
                     </i>

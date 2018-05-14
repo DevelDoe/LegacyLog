@@ -27,14 +27,16 @@ const helperFunctions = {
                     this.$http.post(`${collection}/`, obj)
                         .then( res => {
 
-                            if(res.body.model) {
-                                this.$bus.$emit('setResponse', res.body.model + ' saved')
-                                obj._id = res.body._id
-                                this[collection].push(obj)
+                            if(res.body.message) {
+                                debugger
+                                this.$bus.$emit('setResponse', res.body.message)
+                            }
+                            else {
+                                this.$bus.$emit('setResponse', 'saved')
+                                this.$store.dispatch('addUser', res.body)
                                 this.$bus.$emit('toggleModal', modal )
                             }
-                            else
-                                this.$bus.$emit('setResponse', res.body.message)
+
                             setTimeout( () => { this.$bus.$emit('setResponse', '') }, 4000)
                         })
                         .catch( err => {
@@ -58,7 +60,7 @@ const helperFunctions = {
                     this.$http.put( `${collection}/${id}`, body )
                         .then( res => {
                             if(res.body) {
-                                this.$bus.$emit('setResponse', res.body.model + ' updated')
+                                this.$bus.$emit('setResponse', 'updated')
                                 this.$bus.$emit('toggleModal', modal )
 
                                 this.$store.dispatch('addUser', res.body)
@@ -82,7 +84,7 @@ const helperFunctions = {
 
                     this.$http.delete(`${collection}/${id}`)
                         .then(res => {
-                            this.$bus.$emit('setResponse', res.body.model + ' deleted')
+                            this.$bus.$emit('setResponse',  'deleted')
                             setTimeout( () => { this.$bus.$emit('setResponse', '') }, 4000 )
                         }).catch(function(error){
                             this.$bus.$emit( 'setResponse', 'Connection error' )
