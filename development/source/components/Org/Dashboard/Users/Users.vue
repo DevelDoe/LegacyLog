@@ -4,18 +4,16 @@
 @Email:  info@andreeray.se
 @Filename: Users.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 13-05-2018
+@Last modified time: 14-05-2018
 @License: MIT
 -->
 
 
 <template lang="html">
     <div class="users">
-        <ul>
-            <li class="user" v-for="( user , i ) in filter">
-                <span @click="$bus.$emit( 'setId' , [user._id ])" >{{ user.username }} - Member</span>
-            </li>
-        </ul>
+            <div class="user" v-for="( user , i ) in filter">
+                <div @click="$bus.$emit( 'setId' , [user._id ])" >{{ user.username }} - {{ user.role }}</div>
+            </div>
     </div>
 </template>
 

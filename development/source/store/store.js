@@ -13,7 +13,7 @@ import createPersistedState from 'vuex-persistedstate'
 Vue.use(Vux)
 const store = new Vux.Store({
     state: {
-        user: { username: '', token: '' },
+        user: { username: '', token: '', image: '' },
         users: '',
         user_search: '',
         socketMessage: '',
@@ -33,7 +33,7 @@ const store = new Vux.Store({
         show_nav: ''
     },
     getters: {
-        username:            state => { return state.user.username },
+        user:                state => { return state.user },
         token:               state => { return state.user.token },
         users:               state => { return state.users },
         user_search:         state => { return state.user_search},
@@ -53,9 +53,11 @@ const store = new Vux.Store({
         show_nav:            state => { return state.show_nav}
     },
     mutations: {
-        login:                 ( state , payload ) => { state.user.username = payload[0]; state.user.token = payload[1] },
+        login:                 ( state , payload ) => { state.user.username = payload[0]; state.user.token = payload[1]; state.user.image = payload[2] },
         logout:                ( state , payload ) => { state.user.username = ''; state.user.token = '' },
         setUsers:              ( state , payload ) => { state.users = payload },
+        addUser:               ( state , payload ) => { state.users.push(payload) },
+        removeUser:            ( state , payload ) => { state.users.splice( payload , 1 ) },
         SOCKET_updateChat      ( state , message ) { state.socketMessage = message },
         setLocations:          ( state , payload ) => { state.locations = payload },
         delLocation:           ( state , payload ) => { state.locations.splice( payload , 1 ) },
@@ -79,21 +81,23 @@ const store = new Vux.Store({
         setUserSearch:         ( state , payload ) => { state.user_search = payload}
     },
     actions: {
-        login:               ( cxt , payload ) => { cxt.commit('login', payload) },
-        logout:              ( cxt , payload ) => { cxt.commit('logout') },
-        setUsers:            ( cxt , payload ) => { cxt.commit('setUsers', payload) },
+        login:               ( cxt , payload ) => { cxt.commit( 'login' , payload ) },
+        logout:              ( cxt , payload ) => { cxt.commit( 'logout') },
+        setUsers:            ( cxt , payload ) => { cxt.commit( 'setUsers' , payload ) },
+        addUser:             ( cxt , payload ) => { cxt.commit( 'addUser' , payload ) },
+        removeUser:          ( cxt , payload ) => { cxt.commit( 'removeUser', payload )},
         setLocations:        ( ctx , payload ) => { ctx.commit( 'setLocations' , payload ) },
-        delLocation:         ( ctx , payload ) => { ctx.commit( 'delLocation', payload) },
+        delLocation:         ( ctx , payload ) => { ctx.commit( 'delLocation', payload ) },
         setMetaData:         ( ctx , payload ) => { ctx.commit( 'setMetaData' , payload ) },
         setLocationSearch:   ( ctx , payload ) => { ctx.commit( 'setLocationSearch' , payload ) },
         setResources:        ( ctx , payload ) => { ctx.commit( 'setResources' , payload ) },
-        delResource:         ( ctx , payload ) => { ctx.commit( 'delResource', payload) },
+        delResource:         ( ctx , payload ) => { ctx.commit( 'delResource', payload ) },
         setResourceSearch:   ( ctx , payload ) => { ctx.commit( 'setResourceSearch' , payload ) },
         setOrganisations:    ( ctx , payload ) => { ctx.commit( 'setOrganisations' , payload ) },
         delOrganisation:     ( ctx , payload ) => { ctx.commit( 'delOrganisation', payload) },
         setResourceSearch:   ( ctx , payload ) => { ctx.commit( 'setResourceSearch' , payload ) },
         setCharacters:       ( ctx , payload ) => { ctx.commit( 'setCharacters' , payload ) },
-        delCharacter:        ( ctx , payload ) => { ctx.commit( 'delCharacter', payload) },
+        delCharacter:        ( ctx , payload ) => { ctx.commit( 'delCharacter', payload ) },
         setCharactersSearch: ( ctx , payload ) => { ctx.commit( 'setCharactersSearch' , payload ) },
         setMissions:         ( ctx , payload ) => { ctx.commit( 'setMissions' , payload ) },
         delMission:          ( ctx , payload ) => { ctx.commit( 'delMission', payload) },

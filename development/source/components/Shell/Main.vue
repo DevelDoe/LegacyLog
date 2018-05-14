@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Main.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 13-05-2018
+@Last modified time: 14-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -72,22 +72,14 @@ export default {
                 this.$http.post('login/', this.user).then( res => {
                     if(res.body.token) {
                         this.$bus.$emit( 'setResponse', res.body.user + ' loged in')
-                        this.$store.dispatch('login', [res.body.user, res.body.token ])
+                        this.$store.dispatch('login', [res.body.user.username, res.body.token, res.body.user.image_src ])
                         this.$develLS.set('store', [{
-                            username: res.body.user,
-                            token: res.body.token
+                            username: res.body.user.username,
+                            token: res.body.token,
+                            image: res.body.user.image_src
                         }])
                         this.$http.get('users/', { headers: { 'Authorization': this.token, 'Accept': 'application/json' }}).then(res => {
-                            const users = res.data.map(user => {
-                                return {
-                                    _id: user._id,
-                                    name: user.name,
-                                    username: user.username,
-                                    email: user.email,
-                                    image_src: user.image_src
-                                }
-                            })
-                            this.$store.dispatch( 'setUsers' , users)
+                            this.$store.dispatch( 'setUsers' , res.data)
                         })
                         this.$bus.$emit('toggleModal', modal )
                         this.$router.push({ name : 'console' })

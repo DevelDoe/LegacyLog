@@ -3,8 +3,8 @@
  * @Date:   27-04-2018
  * @Email:  info@andreeray.se
  * @Filename: api.js
- * @Last modified by:   DevelDoe
- * @Last modified time: 11-05-2018
+ * @Last modified by:   Morgan Andree Ray
+ * @Last modified time: 14-05-2018
  * @License: MIT
  */
 
@@ -57,9 +57,11 @@ const helperFunctions = {
 
                     this.$http.put( `${collection}/${id}`, body )
                         .then( res => {
-                            if(res.body.model) {
+                            if(res.body) {
                                 this.$bus.$emit('setResponse', res.body.model + ' updated')
                                 this.$bus.$emit('toggleModal', modal )
+
+                                this.$store.dispatch('addUser', res.body)
                             }
 
                             else

@@ -4,17 +4,13 @@
 @Email:  info@andreeray.se
 @Filename: Organisations.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 12-05-2018
+@Last modified time: 14-05-2018
 @License: MIT
 -->
 <template lang="html">
     <div id="Organisations">
-        <div class="hide-scroll">
-            <div class="viewport">
-                <div v-for="(mission, index) in filter"  >
-                    <button @click="$bus.$emit('setId', [mission._id] )">{{ mission.name }}</button>
-                </div>
-            </div>
+        <div v-for="(mission, index) in filter"  >
+            <button @click="$bus.$emit('setId', [mission._id] )">{{ mission.name }}</button>
         </div>
     </div>
 </template>
@@ -22,7 +18,7 @@
 <script>
 import { mapGetters } from 'vuex'
 export default {
-    name: 'Organisations',
+    name: 'Missions',
     computed: {
         ...mapGetters([ 'missions', 'missions_search' ]),
         filter() {

@@ -17,7 +17,6 @@
                         <select v-model="selected">
                             <option disabled value="">Please select one</option>
                             <option selected>Users</option>
-                            <option>Corses</option>
                         </select>
                     </div>
                 </div>
@@ -33,10 +32,10 @@
             </div>
             <div class="details">
                 <div class="about">
-                    <UsersDetails />
+                    <UsersDetails v-if="selected === 'Users'" v-for="( user , i ) in users" :key=" 'usedet' + i" :user="user" :user_id="id"/>
                 </div>
                 <div class="buttons">
-                    buttons
+                    <UsersControls  v-if="selected === 'Users'"  v-for="( user , i ) in users" :key=" 'usecon' + i" :users="users" :user="user" :user_id="id" :index="i"/>
                 </div>
             </div>
         </div>
@@ -50,6 +49,7 @@ import Users          from './Users/Users.vue'
 import UsersFilter    from './Users/UsersFilter.vue'
 import UsersTools     from './Users/UsersTools.vue'
 import UsersDetails   from './Users/UsersDetails.vue'
+import UsersControls  from './Users/UsersControls.vue'
 
 export default {
     name: 'Dashboard',
@@ -59,6 +59,7 @@ export default {
             id: ''
         }
     },
+    computed: { ...mapGetters([ 'users' ]) },
     mounted() {
         this.$bus.$on('setId', payload => {
             let args = (payload.length === 1 ? [payload[0]] : Array.apply(null, payload) )
@@ -70,7 +71,8 @@ export default {
         Users,
         UsersFilter,
         UsersTools,
-        UsersDetails
+        UsersDetails,
+        UsersControls
     }
 }
 </script>

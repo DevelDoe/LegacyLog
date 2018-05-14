@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: helperFunctions.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 11-05-2018
+ * @Last modified time: 14-05-2018
  * @License: MIT
  */
 
@@ -46,7 +46,7 @@ const helperFunctions = {
                     const self = this
                     Object.keys(data).forEach( key => {
                         if ( key !== '_id' && key !== '__v' ) {
-                            if( validationRules[key].required ) {
+                            if( validationRules[key].required && index ) {
 
 
                                 if ( self.empty( data[key] ) ) {

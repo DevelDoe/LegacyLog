@@ -8,8 +8,10 @@
 @License: MIT
 -->
 <template lang="html">
-    <div class="users-details" v-id="route._id === user_id">
-        hello user details
+    <div class="users-details" v-if="user._id === user_id">
+        <img v-if="user.image_src" :src="user.image_src" alt="profile" >
+        <h3><span v-if="user.name">{{ user.name }} aka</span> {{ user.username}} </h3>
+        <h4 v-if="user.role">{{ user.role }}</h4>
     </div>
 </template>
 

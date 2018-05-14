@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: forum.css
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 13-05-2018
+// @Last modified time: 14-05-2018
  * @License: MIT
  */
 
@@ -17,7 +17,7 @@
     margin-left: 250px;
     width: calc(100% - 250px);
     color: #ffffffb3;
-    padding: 0 0 0 2%;
+    padding: 20px;
     .wrap {
         display: grid;
         grid-template-columns: 85% 15%;
@@ -37,7 +37,6 @@
                     right: -17px; /* Increase/Decrease this value for cross-browser compatibility */
                     overflow-y: scroll;
                     .message {
-
                         border-top: 1px solid rgba(255,255,255,0.04);
                         padding: 16px;
                         width: 100%;

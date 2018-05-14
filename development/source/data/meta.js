@@ -186,5 +186,16 @@ export default {
         'Trainer',
         'Member',
         'Reqruit'
+    ],
+    certs: [
+        'base',
+        'wing',
+        'fighter',
+        'scout',
+        'e-war',
+        'attack',
+        'tbd',
+        'flight lead',
+        'controller'
     ]
 }

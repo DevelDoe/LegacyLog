@@ -17,12 +17,12 @@
         <div id="user" class="box">
 
             <div class="">
-                <img src="/img/profile.jpg" alt="">
+                <img :src="user.image" alt="">
             </div>
 
             <div id="info" >
                 <div class="info-user">
-                    <h3>{{ username }} </h3>
+                    <h3>{{ user.username }} </h3>
                     <i class="material-icons">
                         settings
                     </i>
@@ -56,7 +56,7 @@ export default {
     name: 'Sidebar',
     props: [ 'sidebar' ],
     computed: {
-        ...mapGetters([ 'token', 'username', 'active_org_link', 'show_nav' ])
+        ...mapGetters([ 'token', 'user', 'active_org_link', 'show_nav' ])
     },
 }
 </script>
