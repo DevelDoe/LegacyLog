@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Usersfilter.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 13-05-2018
+@Last modified time: 15-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -22,14 +22,8 @@ export default {
             filter_search: ''
         }
     },
-    computed: {
-        ...mapGetters([ 'users' , 'user_search' ])
-    },
     updated() {
         this.$store.dispatch('setUserSearch', this.filter_search)
     },
 }
 </script>
-
-<style lang="css">
-</style>

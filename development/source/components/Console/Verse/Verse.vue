@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Verse.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 13-05-2018
+@Last modified time: 15-05-2018
 @License: MIT
 -->
 
@@ -35,6 +35,9 @@
                 </div>
                 <div class="filters">
                     <FltrLocation v-if="selected === 'Locations'" />
+                    <OrganisationFilter v-if="selected === 'Organisations'" />
+                    <CharacterFilter v-if="selected === 'Characters'" />
+                    <MissionFilter v-if="selected === 'Missions'" />
                 </div>
                 <div class="tools">
                     <LocationTools />
@@ -87,16 +90,20 @@ import Organisations        from './Organisations/Organisations.vue'
 import OrganisationDetails  from './Organisations/OrganisationDetails.vue'
 import OrganisationControls from './Organisations/OrganisationControls.vue'
 import OrganisationTools    from './Organisations/OrganisationTools.vue'
+import OrganisationFilter    from './Organisations/OrganisationFilter.vue'
+
 
 import Characters           from './Characters/Characters.vue'
 import CharacterDetails     from './Characters/CharacterDetails.vue'
 import CharacterTools       from './Characters/CharacterTools.vue'
 import CharacterControls    from './Characters/CharacterControls.vue'
+import CharacterFilter      from './Characters/CharacterFilter.vue'
 
 import Missions             from './Missions/Missions.vue'
 import MissionDetails       from './Missions/MissionDetails.vue'
 import MissionTools         from './Missions/MissionTools.vue'
 import MissionControls      from './Missions/MissionControls.vue'
+import MissionFilter        from './Missions/MissionFilter.vue'
 
 import { mapGetters }       from 'vuex'
 export default {
@@ -130,14 +137,17 @@ export default {
         OrganisationDetails,
         OrganisationControls,
         OrganisationTools,
+        OrganisationFilter,
         Characters,
         CharacterDetails,
         CharacterTools,
         CharacterControls,
+        CharacterFilter,
         Missions,
         MissionDetails,
         MissionTools,
-        MissionControls
+        MissionControls,
+        MissionFilter
     }
 }
 </script>

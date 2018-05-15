@@ -176,7 +176,7 @@ export default {
         update( modal ) {
             const valid = this.validate(  this.meta_data.validation_rules.location, this.location, 'locations', this.index)
             if ( valid === 'true' ) {
-                this.$store.dispatch('delLocation', this.index)
+                this.$store.dispatch('delLocation', this.location_id)
                 this.apiUpdate( 'locations', this.location, this.location_id, 'addLocation' , modal )
             }
         },
@@ -195,7 +195,7 @@ export default {
             location.resources = resources
             const valid = this.validate(  this.meta_data.validation_rules.location, location, 'locations', this.index)
             if ( valid === 'true' ) {
-                this.$store.dispatch('delLocation', this.index)
+                this.$store.dispatch('delLocation', this.location_id)
                 this.apiUpdate( 'locations', location, location._id, 'addLocation' , modal )
             }
         },
@@ -206,7 +206,7 @@ export default {
         },
         del() {
             this.apiDelete( 'locations', this.location_id )
-            this.$store.dispatch('delLocation', this.index)
+            this.$store.dispatch('delLocation', this.location_id)
         }
     },
 }

@@ -105,7 +105,7 @@ export default {
             const valid = this.validate( this.meta_data.validation_rules.location.resources, resource, 'locations')
             if( valid === 'true' ) {
                 location.resources.push( resource )
-                this.$store.dispatch('delLocation', this.index)
+                this.$store.dispatch('delLocation', location._id)
                 this.apiUpdate( 'locations', location, location._id, 'addLocation' , modal )
                 this.inputs.resource_id = ''
                 this.inputs.location_id = ''

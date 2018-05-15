@@ -3,14 +3,13 @@
 @Date:   27-04-2018
 @Email:  info@andreeray.se
 @Filename: Resources.vue
-@Last modified by:   DevelDoe
-@Last modified time: 11-05-2018
+@Last modified by:   Morgan Andree Ray
+@Last modified time: 15-05-2018
 @License: MIT
 -->
 <template lang="html">
     <div id="resources">
-        <input v-model="filter_search" placeholder="search">
-        <div v-for="(resource, i) in resources" :key="i" >
+        <div v-for="(resource, i) in filterSearch" :key="i" >
             <button @click="$bus.$emit('setResourceId', resource._id)">
                 {{ resource.name }}
             </button>
@@ -24,9 +23,9 @@ import { mapGetters } from 'vuex'
 export default {
     name: 'Resources',
     computed: {
-        ...mapGetters([ 'resources' ]),
+        ...mapGetters([ 'resources' , 'resources_search']),
         filterSearch() { return this.sortedResourcesList.filter( resource => {
-            return resource.name.toLowerCase().indexOf( this.filter_search.toLowerCase() ) > -1
+            return resource.name.toLowerCase().indexOf( this.resources_search.toLowerCase() ) > -1
         })},
         sortedResourcesList () { return this.mixKeySrt( this.resources, 'name' ) }
     }

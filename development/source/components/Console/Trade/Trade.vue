@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Trade.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 14-05-2018
+@Last modified time: 15-05-2018
 @License: MIT
 -->
 <template>
@@ -31,7 +31,7 @@
                     </div>
                 </div>
                 <div class="main">
-
+                    <ResourcesFilter v-if="selected === 'Resources'" />
                 </div>
                 <div class="bottom">
                     <ResourceTools />
@@ -65,6 +65,7 @@ import Resources        from './Resources/Resources.vue'
 import ResourceDetails  from './Resources/ResourceDetails.vue'
 import ResourceControls from './Resources/ResourceControls.vue'
 import ResourceTools    from './Resources/ResourceTools.vue'
+import ResourcesFilter  from './Resources/ResourcesFilter.vue'
 
 export default {
     name: 'Trade',
@@ -205,7 +206,7 @@ export default {
             this.resource_id = payload
         })
     },
-    components: { RouteDetails, Routes, Resources, ResourceDetails, ResourceControls, ResourceTools }
+    components: { RouteDetails, Routes, Resources, ResourceDetails, ResourceControls, ResourceTools, ResourcesFilter }
 }
 </script>
 

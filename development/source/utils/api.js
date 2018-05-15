@@ -52,7 +52,6 @@ const helperFunctions = {
                     const id         = args.shift() || null
                     const action     = args.shift() || null
                     const modal      = args.shift() || null
-
                     let body = {}
                     Object.keys( data ).forEach( key => {
                         body[key] = data[key]
