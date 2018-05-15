@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: UserControls.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 14-05-2018
+@Last modified time: 15-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -29,7 +29,7 @@
             </div>
             <div slot="footer">
                 <div class="form-control">
-                    <button @click="update('updateMission')">save</button>
+                    <button @click="update('updateUser')">save</button>
                 </div>
             </div>
         </DevelModal>
@@ -68,7 +68,7 @@ export default {
             if( valid !== 'true') this.new_user.password = ''
             if( valid === 'true' ) {
                 this.$store.dispatch('removeUser', this.index)
-                this.apiUpdate( 'users', this.new_user, this.user_id, modal )
+                this.apiUpdate( 'users', this.new_user, this.user_id, 'addUser', modal )
             }
         },
         del() {

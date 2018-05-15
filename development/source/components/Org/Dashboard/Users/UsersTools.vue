@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: UserTools.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 14-05-2018
+@Last modified time: 15-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -76,7 +76,7 @@ export default {
             if(user.image_src === "") user.image_src = "https://art.placefull.com/Content/Properties/shared/images/no-profile-image.png"
             const valid = this.validate( this.meta_data.validation_rules.user, user, 'users')
             if ( valid === 'true' ) {
-                this.apiSave( 'users', user, modal  )
+                this.apiSave( 'users', user, 'addUser', modal  )
                 this.inputs.name = ''
                 this.inputs.username = ''
                 this.inputs.password = ''
@@ -88,6 +88,3 @@ export default {
     }
 }
 </script>
-
-<style lang="css">
-</style>

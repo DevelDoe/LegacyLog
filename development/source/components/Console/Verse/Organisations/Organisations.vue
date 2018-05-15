@@ -3,18 +3,14 @@
 @Date:   27-04-2018
 @Email:  info@andreeray.se
 @Filename: Organisations.vue
-@Last modified by:   DevelDoe
-@Last modified time: 11-05-2018
+@Last modified by:   Morgan Andree Ray
+@Last modified time: 15-05-2018
 @License: MIT
 -->
 <template lang="html">
     <div id="Organisations">
-        <div class="hide-scroll">
-            <div class="viewport">
-                <div v-for="(organisation, index) in filter"  >
-                    <button @click="$bus.$emit('setId', [organisation._id] )">{{ organisation.name }}</button>
-                </div>
-            </div>
+        <div v-for="(organisation, index) in filter"  >
+            <button @click="$bus.$emit('setId', [organisation._id] )">{{ organisation.name }}</button>
         </div>
     </div>
 </template>

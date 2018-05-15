@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: DevelToast.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 11-05-2018
+@Last modified time: 15-05-2018
 @License: MIT
 -->
 
@@ -29,7 +29,7 @@ export default {
         position: fixed;
         bottom:0;
         right:0;
-        z-index: 999;
+        z-index: 9999;
         background: rgb(52,58,64);
         color: #f4f4f4;
     }

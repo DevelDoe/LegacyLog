@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: OrganisationTools.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 14-05-2018
+@Last modified time: 15-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -87,7 +87,7 @@ export default {
             }
             const valid = this.validate( this.meta_data.validation_rules.mission, mission, 'missions')
             if ( valid === 'true' ) {
-                this.apiSave( 'missions', mission, modal  )
+                this.apiSave( 'missions', mission, 'addMission' , modal  )
                 this.inputs.name = ''
                 this.inputs.type = ''
                 this.inputs.description = ''

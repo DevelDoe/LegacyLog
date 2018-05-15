@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: helperFunctions.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 14-05-2018
+ * @Last modified time: 15-05-2018
  * @License: MIT
  */
 
@@ -46,22 +46,25 @@ const helperFunctions = {
                     const self = this
                     Object.keys(data).forEach( key => {
                         if ( key !== '_id' && key !== '__v' ) {
-                            if( validationRules[key].required && index ) {
+                            if( validationRules[key].required ) {
 
 
                                 if ( self.empty( data[key] ) ) {
                                     invalid = true
-                                    errorMessage.push(key.split("_")[0] + ' field must be filled out. ')
+                                    errorMessage.push(key.split("_")[0] + ' field must be filled out')
                                 }
 
                                 if( validationRules[key].unique ) {
                                     if( !invalid ) {
 
-                                        let duplicate = this.isDuplicate( collection, data[key], index, key )
+                                        let duplicate
+                                        if(index) {
+                                             duplicate = this.isDuplicate( collection, data[key], index, key )
+                                        }
 
                                         if( duplicate ) {
                                             invalid = true
-                                            errorMessage.push(key.split("_")[0] + ' must be unique. ')
+                                            errorMessage.push(key.split("_")[0] + ' must be unique')
                                         }
 
                                     }
@@ -72,7 +75,7 @@ const helperFunctions = {
                                         data[key] = (data[key]/1)
                                         if( data[key] !== data[key] ) {
                                             invalid = true
-                                            errorMessage.push(key.split("_")[0] + ' should be in digits. ')
+                                            errorMessage.push(key.split("_")[0] + ' should be in digits')
                                         }
                                     }
                                 }
@@ -81,9 +84,8 @@ const helperFunctions = {
                     })
 
                     if (invalid) {
-
-                        this.$bus.$emit('setResponse', errorMessage.join(', ') )
-                        setTimeout(()=> { this.$bus.$emit('setResponse', '') }, 4000)
+                        store.dispatch('setResponse', errorMessage.join(', '))
+                        setTimeout( () => { store.dispatch('setResponse', '' ) }, 4000 )
                         return errorMessage
                     }
 

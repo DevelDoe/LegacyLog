@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: LocationTools.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 14-05-2018
+@Last modified time: 15-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -90,7 +90,7 @@ export default {
 
             const valid = this.validate( this.meta_data.validation_rules.location, location, 'locations' )
             if( valid === 'true' ) {
-                this.apiSave( 'locations', location, modal )
+                this.apiSave( 'locations', location, 'addLocation' , modal )
                 this.inputs.location_name = ''
                 this.inputs.location_type = ''
             }
@@ -105,7 +105,8 @@ export default {
             const valid = this.validate( this.meta_data.validation_rules.location.resources, resource, 'locations')
             if( valid === 'true' ) {
                 location.resources.push( resource )
-                this.apiUpdate( 'locations', location, location._id, modal )
+                this.$store.dispatch('delLocation', this.index)
+                this.apiUpdate( 'locations', location, location._id, 'addLocation' , modal )
                 this.inputs.resource_id = ''
                 this.inputs.location_id = ''
                 this.inputs.sell = ''

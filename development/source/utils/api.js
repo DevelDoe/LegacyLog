@@ -17,6 +17,7 @@ const helperFunctions = {
                     const args = (arguments.length === 1 ? [arguments[0]] : Array.apply(null, arguments))
                     const collection = args.shift() || null
                     const data       = args.shift() || null
+                    const action     = args.shift() || null
                     const modal      = args.shift() || null
 
                     let obj = {}
@@ -27,20 +28,20 @@ const helperFunctions = {
                     this.$http.post(`${collection}/`, obj)
                         .then( res => {
 
-                            if(res.body.message) {
-                                this.$bus.$emit('setResponse', res.body.message)
+                            if(res.body.err) {
+                                store.dispatch('setResponse', res.body.err)
                             }
                             else {
-                                this.$bus.$emit('setResponse', 'saved')
-                                this.$store.dispatch('addUser', res.body)
+                                store.dispatch('setResponse', 'article saved' )
+                                this.$store.dispatch(action, res.body)
                                 this.$bus.$emit('toggleModal', modal )
                             }
 
-                            setTimeout( () => { this.$bus.$emit('setResponse', '') }, 4000)
+                            setTimeout( () => { store.dispatch('setResponse', '' ) }, 4000 )
                         })
                         .catch( err => {
-                            this.$bus.$emit( 'setResponse', 'Connection error ' )
-                            setTimeout( () => { this.$bus.$emit('setResponse', '') }, 4000 )
+                            setTimeout( () => { store.dispatch('setResponse', 'Connection error' ) }, 4000 )
+                            setTimeout( () => { store.dispatch('setResponse', '' ) }, 4000 )
                         })
                 },
 
@@ -49,6 +50,7 @@ const helperFunctions = {
                     const collection = args.shift() || null
                     const data       = args.shift() || null
                     const id         = args.shift() || null
+                    const action     = args.shift() || null
                     const modal      = args.shift() || null
 
                     let body = {}
@@ -58,20 +60,19 @@ const helperFunctions = {
 
                     this.$http.put( `${collection}/${id}`, body )
                         .then( res => {
-                            if(res.body) {
-                                this.$bus.$emit('setResponse', 'updated')
-                                this.$bus.$emit('toggleModal', modal )
-
-                                this.$store.dispatch('addUser', res.body)
+                            if(res.body.err) {
+                                store.dispatch('setResponse', res.body.err)
                             }
-
-                            else
-                                this.$bus.$emit('setResponse', res.body.message)
-                            setTimeout( () => { this.$bus.$emit( 'setResponse', '' ) }, 4000 )
+                            else {
+                                store.dispatch('setResponse', 'article updated' )
+                                this.$store.dispatch(action, res.body)
+                                this.$bus.$emit('toggleModal', modal )
+                            }
+                            setTimeout( () => { store.dispatch('setResponse', '' ) }, 4000 )
                         })
                         .catch( err => {
-                            this.$bus.$emit( 'setResponse', 'Connection error' )
-                            setTimeout( () => { this.$bus.$emit('setResponse', '') }, 4000 )
+                            setTimeout( () => { store.dispatch('setResponse', 'Connection error' ) }, 4000 )
+                            setTimeout( () => { store.dispatch('setResponse', '' ) }, 4000 )
                         })
                 },
 
@@ -83,11 +84,11 @@ const helperFunctions = {
 
                     this.$http.delete(`${collection}/${id}`)
                         .then(res => {
-                            this.$bus.$emit('setResponse',  'deleted')
-                            setTimeout( () => { this.$bus.$emit('setResponse', '') }, 4000 )
+                            store.dispatch('setResponse', 'article deleted' )
+                            setTimeout( () => { store.dispatch('setResponse', '' ) }, 4000 )
                         }).catch(function(error){
-                            this.$bus.$emit( 'setResponse', 'Connection error' )
-                            setTimeout( () => { this.$bus.$emit('setResponse', '') }, 4000 )
+                            setTimeout( () => { store.dispatch('setResponse', 'Connection error' ) }, 4000 )
+                            setTimeout( () => { store.dispatch('setResponse', '' ) }, 4000 )
                         })
                 }
             }

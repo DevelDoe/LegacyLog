@@ -72,7 +72,18 @@ export default {
                 room: 'Main',
                 created_at: this.$moment().unix()
             }
-            this.apiSave('chats', chat)
+            let obj = {}
+            Object.keys( chat ).forEach( key => {
+                obj[key] = chat[key]
+            })
+            this.$http.post('chats/', obj).then( res => {
+                if(res.body.err) {
+                    this.$store.dispatch('setResponse', res.body.err)
+                } else {
+                    this.$store.dispatch('addChat', res.body)
+                }
+
+            })
             this.message = ''
         }
     },
@@ -86,10 +97,8 @@ export default {
         document.addEventListener("visibilitychange", function() {
             if (document.hidden){
                 self.$socket.emit('removeUser', self.logged.username)
-                console.log('remove')
             } else {
                 self.$socket.emit('addUser', self.logged.username, self.logged.image_src)
-                console.log('add')
             }
         })
     },

@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: MissionControl.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 12-05-2018
+@Last modified time: 15-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -71,7 +71,8 @@ export default {
         update( modal ) {
             const valid = this.validate( this.meta_data.validation_rules.mission, this.mission, 'missions', this.index)
             if ( valid === 'true') {
-                this.apiUpdate( 'missions', this.mission, this.mission_id, modal )
+                this.$store.dispatch('delMission', this.index)
+                this.apiUpdate( 'missions', this.mission, this.mission_id, 'addMission' , modal )
             }
         }
     }

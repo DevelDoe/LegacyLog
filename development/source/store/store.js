@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: store.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 14-05-2018
+ * @Last modified time: 15-05-2018
  * @License: MIT
  */
 import Vue from 'vue'
@@ -30,7 +30,8 @@ const store = new Vux.Store({
         missions_search: '',
         chats: [],
         active_org_link: '',
-        show_nav: ''
+        show_nav: '',
+        response: ''
     },
     getters: {
         user:                state => { return state.user },
@@ -50,7 +51,8 @@ const store = new Vux.Store({
         missions_search:     state => { return state.missions_search },
         chats:               state => { return state.chats },
         active_org_link:     state => { return state.active_org_link},
-        show_nav:            state => { return state.show_nav}
+        show_nav:            state => { return state.show_nav},
+        response:            state => { return state.response }
     },
     mutations: {
         login:                 ( state , payload ) => { state.user.id = payload[0]; state.user.token = payload[1]; },
@@ -60,25 +62,32 @@ const store = new Vux.Store({
         removeUser:            ( state , payload ) => { state.users.splice( payload , 1 ) },
         SOCKET_updateChat      ( state , message ) { state.socketMessage = message },
         setLocations:          ( state , payload ) => { state.locations = payload },
+        addLocation:           ( state , payload ) => { state.locations.push(payload) },
         delLocation:           ( state , payload ) => { state.locations.splice( payload , 1 ) },
         setMetaData:           ( state , payload ) => { state.meta_data = payload },
         setLocationSearch:     ( state , payload ) => { state.location_search = payload },
         setResources:          ( state , payload ) => { state.resources = payload },
+        addResource:           ( state , payload ) => { state.resources.push(payload) },
         delResource:           ( state , payload ) => { state.resources.splice( payload , 1 ) },
         setResourceSearch:     ( state , payload ) => { state.resource_search = payload },
         setOrganisations:      ( state , payload ) => { state.organisations = payload },
+        addOrg:                ( state , payload ) => { state.organisations.push(payload) },
         delOrganisation:       ( state , payload ) => { state.organisations.splice( payload , 1 ) },
         setOrganisationSearch: ( state , payload ) => { state.organisation_search = payload },
         setCharacters:         ( state , payload ) => { state.characters = payload },
+        addCharacter:          ( state , payload ) => { state.characters.push(payload) },
         delCharacter:          ( state , payload ) => { state.characters.splice( payload , 1 ) },
         setCharactersSearch:   ( state , payload ) => { state.characters_search = payload },
         setMissions:           ( state , payload ) => { state.missions = payload },
+        addMission:            ( state , payload ) => { state.missions.push(payload) },
         delMission:            ( state , payload ) => { state.missions.splice( payload , 1 ) },
         setMissionsSearch:     ( state , payload ) => { state.missions_search = payload },
         setChats:              ( state , payload ) => { state.chats = payload },
+        addChat:               ( state , payload ) => { state.chats.push(payload) },
         setActiveOrgLink:      ( state , payload ) => { state.active_org_link = payload },
         setShowNav:            ( state , payload ) => { state.show_nav = payload },
-        setUserSearch:         ( state , payload ) => { state.user_search = payload}
+        setUserSearch:         ( state , payload ) => { state.user_search = payload},
+        setResponse:           ( state , payload ) => { state.response = payload}
     },
     actions: {
         login:               ( cxt , payload ) => { cxt.commit( 'login' , payload ) },
@@ -87,25 +96,33 @@ const store = new Vux.Store({
         addUser:             ( cxt , payload ) => { cxt.commit( 'addUser' , payload ) },
         removeUser:          ( cxt , payload ) => { cxt.commit( 'removeUser', payload )},
         setLocations:        ( ctx , payload ) => { ctx.commit( 'setLocations' , payload ) },
+        addLocation:         ( ctx , payload ) => { ctx.commit( 'addLocation' , payload ) },
         delLocation:         ( ctx , payload ) => { ctx.commit( 'delLocation', payload ) },
         setMetaData:         ( ctx , payload ) => { ctx.commit( 'setMetaData' , payload ) },
         setLocationSearch:   ( ctx , payload ) => { ctx.commit( 'setLocationSearch' , payload ) },
         setResources:        ( ctx , payload ) => { ctx.commit( 'setResources' , payload ) },
+        addResource:         ( ctx , payload ) => { ctx.commit( 'addResource' , payload ) },
         delResource:         ( ctx , payload ) => { ctx.commit( 'delResource', payload ) },
         setResourceSearch:   ( ctx , payload ) => { ctx.commit( 'setResourceSearch' , payload ) },
         setOrganisations:    ( ctx , payload ) => { ctx.commit( 'setOrganisations' , payload ) },
+        addOrg:              ( ctx , payload ) => { ctx.commit( 'addOrg' , payload ) },
         delOrganisation:     ( ctx , payload ) => { ctx.commit( 'delOrganisation', payload) },
         setResourceSearch:   ( ctx , payload ) => { ctx.commit( 'setResourceSearch' , payload ) },
         setCharacters:       ( ctx , payload ) => { ctx.commit( 'setCharacters' , payload ) },
+        addCharacter:        ( ctx , payload ) => { ctx.commit( 'addCharacter' , payload ) },
         delCharacter:        ( ctx , payload ) => { ctx.commit( 'delCharacter', payload ) },
         setCharactersSearch: ( ctx , payload ) => { ctx.commit( 'setCharactersSearch' , payload ) },
         setMissions:         ( ctx , payload ) => { ctx.commit( 'setMissions' , payload ) },
+        addMission:          ( ctx , payload ) => { ctx.commit( 'addMission' , payload ) },
         delMission:          ( ctx , payload ) => { ctx.commit( 'delMission', payload) },
         setMissionsSearch:   ( ctx , payload ) => { ctx.commit( 'setMissionsSearch' , payload ) },
         setChats:            ( ctx , payload ) => { ctx.commit( 'setChats' , payload ) },
+        addChat:             ( ctx , payload ) => { ctx.commit(  'addChat' , payload ) },
         setActiveOrgLink:    ( ctx , payload ) => { ctx.commit( 'setActiveOrgLink', payload )},
         setShowNav:          ( ctx , payload ) => { ctx.commit( 'setShowNav', payload )},
-        setUserSearch:       ( ctx , payload ) => { ctx.commit( 'setUserSearch', payload )}
+        setUserSearch:       ( ctx , payload ) => { ctx.commit( 'setUserSearch', payload )},
+        setResponse:         ( ctx , payload ) => { ctx.commit( 'setResponse', payload )}
+
     },
     plugins: [createPersistedState()]
 })

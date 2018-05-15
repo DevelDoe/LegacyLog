@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: OrganisationControls.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 12-05-2018
+@Last modified time: 15-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -53,7 +53,8 @@ export default {
         update( modal ) {
             const valid = this.validate( this.meta_data.validation_rules.character, this.character, 'characters', this.index)
             if( valid === 'true' ) {
-                this.apiUpdate( 'characters', this.character, this.character_id, modal )
+                this.$store.dispatch('delCharacter', this.index)
+                this.apiUpdate( 'characters', this.character, this.character_id, 'addCharacter' , modal )
             }
         }
     }

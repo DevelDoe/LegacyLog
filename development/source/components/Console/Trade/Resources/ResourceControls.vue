@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: ResourceControls.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 11-05-2018
+@Last modified time: 15-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -54,9 +54,8 @@ export default {
             }
             const valid = this.validate( this.meta_data.validation_rules.resource, resource, 'resources' )
             if( valid === 'true' ) {
-                this.resources.splice(this.index, 1)
-                this.apiUpdate( 'resources', resource, this.resource_id, modal )
-                this.resources.push(resource)
+                this.$store.dispatch('delResource', this.index)
+                this.apiUpdate( 'resources', resource, this.resource_id, 'addResource' , modal )
             }
         },
         openModal( modal ) {

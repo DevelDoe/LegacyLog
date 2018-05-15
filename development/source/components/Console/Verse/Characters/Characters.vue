@@ -4,17 +4,13 @@
 @Email:  info@andreeray.se
 @Filename: Characters.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 12-05-2018
+@Last modified time: 15-05-2018
 @License: MIT
 -->
 <template lang="html">
     <div class="characters">
-        <div class="hide-scroll">
-            <div class="viewport">
-                <div v-for="(character, index) in filter"  >
-                    <button @click="$bus.$emit('setId', [character._id] )">{{ character.name }}</button>
-                </div>
-            </div>
+        <div v-for="(character, index) in filter"  >
+            <button @click="$bus.$emit('setId', [character._id] )">{{ character.name }}</button>
         </div>
     </div>
 </template>

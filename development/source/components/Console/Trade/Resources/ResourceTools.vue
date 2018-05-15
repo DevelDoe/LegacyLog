@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: ResourceTools.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 11-05-2018
+@Last modified time: 15-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -43,7 +43,7 @@ export default {
         save( modal ) {
             const valid = this.validate( this.meta_data.validation_rules.resource, this.resource, 'resources' )
             if( valid === 'true' ) {
-                this.apiSave( 'resources', this.resource, modal  )
+                this.apiSave( 'resources', this.resource, 'addResource', modal  )
                 this.resource.name = ''
             }
         },

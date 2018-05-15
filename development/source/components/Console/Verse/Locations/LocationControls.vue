@@ -3,8 +3,8 @@
 @Date:   11-05-2018
 @Email:  info@andreeray.se
 @Filename: LocationControls.vue
-@Last modified by:   DevelDoe
-@Last modified time: 11-05-2018
+@Last modified by:   Morgan Andree Ray
+@Last modified time: 15-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -175,7 +175,10 @@ export default {
         },
         update( modal ) {
             const valid = this.validate(  this.meta_data.validation_rules.location, this.location, 'locations', this.index)
-            if ( valid === 'true' ) this.apiUpdate( 'locations', this.location, this.location_id, modal )
+            if ( valid === 'true' ) {
+                this.$store.dispatch('delLocation', this.index)
+                this.apiUpdate( 'locations', this.location, this.location_id, 'addLocation' , modal )
+            }
         },
         updateResource( modal ) {
             let location = this.location
@@ -192,7 +195,8 @@ export default {
             location.resources = resources
             const valid = this.validate(  this.meta_data.validation_rules.location, location, 'locations', this.index)
             if ( valid === 'true' ) {
-                this.apiUpdate( 'locations', location, location._id, modal )
+                this.$store.dispatch('delLocation', this.index)
+                this.apiUpdate( 'locations', location, location._id, 'addLocation' , modal )
             }
         },
         addResource ( modal ) {
