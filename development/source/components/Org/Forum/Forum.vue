@@ -77,11 +77,21 @@ export default {
         }
     },
     mounted() {
+        const self = this
         this.$http.get('http://35.189.243.23:4000/chats/').then( res => {
             this.$store.dispatch( 'setChats', res.data)
         })
         this.$socket.emit('addUser', this.logged.username, this.logged.image_src)
         this.$socket.emit('getUsers')
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden){
+                self.$socket.emit('removeUser', self.logged.username)
+                console.log('remove')
+            } else {
+                self.$socket.emit('addUser', self.logged.username, self.logged.image_src)
+                console.log('add')
+            }
+        })
     },
     destroyed() {
         this.$socket.emit('removeUser', this.logged.username)
