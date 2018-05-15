@@ -11,22 +11,14 @@
 <template>
     <div id="verse">
 
-        <nav id="headbar" class="box screen">
-            <div class="wrapper">
-                <h2>Legacy Console</h2>
-                <div></div>
-                <div></div>
-            </div>
-        </nav>
-
         <div class="wrapper">
             <section id="leftbar" class="screen">
                 <div class="top">
                     <h3>The Verse</h3>
                     <div class="nav">
                         <select v-model="selected">
-                            <option disabled >Please select one</option>
-                            <option>Locations</option>
+                            <option disabled  value="">Please select one</option>
+                            <option selected>Locations</option>
                             <option>Organisations</option>
                             <option>Characters</option>
                             <option>Missions</option>

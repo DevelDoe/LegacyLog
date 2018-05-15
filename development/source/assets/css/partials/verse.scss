@@ -3,7 +3,7 @@
 // @Email:  info@andreeray.se
 // @Filename: trade.scss
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 13-05-2018
+// @Last modified time: 15-05-2018
 // @License: MIT
 #headbar {
     height: 60px;
@@ -23,20 +23,21 @@
     }
 }
 #verse {
-    height: calc(100% - 60px);
+    height: 100%;
     .wrapper {
         display: grid;
         grid-template-columns: 23% 38% 33%;
         margin: 0;
-        padding: 0;
+        padding: 30px !important;
         height:  100%;
         #leftbar {
-            padding: 2%;
+            padding: 10%;
+            background: #1C2022;
+            border-radius: 5px;
             .top {
                 height: 13% !important;
                 h3 {
-                    border-top: 2px solid rgba(255,255,255,0.5);
-                    border-bottom: 2px solid rgba(255,255,255,0.5);
+
                 }
                 .nav {
                     padding: 20px 0;
@@ -57,7 +58,7 @@
 
             }
             .filters {
-                height: 57%;
+                height: 59%;
                 .location-filter {
                     margin: 5px;
                     text-align: center;
@@ -66,22 +67,20 @@
                 }
             }
             .tools {
-                height: 30%;
+                height: 26%;
                 button {
-                    background: rgba(255,255,255,0.1);
                     padding: 10px;
                     width: 100%;
                     &:hover {
-                        background: rgba(255,255,255,0.2);
+                        color: white;
                     }
                 }
             }
         }
         #content {
-            padding: 2%;
-            overflow: hidden;
-            height: 100%;
-            position: relative;
+            padding: 10%;
+            background: #1C2022;
+            border-radius: 5px;
             .hide-scroll {
                 overflow: hidden;
             }
@@ -103,12 +102,18 @@
             }
         }
         #rightbar {
-            padding: 2%;
+            padding: 10%;
+            background: #1C2022;
+            border-radius: 5px;
             .top {
                 height: 60%
             }
             .bottom {
                 height: 40%;
+                button {
+                    width: 100%;
+                    padding:10px;
+                }
             }
         }
     }

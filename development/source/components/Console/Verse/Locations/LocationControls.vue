@@ -27,8 +27,12 @@
                     </div>
                 </div>
             </DevelModal>
-            <button @click="openModal('updateLocation')">update</button>
-            <button @click="del()">delete</button>
+            <div class="">
+                <button @click="openModal('updateLocation')">update</button>
+            </div>
+            <div class="">
+                <button @click="del()">delete</button>
+            </div>
         </span>
 
         <span v-if="location_type === 'Outpost'" >
@@ -77,8 +81,12 @@
             </DevelModal>
 
 
-            <button @click="openModal('updateLocation')">update</button>
-            <button @click="del()">delete</button>
+            <div class="">
+                <button @click="openModal('updateLocation')">update</button>
+            </div>
+            <div class="">
+                <button @click="del()">delete</button>
+            </div>
         </span>
 
         <span v-if="location_type === 'Station'" >
@@ -127,9 +135,12 @@
                 </div>
             </DevelModal>
 
-
-            <button @click="openModal('updateLocation')">update</button>
-            <button @click="del()">delete</button>
+            <div class="">
+                <button @click="openModal('updateLocation')">update</button>
+            </div>
+            <div class="">
+                <button @click="del()">delete</button>
+            </div>
         </span>
 
     </div>

@@ -2,40 +2,25 @@
 // @Date:   09-05-2018
 // @Email:  info@andreeray.se
 // @Filename: trade.scss
-// @Last modified by:   DevelDoe
-// @Last modified time: 11-05-2018
+// @Last modified by:   Morgan Andree Ray
+// @Last modified time: 15-05-2018
 // @License: MIT
-#headbar {
-    height: 60px;
-    border-top-left-radius: 10px;
-    .wrapper {
-        h2 {
-            line-height: 60px;
-            padding-left: 10px;
-        }
-        width: 100%;
-        display: grid;
-        grid-template-columns: 30% 50% 20%;
-        button {
-            width: 16%;
-            font-size: 12px;
-        }
-    }
-}
+
 #trade {
-    height: calc(100% - 60px);
+    height: 100%;
     .wrapper {
         display: grid;
         grid-template-columns: 23% 38% 33%;
         margin: 0;
-        padding: 0;
+        padding: 30px !important;
         height:  100%;
         #leftbar {
-            padding: 2%;
+            padding: 10%;
+            background: #1C2022;
+            border-radius: 5px;
             .top {
                 h3 {
-                    border-top: 2px solid rgba(255,255,255,0.5);
-                    border-bottom: 2px solid rgba(255,255,255,0.5);
+
                 }
                 .nav {
                     padding: 20px 0;
@@ -56,31 +41,40 @@
 
             }
             .main {
+                height: 80% !important;
             }
             .bottom {
+                height: 5% !important;
                 button {
-                    background: rgba(255,255,255,0.1);
                     padding: 10px;
                     width: 100%;
                     &:hover {
-                        background: rgba(255,255,255,0.2);
+                        color: white;
                     }
                 }
             }
         }
         #content {
-            padding: 2%;
+            padding: 10%;
+            background: #1C2022;
+            border-radius: 5px;
             .route {
                 flex: 0 0 10px
             }
         }
         #rightbar {
-            padding: 2%;
+            padding: 10%;
+            background: #1C2022;
+            border-radius: 5px;
             .top {
                 height: 60%
             }
             .bottom {
                 height: 40%;
+                button {
+                    width: 100%;
+                    padding:10px;
+                }
             }
         }
     }

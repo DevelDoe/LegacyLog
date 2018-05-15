@@ -10,14 +10,6 @@
 <template>
     <div id="trade">
 
-        <nav id="headbar" class="box screen">
-            <div class="wrapper">
-                <h2>Legacy Console</h2>
-                <div></div>
-                <div></div>
-            </div>
-        </nav>
-
         <div class="wrapper">
             <section id="leftbar" class="screen">
                 <div class="top">

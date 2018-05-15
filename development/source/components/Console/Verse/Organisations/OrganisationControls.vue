@@ -28,9 +28,12 @@
                 </div>
             </div>
         </DevelModal>
-
-        <button @click="openModal('updateOrg')">update</button>
-        <button @click="del()">delete</button>
+        <div class="">
+            <button @click="openModal('updateOrg')">update</button>
+        </div>
+        <div class="">
+            <button @click="del()">delete</button>
+        </div>
     </div>
 </template>
 

@@ -35,8 +35,13 @@
               </div>
           </div>
       </DevelModal>
-      <button @click="openModal('updateMission')">update</button>
-      <button @click="del()">delete</button>
+      <div class="">
+          <button @click="openModal('updateMission')">update</button>
+      </div>
+      <div class="">
+          <button @click="del()">delete</button>
+
+      </div>
   </div>
 </template>
 

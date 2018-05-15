@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: DevelModal.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 13-05-2018
+@Last modified time: 15-05-2018
 @License: MIT
 -->
 
@@ -56,7 +56,7 @@ export default {
         display: block;
     }
     .d-modal-content {
-        background: rgba(255,255,255,0.1);
+        background: #1C2022;
         margin: 20% auto;
         width: 70%;
         box-shadow: 0 5px 8px 0 rgba(0,0,0,0.2), 0 7px 20px 0 rgba(0,0,0,0.2);
@@ -66,7 +66,7 @@ export default {
             width: 70%
         }
         label {
-            
+
         }
     }
     .d-modal-content header {
