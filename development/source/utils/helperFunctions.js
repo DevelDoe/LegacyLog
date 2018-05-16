@@ -38,7 +38,9 @@ const helperFunctions = {
                     const validationRules = args.shift() || null
                     const data            = args.shift() || null
                     const collection      = args.shift() || null
-                    const index           = args.shift() || false
+                    const index           = args.length ? args.shift() : false
+
+                    debugger
 
                     let invalid = false
                     let errorMessage = []
@@ -57,10 +59,7 @@ const helperFunctions = {
                                 if( validationRules[key].unique ) {
                                     if( !invalid ) {
 
-                                        let duplicate
-                                        if(index) {
-                                             duplicate = this.isDuplicate( collection, data[key], index, key )
-                                        }
+                                        let duplicate = this.isDuplicate( collection, data[key], index, key )
 
                                         if( duplicate ) {
                                             invalid = true
@@ -113,7 +112,9 @@ const helperFunctions = {
                         return item[key].toLowerCase()
                     })
 
-                    if( index ) names.splice(index, 1)
+                    if( index || index === 0) {
+                        names.splice(index, 1)
+                    }
 
                     var duplicate = names.some(function(name){
                         return name === value.toLowerCase()

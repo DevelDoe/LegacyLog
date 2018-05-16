@@ -16,7 +16,7 @@
             </div>
             <div slot="bread">
                 <form class="form-update-resource" action="index.html" method="post">
-                    <input type="text" v-model="input.name" placeholder="Name" />
+                    <input type="text" v-model="resource.name" placeholder="Name" />
                 </form>
             </div>
             <div slot="footer">
@@ -36,13 +36,6 @@ import { mapGetters } from 'vuex'
 export default {
     name: 'ResourceControls',
     props: [ 'resource_id', 'index', 'resource' ],
-    data() {
-        return {
-            input: {
-                name: ''
-            }
-        }
-    },
     computed: { ...mapGetters([ 'meta_data', 'resources' ]) },
     methods: {
         del() {
@@ -50,14 +43,10 @@ export default {
             this.resources.splice(this.index, 1)
         },
         update( modal ) {
-            const resource = {
-                _id: this.resource_id,
-                name: this.input.name
-            }
-            const valid = this.validate( this.meta_data.validation_rules.resource, resource, 'resources' )
+            const valid = this.validate( this.meta_data.validation_rules.resource, this.resource, 'resources', this.index )
             if( valid === 'true' ) {
                 this.$store.dispatch('delResource', this.index)
-                this.apiUpdate( 'resources', resource, this.resource_id, 'addResource' , modal )
+                this.apiUpdate( 'resources', this.resource, this.resource_id, 'addResource' , modal )
             }
         },
         openModal( modal ) {
