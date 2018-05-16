@@ -3,7 +3,7 @@
 // @Email:  info@andreeray.se
 // @Filename: trade.scss
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 15-05-2018
+// @Last modified time: 16-05-2018
 // @License: MIT
 #headbar {
     height: 60px;
@@ -106,7 +106,29 @@
             background: #1C2022;
             border-radius: 5px;
             .top {
-                height: 60%
+                height: 60%;
+                .hide-scroll {
+                    overflow: hidden;
+                }
+                .viewport {
+                    overflow: auto;
+                    position: absolute;
+                    max-height: 70%;
+                    margin-right: 10px;
+                    .moon-details {
+                        .locations {
+                            padding: 5px 0;
+                            .location {
+                                padding: 5px;
+                                div {
+                                    font-size: 12px;
+                                }
+
+                            }
+                        }
+
+                    }
+                }
             }
             .bottom {
                 height: 40%;

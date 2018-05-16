@@ -8,14 +8,16 @@
 @License: MIT
 -->
 <template lang="html">
-    <div v-if="location._id === location_id && location_type === 'Moon'">
+    <div class="moon-details" v-if="location._id === location_id && location_type === 'Moon'">
         <h4>{{ location.name }}</h4>
         <h5>{{ location.type }}</h5>
-        <h5>Locations:</h5>
-        <div v-for="location in locationLocations">
-            <h6 class="btn" @click="$bus.$emit('setId', [location._id, 'Outpost'] )">{{ location.name }}</h6>
-            <LocationLocationsResource v-for="( resource , i ) in location.resources" :key=" 'locloc' + i" :resource="resource" />
+        <div class="locations">
+            <div class="location" v-for="location in locationLocations">
+                <h6 class="btn" @click="$bus.$emit('setId', [location._id, 'Outpost'] )">{{ location.name }}</h6>
+                <LocationLocationsResource v-for="( resource , i ) in location.resources" :key=" 'locloc' + i" :resource="resource" />
+            </div>
         </div>
+
     </div>
 </template>
 

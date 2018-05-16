@@ -50,13 +50,17 @@
             </section>
             <section id="rightbar" class="screen">
                 <div class="top">
-                    <MoonDetails         v-if="selected === 'Locations'" v-for="( location , i ) in locations"             :key=" 'moodet' + i " :location="location" :location_id="id" :location_type="location_type" />
-                    <OutpostDetails      v-if="selected === 'Locations'" v-for="( location , i ) in locations"             :key=" 'outdet' + i " :location="location" :location_id="id" :location_type="location_type"/>
-                    <StationDetails      v-if="selected === 'Locations'" v-for="( location , i ) in locations"             :key=" 'stadet' + i " :location="location" :location_id="id" :location_type="location_type"/>
-                    <OrganisationDetails v-if="selected === 'Organisations'" v-for="( organisation , i ) in organisations" :key=" 'orgdet' + i " :organisation="organisation" :organisation_id="id" />
-                    <CharacterDetails    v-if="selected === 'Characters'" v-for="( character , i ) in characters"          :key=" 'chadet' + i " :character="character" :character_id="id" />
-                    <MissionDetails      v-if="selected === 'Missions'" v-for="( mission , i ) in missions"                :key=" 'misdet' + i " :mission="mission" :mission_id="id"/>
-                </div>
+                    <div class="hide-scroll">
+                        <div class="viewport">
+                            <MoonDetails         v-if="selected === 'Locations'" v-for="( location , i ) in locations"             :key=" 'moodet' + i " :location="location" :location_id="id" :location_type="location_type" />
+                            <OutpostDetails      v-if="selected === 'Locations'" v-for="( location , i ) in locations"             :key=" 'outdet' + i " :location="location" :location_id="id" :location_type="location_type"/>
+                            <StationDetails      v-if="selected === 'Locations'" v-for="( location , i ) in locations"             :key=" 'stadet' + i " :location="location" :location_id="id" :location_type="location_type"/>
+                            <OrganisationDetails v-if="selected === 'Organisations'" v-for="( organisation , i ) in organisations" :key=" 'orgdet' + i " :organisation="organisation" :organisation_id="id" />
+                            <CharacterDetails    v-if="selected === 'Characters'" v-for="( character , i ) in characters"          :key=" 'chadet' + i " :character="character" :character_id="id" />
+                            <MissionDetails      v-if="selected === 'Missions'" v-for="( mission , i ) in missions"                :key=" 'misdet' + i " :mission="mission" :mission_id="id"/>
+                        </div>
+                    </div>
+                        </div>
                 <div class="bottom">
                     <LocationControls     v-if="selected === 'Locations'" v-for="( location , i ) in locations"             :key=" 'loccon' + i " :location_id="id"      :location="location"         :index="i" :location_type="location_type" />
                     <OrganisationControls v-if="selected === 'Organisations'" v-for="( organisation , i ) in organisations" :key=" 'orgcon' + i " :organisation_id="id"  :organisation="organisation" :index="i" />
