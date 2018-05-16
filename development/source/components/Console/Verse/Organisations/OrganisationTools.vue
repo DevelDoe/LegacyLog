@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: OrganisationTools.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 15-05-2018
+@Last modified time: 16-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -12,7 +12,7 @@
         <DevelModal modal="addOrg">
             <div slot="header"> <h2>Add Organisations</h2> </div>
             <div slot="bread">
-                <form id="modal-form">
+                <form id="modal-form-org">
                     <input type="text" v-model="inputs.name" placeholder="Name">
                     <textarea v-model="inputs.description" rows="8" cols="80" placeholder="About"></textarea>
                     <select v-model="inputs.location_id">
@@ -22,7 +22,7 @@
             </div>
             <div slot="footer">
                 <div class="form-control">
-                    <button type="button" @click="save('addOrg')">save</button>
+                    <button form="modal-form-org" type="button" @click="save('addOrg')">save</button>
                 </div>
             </div>
         </DevelModal>

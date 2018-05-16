@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: OrganisationTools.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 15-05-2018
+@Last modified time: 16-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -22,7 +22,7 @@
             </div>
             <div slot="footer">
                 <div class="form-control">
-                    <button type="button" @click="save('addCharacter')">save</button>
+                    <button form="modal-form-characters" type="button" @click="save('addCharacter')">save</button>
                 </div>
             </div>
         </DevelModal>

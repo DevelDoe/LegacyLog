@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: OrganisationControls.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 15-05-2018
+@Last modified time: 16-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -14,7 +14,7 @@
                 <h2>Update Organisation</h2>
             </div>
             <div slot="bread">
-                <form id="modal-form">
+                <form id="modal-form-org-update">
                     <input type="text" v-model="organisation.name" placeholder="Name">
                     <textarea v-model="organisation.description" rows="8" cols="80" placeholder="Description"></textarea>
                     <select v-model="organisation.location_id">
@@ -24,7 +24,7 @@
             </div>
             <div slot="footer">
                 <div class="form-control">
-                    <button @click="update('updateOrg')">save</button>
+                    <button form="modal-form-org-update" @click="update('updateOrg')">save</button>
                 </div>
             </div>
         </DevelModal>

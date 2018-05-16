@@ -13,7 +13,7 @@
             <DevelModal modal="updateLocation">
                 <div slot="header"> <h2>Update Location</h2> </div>
                 <div slot="bread">
-                    <form id="modal-form">
+                    <form id="modal-form-moon-update">
                         <input type="text" v-model="location.name" placeholder="Name">
                         <div class="">
                             <span> Type: </span>
@@ -31,7 +31,7 @@
                 </div>
                 <div slot="footer">
                     <div class="form-control">
-                        <button form="modal-form-moon" @click="update('updateLocation')">save</button>
+                        <button form="modal-form-moon-update" @click="update('updateLocation')">save</button>
                     </div>
                 </div>
             </DevelModal>
@@ -47,7 +47,7 @@
             <DevelModal modal="updateLocation">
                 <div slot="header"> <h2>Update Location</h2> </div>
                 <div slot="bread">
-                    <form id="modal-form">
+                    <form id="modal-form-outpost-update">
                         <input type="text" v-model="location.name" placeholder="Name">
                         <div class="">
                             <span>Type:</span>
@@ -78,7 +78,7 @@
                 </div>
                 <div slot="footer">
                     <div class="form-control">
-                        <button @click="update('updateLocation')">save</button>
+                        <button form="modal-form-outpost-update" @click="update('updateLocation')">save</button>
                     </div>
                 </div>
             </DevelModal>
@@ -87,7 +87,7 @@
                 <div slot="header"><h2>update resource</h2></div>
                 <div slot="bread">
                     <h3>{{ inputs.name }}</h3>
-                    <form id="modal-form-resource">
+                    <form id="modal-form-outpost-resource-update">
                         <input type="text" v-model="inputs.sell" placeholder="sell">
                         <input type="text" v-model="inputs.buy" placeholder="buy">
                     </form>
@@ -101,7 +101,7 @@
 
 
             <div class="">
-                <button @click="openModal('updateLocation')">update</button>
+                <button form="modal-form-outpost-resource-update" @click="openModal('updateLocation')">update</button>
             </div>
             <div class="">
                 <button @click="del()">delete</button>
@@ -112,7 +112,7 @@
             <DevelModal modal="updateLocation">
                 <div slot="header"> <h2>Update Station</h2> </div>
                 <div slot="bread">
-                    <form id="modal-form">
+                    <form id="modal-form-station-update">
                         <input type="text" v-model="location.name" placeholder="Name">
                         <div class="">
                             <div class="">
@@ -140,7 +140,7 @@
                 </div>
                 <div slot="footer">
                     <div class="form-control">
-                        <button @click="update('updateLocation')">save</button>
+                        <button form="modal-form-outpost-update" @click="update('updateLocation')">save</button>
                     </div>
                 </div>
             </DevelModal>
@@ -150,7 +150,7 @@
                 <div slot="bread">
 
                     <h3>{{ inputs.name }}</h3>
-                    <form id="modal-form-resource">
+                    <form id="modal-form-station-resource-update">
                         <input type="text" v-model="inputs.sell" placeholder="sell">
                         <input type="text" v-model="inputs.buy" placeholder="buy">
                     </form>
@@ -163,7 +163,7 @@
             </DevelModal>
 
             <div class="">
-                <button @click="openModal('updateLocation')">update</button>
+                <button form="modal-form-station-resource-update" @click="openModal('updateLocation')">update</button>
             </div>
             <div class="">
                 <button @click="del()">delete</button>

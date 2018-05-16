@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: ResourceControls.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 15-05-2018
+@Last modified time: 16-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -15,11 +15,13 @@
                 <h2>Update Resource</h2>
             </div>
             <div slot="bread">
-                <input type="text" v-model="input.name" placeholder="Name" />
+                <form class="form-update-resource" action="index.html" method="post">
+                    <input type="text" v-model="input.name" placeholder="Name" />
+                </form>
             </div>
             <div slot="footer">
                 <div class="form-control">
-                    <button @click="update('updateResource')">save</button>
+                    <button form="form-update-resource" @click="update('updateResource')">save</button>
                 </div>
             </div>
         </DevelModal>

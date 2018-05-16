@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: MissionControl.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 15-05-2018
+@Last modified time: 16-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -14,7 +14,7 @@
               <h2>Update Character</h2>
           </div>
           <div slot="bread">
-              <form id="modal-form">
+              <form id="modal-form-mission-update">
                   <input type="text" v-model="mission.name" placeholder="Mission Name">
                   <input type="text" v-model="mission.type" placeholder="Mission type">
                   <textarea rows="8" cols="80" v-model="mission.description" placeholder="Mission description"></textarea>
@@ -31,7 +31,7 @@
           <div slot="footer">
               <div class="form-control">
                   <button @click="addObjective">add objective</button>
-                  <button @click="update('updateMission')">save</button>
+                  <button form="modal-form-mission-update" @click="update('updateMission')">save</button>
               </div>
           </div>
       </DevelModal>

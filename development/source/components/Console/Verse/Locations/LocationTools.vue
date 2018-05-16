@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: LocationTools.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 15-05-2018
+@Last modified time: 16-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -26,7 +26,7 @@
             </div>
             <div slot="footer">
                 <div class="form-control">
-                    <button type="button" @click="saveLocation('addLocation')">save</button>
+                    <button form="modal-form-location" @click="saveLocation('addLocation')">save</button>
                 </div>
             </div>
         </DevelModal>
@@ -49,13 +49,13 @@
             </div>
             <div slot="footer">
                 <div class="form-control">
-                    <button type="button" @click="saveResource('addResource')">save</button>
+                    <button form="modal-form-resource" @click="saveResource('addResource')">save</button>
                 </div>
             </div>
         </DevelModal>
 
         <button @click="openModal('addLocation')">add location</button>
-        <button @click="openModal('addResource')">add resource</button>
+        <button @click="openModal('addResource')">add location resource</button>
     </div>
 </template>
 

@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: LocationControls.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 11-05-2018
+@Last modified time: 16-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -12,7 +12,7 @@
         <DevelModal modal="updateLocation">
             <div slot="header"> <h2>Update Location</h2> </div>
             <div slot="bread">
-                <form id="modal-form">
+                <form id="modal-form-update-location">
                     <input type="text" v-model="location.name" placeholder="Name">
                     type:
                     <select v-model="location.type">
@@ -22,7 +22,7 @@
             </div>
             <div slot="footer">
                 <div class="form-control">
-                    <button @click="update('updateLocation')">save</button>
+                    <button form="modal-form-update-location" @click="update('updateLocation')">save</button>
                 </div>
             </div>
         </DevelModal>

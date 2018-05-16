@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: UserControls.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 15-05-2018
+@Last modified time: 16-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -14,7 +14,7 @@
                 <h2>Update User</h2>
             </div>
             <div slot="bread">
-                <form id="modal-form">
+                <form id="modal-form-user-update">
                     <input v-model="new_user.name" placeholder="User Name">
                     <input v-model="new_user.username" placeholder="Handle">
                     <input v-model="new_user.password" placeholder="Password">
@@ -29,7 +29,7 @@
             </div>
             <div slot="footer">
                 <div class="form-control">
-                    <button @click="update('updateUser')">save</button>
+                    <button form="modal-form-user-update" @click="update('updateUser')">save</button>
                 </div>
             </div>
         </DevelModal>

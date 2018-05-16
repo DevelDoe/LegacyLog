@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: OrganisationControls.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 15-05-2018
+@Last modified time: 16-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -14,7 +14,7 @@
                 <h2>Update Character</h2>
             </div>
             <div slot="bread">
-                <form id="modal-form.carcon">
+                <form id="modal-form-carcon">
                     <input type="text" v-model="character.name" placeholder="Name">
                     <textarea v-model="character.description" rows="8" cols="80" placeholder="Biography"></textarea>
                     <select v-model="character.location_id">
@@ -24,7 +24,7 @@
             </div>
             <div slot="footer">
                 <div class="form-control">
-                    <button @click="update('updateCharacter')">save</button>
+                    <button form="modal-form-carcon" @click="update('updateCharacter')">save</button>
                 </div>
             </div>
         </DevelModal>

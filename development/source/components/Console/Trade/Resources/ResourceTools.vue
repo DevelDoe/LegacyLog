@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: ResourceTools.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 15-05-2018
+@Last modified time: 16-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -12,11 +12,13 @@
         <DevelModal modal="addResource">
             <div slot="header"> <h2>Add Resource</h2> </div>
             <div slot="bread">
-                <input type="text" v-model="resource.name" placeholder="Name">
+                <form id="form-add-resource">
+                    <input type="text" v-model="resource.name" placeholder="Name">
+                </form>
             </div>
             <div slot="footer">
                 <div class="form-control">
-                    <button type="button" @click="save('addResource')">save</button>
+                    <button form="form-add-resource" type="button" @click="save('addResource')">save</button>
                 </div>
             </div>
         </DevelModal>
