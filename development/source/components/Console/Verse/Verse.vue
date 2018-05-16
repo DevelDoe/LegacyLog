@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Verse.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 15-05-2018
+@Last modified time: 16-05-2018
 @License: MIT
 -->
 
@@ -72,7 +72,7 @@
 <script>
 import Locations            from './Locations/Locations.vue'
 import LocationTools        from './Locations/LocationTools.vue'
-import MoonDetails          from './Locations/MoonDetails.vue'
+import MoonDetails          from './Locations/Moon/MoonDetails.vue'
 import OutpostDetails       from './Locations/OutpostDetails.vue'
 import StationDetails       from './Locations/StationDetails.vue'
 import LocationControls     from './Locations/LocationControls.vue'

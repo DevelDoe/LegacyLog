@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: LocationControls.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 15-05-2018
+@Last modified time: 16-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -15,15 +15,23 @@
                 <div slot="bread">
                     <form id="modal-form">
                         <input type="text" v-model="location.name" placeholder="Name">
-                        type:
-                        <select v-model="location.type">
-                            <option v-for='location in meta_data.location_types' :value="location" >{{ location }}</option>
-                        </select>
+                        <div class="">
+                            <span> Type: </span>
+                            <select v-model="location.type">
+                                <option v-for='location in meta_data.location_types' :value="location" >{{ location }}</option>
+                            </select>
+                        </div>
+                        <div class="">
+                            <span> Location: </span>
+                            <select v-model="location.location_id">
+                                <option v-for='location in locations' :value="location._id" >{{ location.name }}</option>
+                            </select>
+                        </div>
                     </form>
                 </div>
                 <div slot="footer">
                     <div class="form-control">
-                        <button @click="update('updateLocation')">save</button>
+                        <button form="modal-form-moon" @click="update('updateLocation')">save</button>
                     </div>
                 </div>
             </DevelModal>
@@ -42,13 +50,24 @@
                     <form id="modal-form">
                         <input type="text" v-model="location.name" placeholder="Name">
                         <div class="">
-                            <h6>Type:</h6>
-                            <select v-model="location.type">
-                                <option v-for='location in meta_data.location_types' :value="location" >{{ location }}</option>
+                            <span>Type:</span>
+                            <div class="">
+                                <select v-model="location.type">
+                                    <option v-for='location in meta_data.location_types' :value="location" >{{ location }}</option>
+                                </select>
+                            </div>
+                        <div class="">
+                            <span> Location: </span>
+                            <select v-model="location.location_id">
+                                <option v-for='location in locations' :value="location._id" >{{ location.name }}</option>
                             </select>
                         </div>
+                        </div>
                         <div class="">
-                            <h6>Resources</h6>
+                            <span>location:</span>
+                        </div>
+                        <div class="">
+                            <span>Resources</span>
                             <span v-for="resource in locationResources">
                                 <div class="">
                                     <button @click="inputs.name = resource.name; inputs._id = resource._id; openModal('updateLocation','updateResource')"> {{ resource.name }} </button>
@@ -96,13 +115,21 @@
                     <form id="modal-form">
                         <input type="text" v-model="location.name" placeholder="Name">
                         <div class="">
-                            <h6>Type:</h6>
-                            <select v-model="location.type">
-                                <option v-for='location in meta_data.location_types' :value="location" >{{ location }}</option>
-                            </select>
+                            <div class="">
+                                <span>Type:</span>
+                                <select v-model="location.type">
+                                    <option v-for='location in meta_data.location_types' :value="location" >{{ location }}</option>
+                                </select>
+                            </div>
+                            <div class="">
+                                <span> Location: </span>
+                                <select v-model="location.location_id">
+                                    <option v-for='location in locations' :value="location._id" >{{ location.name }}</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="">
-                            <h6>Resources</h6>
+                            <span>Resources</span>
                             <span v-for="resource in locationResources">
                                 <div class="">
                                     <button @click="inputs.name = resource.name; inputs._id = resource._id; openModal('updateLocation','updateResource')"> {{ resource.name }} </button>
@@ -150,7 +177,7 @@
 import { mapGetters } from 'vuex'
 export default {
     name: 'LocationControls',
-    props: [ 'location' , 'location_id' , 'index', 'location_type' ],
+    props: [ 'location', 'location_id', 'index', 'location_type' ],
     data() {
         return {
             inputs: {
@@ -162,7 +189,7 @@ export default {
         }
     },
     computed: {
-        ...mapGetters([ 'meta_data', 'resources' ]),
+        ...mapGetters([ 'meta_data', 'resources', 'locations' ]),
         locationResources() {
             let resources = []
             this.location.resources.forEach(locationResource => {
