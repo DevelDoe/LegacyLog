@@ -4,19 +4,23 @@
 @Email:  info@andreeray.se
 @Filename: Routes.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 14-05-2018
+@Last modified time: 16-05-2018
 @License: MIT
 -->
 <template lang="html">
     <div id="routes">
-        <div class="scroll">
-            <span v-for="(trade_route, index) in filterSearch"  >
-                <span v-if="trade_route.sell.length > 0">
-                    <span v-for="( route, i ) in trade_route.sell" class="route" >
-                        <button  @click="$bus.$emit('showRoute', trade_route.id)"> {{ trade_route.abbr }} {{ route.abbr }}: {{ comMargin(route.sell, trade_route.buy) }}</button>
-                    </span>
-                </span>
-            </span>
+            <div v-for="(trade_route, index) in sortedRoute" class="trade-route" >
+                <div class="">
+                    {{ trade_route.name }} : {{ mixFormatPrice(trade_route.margin) }}
+                </div>
+                <div class="">
+                    {{ trade_route.buyLocation }} to
+                </div>
+                <div class="">
+                    {{ trade_route.sellLocation}}
+                </div>
+
+            </div>
         </div>
     </div>
 </template>
@@ -35,12 +39,9 @@ export default {
             return this.tradeRoutes.filter( route => {
                 return route.abbr.toLowerCase().indexOf( this.filter_search.toLowerCase() ) > - 1
             })
-        }
-    },
-    methods: {
-        comMargin(sell, buy) {
-            let res = sell - buy
-            return this.mixFormatPrice(res)
+        },
+        sortedRoute(){
+            return this.mixKeySrt(this.tradeRoutes, 'margin', true)
         }
     },
 }

@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Trade.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 15-05-2018
+@Last modified time: 16-05-2018
 @License: MIT
 -->
 <template>
@@ -30,9 +30,11 @@
                 </div>
             </section>
             <section id="content" class="screen">
-                <div class="scroll">
-                    <Routes v-if="selected === 'Trade Routes'" :tradeRoutes="tradeRoutes" />
-                    <Resources v-if="selected === 'Resources'" />
+                <div class="hide-scroll">
+                    <div class="viewport">
+                        <Routes v-if="selected === 'Trade Routes'" :tradeRoutes="tradeRoutes" />
+                        <Resources v-if="selected === 'Resources'" />
+                    </div>
                 </div>
             </section>
             <section id="rightbar" class="screen">
@@ -70,125 +72,52 @@ export default {
     },
     computed: {
         ...mapGetters([ 'locations', 'meta_data', 'resources' ]),
+        sellLocation() {
+            let locations = []
+            this.locations.forEach(location => {
+                location.resources.forEach(resource => {
+                    if(resource.sell !== '') {
+                        let reso = {}
+                        reso.location = location.name
+                        reso.name = this.resources.find(r => r._id === resource.resource_id).name
+                        reso.price = resource.sell
+                        locations.push(reso)
+                    }
+                })
+            })
+            return locations || null
+        },
+        buyLocation() {
+            let locations = []
+            this.locations.forEach(location => {
+                location.resources.forEach(resource => {
+                    if(resource.buy !== '') {
+                        let reso = {}
+                        reso.location = location.name
+                        reso.name = this.resources.find(r => r._id === resource.resource_id).name
+                        reso.price = resource.buy
+                        locations.push(reso)
+                    }
+                })
+            })
+            return locations || null
+        },
         tradeRoutes() {
             let res = []
-            this.comResources.forEach( resource => {
-                resource.trade_routes.forEach( route => {
-                    res.push( route )
-                })
+            this.buyLocation.forEach( buyLocation => {
+                this.sellLocation.forEach( sellLocation => {
+                    if (buyLocation.name === sellLocation.name) {
+                        let route = {}
+                        route.buyLocation = buyLocation.location
+                        route.sellLocation = sellLocation.location
+                        route.name = buyLocation.name
+                        route.margin = sellLocation.price - buyLocation.price
+                        res.push(route)
+                    }
+                } )
             })
             return res || null
         },
-        comResources() {
-            let id = 0
-            let comResources = []
-            this.resources.forEach( resource => {
-                let comResource = {}
-                comResource._id = resource._id
-                comResource.name = resource.name
-                comResource.locations_sell = []
-                comResource.locations_buy = []
-                comResource.trade_routes = []
-                // Locations Sell
-                this.locations.forEach( location => {
-                    let comLocation = {}
-                    comLocation._id = location._id
-                    if( location.name.length > 6) {
-                        var splitStr = location.name.toLowerCase().split(' ')
-                        for (var i = 0; i < splitStr.length; i++) {
-                            var isnum = /^\d+$/.test(splitStr[i])
-                            if(isnum) splitStr[i] = splitStr[i]
-                            else splitStr[i] = splitStr[i].charAt(0).toUpperCase()
-                        }
-                        comLocation.abbr = splitStr.join('')
-                    } else {
-                        comLocation.abbr = location.name
-                    }
-                    comLocation.name = location.name
-                    location.resources.forEach( locationResource => {
-                        if( locationResource.resource_id === comResource._id  && locationResource.sell) {
-                            comLocation.sell = locationResource.sell
-                            comResource.locations_sell.push(comLocation)
-                        }
-                    })
-                })
-                // Locations Buy
-                this.locations.forEach( location => {
-                    let comLocation = {}
-                    comLocation._id = location._id
-                    if( location.name.length > 6) {
-                        var splitStr = location.name.toLowerCase().split(' ')
-                        for (var i = 0; i < splitStr.length; i++) {
-                            var isnum = /^\d+$/.test(splitStr[i])
-                            if(isnum) splitStr[i] = splitStr[i]
-                            else splitStr[i] = splitStr[i].charAt(0).toUpperCase()
-                        }
-                        comLocation.abbr = splitStr.join('')
-                    } else {
-                        comLocation.abbr = location.name
-                    }
-                    comLocation.name = location.name
-                    location.resources.forEach( locationResource => {
-                        if( locationResource.resource_id === comResource._id  && locationResource.buy) {
-                            comLocation.buy = locationResource.buy
-                            comResource.locations_buy.push(comLocation)
-                        }
-                    })
-                })
-                // Trade Routes
-                this.locations.forEach( location => {
-
-                    location.resources.forEach( locationResource => {
-                        if( locationResource.resource_id === comResource._id && locationResource.buy ) {
-                            let route = {
-                                sell: []
-                            }
-                            if( location.name.length > 6) {
-                                var splitStr = location.name.toLowerCase().split(' ')
-                                for (var i = 0; i < splitStr.length; i++) {
-                                    var isnum = /^\d+$/.test(splitStr[i])
-                                    if(isnum) splitStr[i] = splitStr[i]
-                                    else splitStr[i] = splitStr[i].charAt(0).toUpperCase()
-                                }
-                                route.abbr = splitStr.join('')
-                            } else {
-                                route.abbr = location.name
-                            }
-                            route.id       = id
-                            route.resource = comResource.name
-                            route.buy_name = location.name
-                            route.buy      = locationResource.buy
-                            id += 1
-                            this.locations.forEach( loca => {
-                                loca.resources.forEach( locaResource => {
-                                    if( locaResource.resource_id === comResource._id && locaResource.sell ) {
-                                        let sell = {}
-                                        if( loca.name.length > 6) {
-                                            var splitStr = loca.name.toLowerCase().split(' ')
-                                            for (var i = 0; i < splitStr.length; i++) {
-                                                var isnum = /^\d+$/.test(splitStr[i])
-                                                if(isnum) splitStr[i] = splitStr[i]
-                                                else splitStr[i] = splitStr[i].charAt(0).toUpperCase()
-                                            }
-                                            sell.abbr = splitStr.join('')
-                                        } else {
-                                            sell.abbr = loca.name
-                                        }
-                                        sell.sell_name = loca.name
-                                        sell.sell = locaResource.sell
-                                        route.sell.push(sell)
-                                    }
-
-                                })
-                            })
-                            comResource.trade_routes.push(route)
-                        }
-                    })
-                })
-                comResources.push(comResource)
-            })
-            return comResources || null
-        }
     },
     mounted() {
         this.$bus.$on('showRoute', payload => {

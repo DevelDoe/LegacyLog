@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: helperFunctions.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 15-05-2018
+ * @Last modified time: 16-05-2018
  * @License: MIT
  */
 
@@ -14,8 +14,8 @@ const helperFunctions = {
         Vue.mixin({
             methods: {
 
-                mixKeySrt( arr, k ) {
-
+                mixKeySrt( arr, k, d ) {
+                    let desc = d || false
                     Array.prototype.keySort = function(key, desc){
                         this.sort(function(a, b) {
                             var result = desc ? (a[key] < b[key]) : (a[key] > b[key])
@@ -23,7 +23,7 @@ const helperFunctions = {
                         })
                         return this
                     }
-                    return arr.keySort(k)
+                    return arr.keySort(k, desc)
                 },
 
                 mixNumSrt(numbers) {

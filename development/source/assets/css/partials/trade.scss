@@ -3,7 +3,7 @@
 // @Email:  info@andreeray.se
 // @Filename: trade.scss
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 15-05-2018
+// @Last modified time: 16-05-2018
 // @License: MIT
 
 #trade {
@@ -58,8 +58,30 @@
             padding: 10%;
             background: #1C2022;
             border-radius: 5px;
-            .route {
-                flex: 0 0 10px
+
+            .hide-scroll {
+                overflow: hidden;
+            }
+            .viewport {
+                overflow: auto;
+                position: absolute;
+
+                /* Make sure the inner div is not larger than the container
+                 * so that we have room to scroll.
+                 */
+                max-height: 80%;
+
+                /* Pick an arbitrary margin/padding that should be bigger
+                 * than the max width of all the scroll bars across
+                 * the devices you are targeting.
+                 * padding = -margin
+                 */
+                margin-right: 10px;
+
+                .trade-route {
+                    padding: 20px;
+                }
+
             }
         }
         #rightbar {
