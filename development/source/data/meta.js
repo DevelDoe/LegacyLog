@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: meta.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 14-05-2018
+ * @Last modified time: 18-05-2018
  * @License: MIT
  */
 
@@ -109,6 +109,9 @@ export default {
                 required: true,
                 unique: true
             },
+            type: {
+                type: 'String'
+            },
             description: {
                 type: 'String',
                 required: false,
@@ -166,7 +169,51 @@ export default {
                 type: 'String',
                 required: true
             }
-        }
+        },
+        ship: {
+            name: {
+                type: 'String',
+                required: true,
+                unique: true,
+            },
+            organisation_id: {
+                type: 'String',
+                required: true
+            },
+            avionics: {
+                type: 'Array'
+            },
+            systems: {
+                type: 'Array'
+            },
+            propulsions: {
+                type: 'Array'
+            },
+            thrusters: {
+                type: 'Array'
+            },
+            weapons: {
+                type: 'Array'
+            }
+        },
+        avionic: {
+            name: {
+                type: 'String',
+                required: true,
+            },
+            organisation_id: {
+                type: 'String',
+                required: false
+            },
+            model: {
+                type: 'String',
+                required: true
+            },
+            size: {
+                type: 'String',
+                required: true
+            }
+        },
     },
     location_filters: [
         'Moon',
@@ -197,5 +244,9 @@ export default {
         'tbd',
         'flight lead',
         'controller'
+    ],
+    org_types: [
+        'Manufacturer',
+        'Shop'
     ]
 }

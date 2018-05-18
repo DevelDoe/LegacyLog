@@ -4,12 +4,13 @@
 @Email:  andreeray@live.com
 @Filename: App.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 12-05-2018
+@Last modified time: 17-05-2018
 -->
 <template>
     <div id="app" class="box">
 
         <Sidebar :sidebar="sidebar"  />
+
         <Main />
 
     </div>
@@ -20,7 +21,11 @@ import Sidebar from './Sidebar.vue'
 import Main from './Main.vue'
 export default {
     name: 'app',
-    components: { Sidebar, Main }
+    data() { return { showNotepad: false } },
+    components: { Sidebar, Main },
+    mounted() {
+        document.getElementById('loading').style.display = 'none'
+    }
 }
 </script>
 <style media="screen">

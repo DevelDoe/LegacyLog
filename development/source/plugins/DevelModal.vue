@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: DevelModal.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 15-05-2018
+@Last modified time: 18-05-2018
 @License: MIT
 -->
 
@@ -65,8 +65,14 @@ export default {
         input {
             width: 70%
         }
+        input.small {
+            width: 20%;
+        }
         label {
 
+        }
+        textarea {
+            position: relative !important;
         }
     }
     .d-modal-content header {

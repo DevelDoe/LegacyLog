@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: store.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 15-05-2018
+ * @Last modified time: 17-05-2018
  * @License: MIT
  */
 import Vue from 'vue'
@@ -13,6 +13,7 @@ import createPersistedState from 'vuex-persistedstate'
 Vue.use(Vux)
 const store = new Vux.Store({
     state: {
+        loading: true,
         user: { id: '', token: '' },
         users: '',
         user_search: '',
@@ -31,16 +32,21 @@ const store = new Vux.Store({
         chats: [],
         active_org_link: '',
         show_nav: '',
-        response: ''
+        response: '',
+        ships: [],
+        ships_search: '',
+        avionics: [],
+        avionics_search: ''
     },
     getters: {
+        loading:             state => { return state.loading },
         user:                state => { return state.user },
         token:               state => { return state.user.token },
         users:               state => { return state.users },
         user_search:         state => { return state.user_search},
         meta_data:           state => { return state.meta_data },
         resources:           state => { return state.resources },
-        resources_search:     state => { return state.resources_search },
+        resources_search:    state => { return state.resources_search },
         locations:           state => { return state.locations },
         location_search:     state => { return state.location_search },
         organisations:       state => { return state.organisations },
@@ -52,9 +58,14 @@ const store = new Vux.Store({
         chats:               state => { return state.chats },
         active_org_link:     state => { return state.active_org_link},
         show_nav:            state => { return state.show_nav},
-        response:            state => { return state.response }
+        response:            state => { return state.response },
+        ships:               state => { return state.ships },
+        ships_search:        state => { return state.ships_search},
+        avionics:            state => { return state.avionics },
+        avionics_search:     state => { return state.avionics_search }
     },
     mutations: {
+        setLoading:            ( state , payload ) => { state.loading = payload },
         login:                 ( state , payload ) => { state.user.id = payload[0]; state.user.token = payload[1]; },
         logout:                ( state , payload ) => { state.user = {}; state.user.token = '' },
         setUsers:              ( state , payload ) => { state.users = payload },
@@ -91,9 +102,26 @@ const store = new Vux.Store({
         setActiveOrgLink:      ( state , payload ) => { state.active_org_link = payload },
         setShowNav:            ( state , payload ) => { state.show_nav = payload },
         setUserSearch:         ( state , payload ) => { state.user_search = payload},
-        setResponse:           ( state , payload ) => { state.response = payload}
+        setResponse:           ( state , payload ) => { state.response = payload},
+        setShips:              ( state , payload ) => { state.ships = payload },
+        addShip:               ( state , payload ) => { state.ships.push(payload) },
+        delShip:               ( state , payload ) => {
+            state.ships = state.ships.filter( ship => {
+                return ship._id != payload
+            })
+        },
+        setShipsSearch:        ( state , payload ) => { state.ships_search = payload },
+        setAvionics:           ( state , payload ) => { state.avionics = payload },
+        addAvionic:            ( state , payload ) => { state.avionics.push(payload) },
+        delAvionic:            ( state , payload ) => {
+            state.avionics = state.avionics.filter( avionic => {
+                return avionic._id != payload
+            })
+        },
+        setAvionicsSearch:     ( state , payload ) => { state.avionics_search = payload }
     },
     actions: {
+        setLoading:            ( cxt , payload ) => { cxt.commit( 'setLoading' , payload ) },
         login:                 ( cxt , payload ) => { cxt.commit( 'login' , payload ) },
         logout:                ( cxt , payload ) => { cxt.commit( 'logout') },
         setUsers:              ( cxt , payload ) => { cxt.commit( 'setUsers' , payload ) },
@@ -125,8 +153,15 @@ const store = new Vux.Store({
         setActiveOrgLink:      ( ctx , payload ) => { ctx.commit( 'setActiveOrgLink', payload )},
         setShowNav:            ( ctx , payload ) => { ctx.commit( 'setShowNav', payload )},
         setUserSearch:         ( ctx , payload ) => { ctx.commit( 'setUserSearch', payload )},
-        setResponse:           ( ctx , payload ) => { ctx.commit( 'setResponse', payload )}
-
+        setResponse:           ( ctx , payload ) => { ctx.commit( 'setResponse', payload )},
+        setShips:              ( ctx , payload ) => { ctx.commit( 'setShips' , payload ) },
+        addShip:               ( ctx , payload ) => { ctx.commit( 'addShip' , payload ) },
+        delShip:               ( ctx , payload ) => { ctx.commit( 'delShip', payload) },
+        setShipsSearch:        ( ctx , payload ) => { ctx.commit( 'setShipsSearch', payload) },
+        setAvionics:           ( ctx , payload ) => { ctx.commit( 'setAvionics' , payload ) },
+        addAvionic:            ( ctx , payload ) => { ctx.commit( 'addAvionic' , payload ) },
+        delAvionic:            ( ctx , payload ) => { ctx.commit( 'delAvionic', payload) },
+        setAvionicsSearch:     ( ctx , payload ) => { ctx.commit( 'setAvionicsSearch', payload) },
     },
     plugins: [createPersistedState()]
 })

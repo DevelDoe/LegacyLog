@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Main.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 14-05-2018
+@Last modified time: 16-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -32,16 +32,25 @@
                     <nav>
                         <button @click="$router.push({ name: 'trade' })">TRADE</button>
                         <button @click="$router.push({ name: 'verse' })">VERSE</button>
+                        <button @click="$router.push({ name: 'items' })">ITEMS</button>
                         <button v-if="!token" class="loginBtn" @click="openModal('login')">LOGIN</button>
                         <button v-else class="loginBtn" @click="$store.dispatch('logout')">LOGOUT</button>
                     </nav>
                 </div>
                 <div class="background">
                     <router-view />
-                </div>
-            </div class="box">
 
+                </div>
+            </div>
+
+            <i class="material-icons" @click="showNotepad = !showNotepad; "> edit </i>
+             <transition name="slide-fade">
+            <textarea class="notepad" v-if="showNotepad" v-model="note_data" placeholder="notepad">
+
+            </textarea>
+            </transition>
         </div>
+
     </div>
 </template>
 
@@ -55,7 +64,8 @@ export default {
                 username: '',
                 password: ''
             },
-            sidebar: false
+            sidebar: false,
+            showNotepad: false,
         }
     },
     computed: {
@@ -100,6 +110,14 @@ export default {
             this.$bus.$emit( 'setResponse', 'loged out')
             setTimeout( () => { this.$bus.$emit('setResponse', '') }, 4000)
         }
+    },
+    mounted() {
+        this.note_data = this.$develLS.get('notepad')[0].notes
+    },
+    updated() {
+        this.$develLS.set('notepad', [{
+            notes: this.note_data
+        }])
     }
 }
 </script>

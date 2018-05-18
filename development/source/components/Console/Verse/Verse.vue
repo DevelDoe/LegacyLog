@@ -10,7 +10,6 @@
 
 <template>
     <div id="verse">
-
         <div class="wrapper">
             <section id="leftbar" class="screen">
                 <div class="top">

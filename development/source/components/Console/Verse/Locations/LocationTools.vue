@@ -109,8 +109,8 @@ export default {
                 this.apiUpdate( 'locations', location, location._id, 'addLocation' , modal )
                 this.inputs.resource_id = ''
                 this.inputs.location_id = ''
-                this.inputs.sell = ''
-                this.inputs.buy = ''
+                this.inputs.resource_sell = ''
+                this.inputs.resource_buy = ''
             }
         }
     }

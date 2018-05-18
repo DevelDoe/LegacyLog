@@ -35,6 +35,7 @@
         width: 100%;
         padding: 2% 0% 0 0;
         background: #1c2022;
+        position: relative;
         .box {
             height: 100%;
             .catselector {
@@ -132,4 +133,25 @@
             }
         }
     }
+
+    .material-icons {
+        font-size: 16px;
+        padding: 19px;
+        cursor: pointer;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 9999;
+    }
+    textarea {
+        position: absolute;
+        bottom: 0;
+        height: 50%;
+        width: 100%;
+        border-top: 1px solid rgba(255,255,255,0.04);
+        font-size: 12px;
+        background: rgba(255,255,255,0.04);
+        padding: 20px;
+    }
+
 }

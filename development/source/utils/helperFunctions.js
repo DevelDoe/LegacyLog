@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: helperFunctions.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 16-05-2018
+ * @Last modified time: 17-05-2018
  * @License: MIT
  */
 
@@ -39,8 +39,6 @@ const helperFunctions = {
                     const data            = args.shift() || null
                     const collection      = args.shift() || null
                     const index           = args.length ? args.shift() : false
-
-                    debugger
 
                     let invalid = false
                     let errorMessage = []
@@ -111,7 +109,7 @@ const helperFunctions = {
                     var names = data.map(function(item){
                         return item[key].toLowerCase()
                     })
-
+                    
                     if( index || index === 0) {
                         names.splice(index, 1)
                     }

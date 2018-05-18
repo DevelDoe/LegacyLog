@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: OrganisationTools.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 16-05-2018
+@Last modified time: 17-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -15,9 +15,17 @@
                 <form id="modal-form-org">
                     <input type="text" v-model="inputs.name" placeholder="Name">
                     <textarea v-model="inputs.description" rows="8" cols="80" placeholder="About"></textarea>
-                    <select v-model="inputs.location_id">
-                        <option v-for="( location, i) in locations" :value="location._id">{{ location.name }}</option>
-                    </select>
+                    <div class="">
+                        <select v-model="inputs.type">
+                            <option selected value="">Type</option>
+                            <option v-for="( type, i) in meta_data.org_types" :value="type">{{ type }}</option>
+                        </select>
+                    </div>
+                    <div class="">
+                        <select v-model="inputs.location_id">
+                            <option v-for="( location, i) in locations" :value="location._id">{{ location.name }}</option>
+                        </select>
+                    </div>
                 </form>
             </div>
             <div slot="footer">
@@ -40,6 +48,7 @@ export default {
             inputs: {
                 name: '',
                 description: '',
+                type: '',
                 location_id: ''
             }
         }
@@ -55,6 +64,7 @@ export default {
             const organisation = {
                 name        : this.inputs.name,
                 description : this.inputs.description,
+                type        : this.inputs.type,
                 location_id : this.inputs.location_id
             }
             const valid = this.validate( this.meta_data.validation_rules.organisation, organisation, 'organisations')

@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: OrganisationControls.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 16-05-2018
+@Last modified time: 17-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -17,9 +17,19 @@
                 <form id="modal-form-org-update">
                     <input type="text" v-model="organisation.name" placeholder="Name">
                     <textarea v-model="organisation.description" rows="8" cols="80" placeholder="Description"></textarea>
-                    <select v-model="organisation.location_id">
-                        <option v-for="( location , i ) in locations" :value="location._id">{{ location.name }}</option>
-                    </select>
+                    <div class="">
+                        <select v-model="organisation.type">
+                            <option selected value="">Type</option>
+                            <option v-for="( type, i) in meta_data.org_types" :value="type">{{ type }}</option>
+                        </select>
+                    </div>
+                    <div class="">
+                        <select v-model="organisation.location_id">
+                            <option selected value="">Located</option>
+                            <option v-for="( location , i ) in locations" :value="location._id">{{ location.name }}</option>
+                        </select>
+                    </div>
+
                 </form>
             </div>
             <div slot="footer">

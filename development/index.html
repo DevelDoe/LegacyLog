@@ -6,9 +6,80 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Audiowide|Gothic+A1" rel="stylesheet">
-    <style>zz[v-cloak]{display: none !important}</style>
+    <style>
+    [v-cloak]{display: none !important}
+    @import url(https://fonts.googleapis.com/css?family=Cabin);
+    #loading {
+        position: absolute;
+        top: 0;
+        left:0;
+        width: 100%;
+        height: 100%;
+        z-index: 99999999;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          background-color: #222a30;
+        }
+
+    .loading {
+      margin-top: 50px;
+      font-family: "Cabin", sans-serif;
+      letter-spacing: 12px;
+      text-indent: 12px;
+      color: #ffffff;
+      -webkit-animation: colorText 5s ease-out infinite, nudgeText 5s ease-out infinite;
+              animation: colorText 5s ease-out infinite, nudgeText 5s ease-out infinite;
+    }
+
+    @-webkit-keyframes colorText {
+      21% {
+        color: #4e5559;
+      }
+      30% {
+        color: #ffffff;
+      }
+      51% {
+        color: #4e5559;
+      }
+      60% {
+        color: #ffffff;
+      }
+      81% {
+        color: #4e5559;
+      }
+      90% {
+        color: #ffffff;
+      }
+    }
+    @keyframes colorText {
+      21% {
+        color: #4e5559;
+      }
+      30% {
+        color: #ffffff;
+      }
+      51% {
+        color: #4e5559;
+      }
+      60% {
+        color: #ffffff;
+      }
+      81% {
+        color: #4e5559;
+      }
+      90% {
+        color: #ffffff;
+      }
+    }
+</style>
 </head>
 <body id="background">
+
+    <div id="loading" >
+        <span class="loading">CLC</span>
+    </div>
 
     <div id="app" v-cloak></div>
 

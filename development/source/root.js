@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: root.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 13-05-2018
+ * @Last modified time: 17-05-2018
  * @License: MIT
  */
 
@@ -78,11 +78,27 @@ const root = new Vue({
             this.response = response
         })
         store.dispatch( 'setMetaData' , metaData )
-        this.$http.get( 'resources/' ).then(res => { store.dispatch( 'setResources' , res.data ) })
-        this.$http.get( 'locations/' ).then(res => { store.dispatch( 'setLocations' , res.data ) })
-        this.$http.get( 'characters/' ).then(res => { store.dispatch( 'setCharacters' , res.data ) })
-        this.$http.get( 'missions/' ).then(res => { store.dispatch( 'setMissions' , res.data ) })
-        this.$http.get( 'organisations/' ).then(res => {  store.dispatch( 'setOrganisations' , res.data ) })
+        this.$http.get( 'resources/' ).then(res => {
+            store.dispatch( 'setResources' , res.data )
+        })
+        this.$http.get( 'locations/' ).then(res => {
+            store.dispatch( 'setLocations' , res.data )
+        })
+        this.$http.get( 'characters/' ).then(res => {
+            store.dispatch( 'setCharacters' , res.data )
+        })
+        this.$http.get( 'missions/' ).then(res => {
+            store.dispatch( 'setMissions' , res.data )
+        })
+        this.$http.get( 'organisations/' ).then(res => {
+            store.dispatch( 'setOrganisations' , res.data )
+        })
+        this.$http.get( 'ships/' ).then(res => {
+            store.dispatch( 'setShips' , res.data )
+        })
+        this.$http.get( 'avionics/' ).then(res => {
+            store.dispatch( 'setAvionics' , res.data )
+        })
     },
 
 })

@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: app.css
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 15-05-2018
+// @Last modified time: 18-05-2018
  * @License: MIT
  */
 
@@ -20,6 +20,7 @@
 
 @import './partials/trade';
 @import './partials/verse';
+@import './partials/ships';
 
 
 article, aside, blockquote, body, br, button, canvas, caption, col, colgroup, dd, div, dl, dt, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, hr, li, map, object, ol, output, p, pre, progress, section, table, tbody, textarea, tfoot, th, thead, tr, ul, video {
@@ -41,6 +42,7 @@ body {
     -moz-font-smoothing: antialiased;
     font-smoothing: antialiased;
     font-weight: 300;
+    font-size: 10px;
     color: #ffffffb3 !important;
 }
 *, *:before, *:after {
@@ -93,6 +95,9 @@ option {
     background: #1c2022;
     color: #ffffffb3;
 }
+textarea {
+    colro: #ffffffb3 !important;
+}
 #app {
 
 }
@@ -128,7 +133,7 @@ textarea:focus, input:focus{
 
 .screen {
     background: rgba(8, 34, 45, .0) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAYAAACddGYaAAAAD0lEQVQIW2NkQABjRmQOAAM+AGkQsDBSAAAAAElFTkSuQmCC) repeat;
-    width: 94%;
+    width: 97%;
     height: 100%;
     font-weight: 300;
     color: #d9d9d9;

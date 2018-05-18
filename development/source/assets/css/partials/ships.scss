@@ -1,0 +1,149 @@
+// @Author: Morgan Andree Ray
+// @Date:   09-05-2018
+// @Email:  info@andreeray.se
+// @Filename: trade.scss
+// @Last modified by:   Morgan Andree Ray
+// @Last modified time: 18-05-2018
+// @License: MIT
+#headbar {
+    height: 60px;
+    border-top-left-radius: 10px;
+    .wrapper {
+        h2 {
+            line-height: 60px;
+            padding-left: 10px;
+        }
+        width: 100%;
+        display: grid;
+        grid-template-columns: 30% 50% 20%;
+        button {
+            width: 16%;
+            font-size: 12px;
+        }
+    }
+}
+#ships {
+    height: 100%;
+    .wrapper {
+        display: grid;
+        grid-template-columns: 23% 38% 33%;
+        margin: 0;
+        padding: 30px !important;
+        height:  100%;
+        #leftbar {
+            padding: 10%;
+            background: #1C2022;
+            border-radius: 5px;
+            .top {
+                height: 13% !important;
+                h3 {
+
+                }
+                .nav {
+                    padding: 20px 0;
+                    select {
+                        background: transparent;
+                        width: 100%;
+                        border-radius: 5px;
+                        color: white;
+                        padding: 5px;
+                        outline: none;
+                        option {
+                            color: #333;
+                            font-family: 'Gothic A1', sans-serif;
+                            background-color: transparent;
+                        }
+                    }
+                }
+
+            }
+            .filters {
+                height: 59%;
+                .location-filter {
+                    margin: 5px;
+                    text-align: center;
+                    padding: 10px;
+                    width: 100%;
+                }
+            }
+            .tools {
+                height: 26%;
+                button {
+                    padding: 10px;
+                    width: 100%;
+                    &:hover {
+                        color: white;
+                    }
+                }
+            }
+        }
+        #content {
+            padding: 10%;
+            background: #1C2022;
+            border-radius: 5px;
+            .hide-scroll {
+                overflow: hidden;
+            }
+            .viewport {
+                overflow: auto;
+                position: absolute;
+
+                /* Make sure the inner div is not larger than the container
+                 * so that we have room to scroll.
+                 */
+                max-height: 80%;
+
+                /* Pick an arbitrary margin/padding that should be bigger
+                 * than the max width of all the scroll bars across
+                 * the devices you are targeting.
+                 * padding = -margin
+                 */
+                margin-right: 10px;
+            }
+        }
+        #rightbar {
+            padding: 10%;
+            background: #1C2022;
+            border-radius: 5px;
+            .top {
+                height: 60%;
+                .hide-scroll {
+                    overflow: hidden;
+                }
+                .viewport {
+                    overflow: auto;
+                    position: absolute;
+                    max-height: 70%;
+                    margin-right: 10px;
+                    .moon-details {
+                        .locations {
+                            padding: 5px 0;
+                            .location {
+                                padding: 5px;
+                                div {
+                                    font-size: 12px;
+                                }
+
+                            }
+                        }
+
+                    }
+                    .ship-detail {
+                        .thrusters, .propulsions, .systems, .avionics {
+                            div {
+                            }
+                        }
+                    }
+                }
+
+            }
+            .bottom {
+                height: 40%;
+                button {
+                    width: 100%;
+                    padding:10px;
+                }
+            }
+        }
+    }
+}
