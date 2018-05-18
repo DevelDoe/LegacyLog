@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: routes.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 16-05-2018
+ * @Last modified time: 18-05-2018
  * @License: MIT
  */
 
@@ -13,7 +13,7 @@
 
 import Trade     from '../components/Console/Trade/Trade.vue'
 import Verse     from '../components/Console/Verse/Verse.vue'
-import Items     from '../components/Console/Items/Items.vue'
+import Ships     from '../components/Console/Ships/Ships.vue'
 
 import Console   from '../components/Org/Console/Console.vue'
 import Dashboard from '../components/Org/Dashboard/Dashboard.vue'
@@ -44,9 +44,9 @@ export default [
         component: Verse,
         name: 'verse'
     },{
-        path: '/console/items',
-        component: Items,
-        name: 'items'
+        path: '/console/ships',
+        component: Ships,
+        name: 'ships'
     },{
         path: '/org/console',
         component: Console,

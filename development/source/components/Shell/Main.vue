@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Main.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 16-05-2018
+@Last modified time: 18-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -32,7 +32,7 @@
                     <nav>
                         <button @click="$router.push({ name: 'trade' })">TRADE</button>
                         <button @click="$router.push({ name: 'verse' })">VERSE</button>
-                        <button @click="$router.push({ name: 'items' })">ITEMS</button>
+                        <button @click="$router.push({ name: 'ships' })">SHIPS</button>
                         <button v-if="!token" class="loginBtn" @click="openModal('login')">LOGIN</button>
                         <button v-else class="loginBtn" @click="$store.dispatch('logout')">LOGOUT</button>
                     </nav>
