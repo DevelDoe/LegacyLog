@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Verse.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 17-05-2018
+@Last modified time: 19-05-2018
 @License: MIT
 -->
 
@@ -13,12 +13,13 @@
         <div class="wrapper">
             <section id="leftbar" class="screen">
                 <div class="top">
-                    <h3>Items</h3>
+                    <h3>Ships</h3>
                     <div class="nav">
                         <select v-model="selected">
                             <option disabled  value="">Please select one</option>
+                            <option>Loadouts</option>
                             <option selected>Ships</option>
-                            <option selected>Avionics</option>
+                            <option>Avionics</option>
                         </select>
                     </div>
                 </div>
@@ -26,8 +27,13 @@
 
                 </div>
                 <div class="tools">
+                    <LoadoutTool />
                     <ShipTool />
                     <AvionicTool />
+                    <SystemTool />
+                    <PropulsionTool />
+                    <ThrusterTool />
+                    <WeaponTool />
                 </div>
             </section>
             <section id="content" class="screen">
@@ -68,6 +74,16 @@ import Avionics         from './Avionics/Avionics.vue'
 import AvionicDetail    from './Avionics/AvionicDetail.vue'
 import AvionicControl   from './Avionics/AvionicControl.vue'
 
+import LoadoutTool      from './Loadouts/LoadoutTool.vue'
+
+import SystemTool       from './Systems/SystemTool.vue'
+
+import PropulsionTool   from './Propulsions/PropulsionTool.vue'
+
+import ThrusterTool     from './Thrusters/ThrusterTool.vue'
+
+import WeaponTool       from './Weapons/WeaponTool.vue'
+
 import { mapGetters }   from 'vuex'
 export default {
     name: 'Items',
@@ -96,7 +112,12 @@ export default {
         AvionicTool,
         Avionics,
         AvionicDetail,
-        AvionicControl
+        AvionicControl,
+        LoadoutTool,
+        SystemTool,
+        PropulsionTool,
+        ThrusterTool,
+        WeaponTool
     }
 }
 </script>

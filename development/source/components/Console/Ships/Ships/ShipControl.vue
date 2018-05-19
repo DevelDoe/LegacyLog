@@ -34,7 +34,7 @@
                             <option value="S">S</option>
                             <option value="V">V</option>
                         </select>
-                        <input class="small" v-model="avionic.count" placeholder="Total Mounts">
+                        <input class="small" v-model="avionic.count" placeholder="Total Mount Points">
                         <span @click="removeAvionic(i)">delete</span>
                     </div>
                     <div @click="addSystem">add system</div>
@@ -50,7 +50,7 @@
                             <option value="S">S</option>
                             <option value="V">V</option>
                         </select>
-                        <input class="small" v-model="sytem.count" placeholder="Total Mounts">
+                        <input class="small" v-model="sytem.count" placeholder="Total Mount Points">
                         <span @click="removeSystem(i)">delete</span>
                     </div>
                     <div @click="addPropulsion">add propulsion</div>
@@ -68,7 +68,7 @@
                             <option value="S">S</option>
                             <option value="V">V</option>
                         </select>
-                        <input class="small" v-model="propulsion.count" placeholder="Total Mounts">
+                        <input class="small" v-model="propulsion.count" placeholder="Total Mount Points">
                         <span @click="removePropulsion(i)">delete</span>
                     </div>
                     <div @click="addThruster">add thruser</div>
@@ -80,7 +80,7 @@
                                 <option value="Retro">Retro</option>
                                 <option value="Maneuvering">Maneuvering</option>
                         </select>
-                        <input class="small" v-model="thruster.count" placeholder="Total Mounts">
+                        <input class="small" v-model="thruster.count" placeholder="Total Mount Points">
                         <span @click="removeThruster(i)">delete</span>
                     </div>
                 </form>

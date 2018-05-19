@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: store.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 17-05-2018
+ * @Last modified time: 19-05-2018
  * @License: MIT
  */
 import Vue from 'vue'
@@ -36,7 +36,13 @@ const store = new Vux.Store({
         ships: [],
         ships_search: '',
         avionics: [],
-        avionics_search: ''
+        avionics_search: '',
+        propulsions: [],
+        propulstion_search: '',
+        thrusters: [],
+        thruster_search: '',
+        weapons: [],
+        weapon_search: ''
     },
     getters: {
         loading:             state => { return state.loading },
@@ -62,16 +68,34 @@ const store = new Vux.Store({
         ships:               state => { return state.ships },
         ships_search:        state => { return state.ships_search},
         avionics:            state => { return state.avionics },
-        avionics_search:     state => { return state.avionics_search }
+        avionics_search:     state => { return state.avionics_search },
+        propulsions:         state => { return state.propulsions },
+        propulstion_search:  state => { return state.propulstion_search },
+        thrusters:           state => { return state.thrusters },
+        thruster_search:     state => { return state.thruster_search },
+        weapons:             state => { return state.weapons },
+        weapon_search:       state => { return state.weapon_search },
     },
     mutations: {
+        setActiveOrgLink:      ( state , payload ) => { state.active_org_link = payload },
+        setShowNav:            ( state , payload ) => { state.show_nav = payload },
+        setUserSearch:         ( state , payload ) => { state.user_search = payload},
         setLoading:            ( state , payload ) => { state.loading = payload },
+        setMetaData:           ( state , payload ) => { state.meta_data = payload },
+        setLocationSearch:     ( state , payload ) => { state.location_search = payload },
+        setResponse:           ( state , payload ) => { state.response = payload},
+
         login:                 ( state , payload ) => { state.user.id = payload[0]; state.user.token = payload[1]; },
         logout:                ( state , payload ) => { state.user = {}; state.user.token = '' },
+
+        setChats:              ( state , payload ) => { state.chats = payload },
+        addChat:               ( state , payload ) => { state.chats.push(payload) },
+        SOCKET_updateChat      ( state , message ) { state.socketMessage = message },
+
         setUsers:              ( state , payload ) => { state.users = payload },
         addUser:               ( state , payload ) => { state.users.push(payload) },
         removeUser:            ( state , payload ) => { state.users.splice( payload , 1 ) },
-        SOCKET_updateChat      ( state , message ) { state.socketMessage = message },
+
         setLocations:          ( state , payload ) => { state.locations = payload },
         addLocation:           ( state , payload ) => { state.locations.push(payload) },
         delLocation:           ( state , payload ) => {
@@ -79,30 +103,27 @@ const store = new Vux.Store({
                 return location._id != payload
             })
         },
-        setMetaData:           ( state , payload ) => { state.meta_data = payload },
-        setLocationSearch:     ( state , payload ) => { state.location_search = payload },
+
         setResources:          ( state , payload ) => { state.resources = payload },
         addResource:           ( state , payload ) => { state.resources.push(payload) },
         delResource:           ( state , payload ) => { state.resources.splice( payload , 1 ) },
         setResourceSearch:     ( state , payload ) => { state.resources_search = payload },
+
         setOrganisations:      ( state , payload ) => { state.organisations = payload },
         addOrg:                ( state , payload ) => { state.organisations.push(payload) },
         delOrganisation:       ( state , payload ) => { state.organisations.splice( payload , 1 ) },
         setOrganisationSearch: ( state , payload ) => { state.organisation_search = payload },
+
         setCharacters:         ( state , payload ) => { state.characters = payload },
         addCharacter:          ( state , payload ) => { state.characters.push(payload) },
         delCharacter:          ( state , payload ) => { state.characters.splice( payload , 1 ) },
         setCharactersSearch:   ( state , payload ) => { state.characters_search = payload },
+
         setMissions:           ( state , payload ) => { state.missions = payload },
         addMission:            ( state , payload ) => { state.missions.push(payload) },
         delMission:            ( state , payload ) => { state.missions.splice( payload , 1 ) },
         setMissionsSearch:     ( state , payload ) => { state.missions_search = payload },
-        setChats:              ( state , payload ) => { state.chats = payload },
-        addChat:               ( state , payload ) => { state.chats.push(payload) },
-        setActiveOrgLink:      ( state , payload ) => { state.active_org_link = payload },
-        setShowNav:            ( state , payload ) => { state.show_nav = payload },
-        setUserSearch:         ( state , payload ) => { state.user_search = payload},
-        setResponse:           ( state , payload ) => { state.response = payload},
+
         setShips:              ( state , payload ) => { state.ships = payload },
         addShip:               ( state , payload ) => { state.ships.push(payload) },
         delShip:               ( state , payload ) => {
@@ -111,6 +132,7 @@ const store = new Vux.Store({
             })
         },
         setShipsSearch:        ( state , payload ) => { state.ships_search = payload },
+
         setAvionics:           ( state , payload ) => { state.avionics = payload },
         addAvionic:            ( state , payload ) => { state.avionics.push(payload) },
         delAvionic:            ( state , payload ) => {
@@ -118,7 +140,36 @@ const store = new Vux.Store({
                 return avionic._id != payload
             })
         },
-        setAvionicsSearch:     ( state , payload ) => { state.avionics_search = payload }
+        setAvionicsSearch:     ( state , payload ) => { state.avionics_search = payload },
+
+        setPropulsions:           ( state , payload ) => { state.propulsions = payload },
+        addPropulsion:            ( state , payload ) => { state.propulsions.push(payload) },
+        delPropulsion:            ( state , payload ) => {
+            state.propulsions = state.propulsions.filter( propulsion => {
+                return propulsion._id != payload
+            })
+        },
+        setpropulsionSearch:     ( state , payload ) => { state.propulsion_search = payload },
+
+        setThrusters:           ( state , payload ) => { state.thrusters = payload },
+        addThruster:            ( state , payload ) => { state.thrusters.push(payload) },
+        delThruster:            ( state , payload ) => {
+            state.thrusters = state.thrusters.filter( thruster => {
+                return thruster._id != payload
+            })
+        },
+        setThrusterSearch:     ( state , payload ) => { state.thruster_search = payload },
+
+        setWeapons:           ( state , payload ) => { state.weapons = payload },
+        addWeapon:            ( state , payload ) => { state.weapons.push(payload) },
+        delWeapon:            ( state , payload ) => {
+            state.weapons = state.weapons.filter( weapon => {
+                return weapon._id != payload
+            })
+        },
+        setWeaponSearch:     ( state , payload ) => { state.weapon_search = payload },
+
+
     },
     actions: {
         setLoading:            ( cxt , payload ) => { cxt.commit( 'setLoading' , payload ) },
@@ -158,10 +209,26 @@ const store = new Vux.Store({
         addShip:               ( ctx , payload ) => { ctx.commit( 'addShip' , payload ) },
         delShip:               ( ctx , payload ) => { ctx.commit( 'delShip', payload) },
         setShipsSearch:        ( ctx , payload ) => { ctx.commit( 'setShipsSearch', payload) },
+
         setAvionics:           ( ctx , payload ) => { ctx.commit( 'setAvionics' , payload ) },
         addAvionic:            ( ctx , payload ) => { ctx.commit( 'addAvionic' , payload ) },
         delAvionic:            ( ctx , payload ) => { ctx.commit( 'delAvionic', payload) },
         setAvionicsSearch:     ( ctx , payload ) => { ctx.commit( 'setAvionicsSearch', payload) },
+
+        setPropulsions:           ( ctx , payload ) => { ctx.commit( 'setPropulsions' , payload ) },
+        addPropulsion:            ( ctx , payload ) => { ctx.commit( 'addPropulsion' , payload ) },
+        delPropulsion:            ( ctx , payload ) => { ctx.commit( 'delPropulsion', payload) },
+        setpropulsionSearch:     ( ctx , payload ) => { ctx.commit( 'setpropulsionSearch', payload) },
+
+        setThrusters:           ( ctx , payload ) => { ctx.commit( 'setThrusters' , payload ) },
+        addThruster:            ( ctx , payload ) => { ctx.commit( 'addThruster' , payload ) },
+        delThruster:            ( ctx , payload ) => { ctx.commit( 'delThruster', payload) },
+        setThrusterSearch:     ( ctx , payload ) => { ctx.commit( 'setThrusterSearch', payload) },
+
+        setWeapons:           ( ctx , payload ) => { ctx.commit( 'setWeapons' , payload ) },
+        addWeapon:            ( ctx , payload ) => { ctx.commit( 'addWeapon' , payload ) },
+        delWeapon:            ( ctx , payload ) => { ctx.commit( 'delWeapon', payload) },
+        setWeaponSearch:     ( ctx , payload ) => { ctx.commit( 'setWeaponSearch', payload) },
     },
     plugins: [createPersistedState()]
 })

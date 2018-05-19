@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: AvionicTool.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 17-05-2018
+@Last modified time: 19-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -13,18 +13,11 @@
             <div slot="header"> <h2>Add Avionic</h2> </div>
             <div slot="bread">
                 <form id="modal-form-avionic-tool">
-                    <input placeholder="Name" v-model="avionic.name" />
+                    <input placeholder="Model" v-model="avionic.model" />
                     <div class="">
                         <select v-model="avionic.organisation_id">
                             <option value="" selected>Manufacturer</option>
                             <option v-for="( organisation, i ) in manufacturers" :value="organisation._id" >{{ organisation.name }}</option>
-                        </select>
-                    </div>
-                    <div class="">
-                        <select v-model="avionic.model">
-                            <option value="" selected>Model</option>
-                            <option value="Radar">Radar</option>
-                            <option value="Computer">Computer</option>
                         </select>
                     </div>
                     <div class="">
@@ -43,7 +36,9 @@
                 </div>
             </div>
         </DevelModal>
-        <button @click="openModal('addAvionic')">add avionic</button>
+        <div class="tool-control">
+            <button @click="openModal('addAvionic')">add avionic</button>
+        </div>
     </div>
 </template>
 
@@ -54,7 +49,6 @@ export default {
     data() {
         return {
             avionic: {
-                name: '',
                 organisation_id: '',
                 model: '',
                 size: ''

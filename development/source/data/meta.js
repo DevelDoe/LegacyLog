@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: meta.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 18-05-2018
+ * @Last modified time: 19-05-2018
  * @License: MIT
  */
 
@@ -197,17 +197,27 @@ export default {
             }
         },
         avionic: {
-            name: {
+            model: {
                 type: 'String',
-                required: true,
+                required: true
             },
             organisation_id: {
                 type: 'String',
                 required: false
             },
+            size: {
+                type: 'String',
+                required: true
+            }
+        },
+        propulsion: {
             model: {
                 type: 'String',
                 required: true
+            },
+            organisation_id: {
+                type: 'String',
+                required: false
             },
             size: {
                 type: 'String',

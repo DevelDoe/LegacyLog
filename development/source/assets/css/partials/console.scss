@@ -1,0 +1,83 @@
+// @Author: Morgan Andree Ray
+// @Date:   09-05-2018
+// @Email:  info@andreeray.se
+// @Filename: trade.scss
+// @Last modified by:   Morgan Andree Ray
+// @Last modified time: 19-05-2018
+// @License: MIT
+#headbar {
+    .wrapper {
+        h2 {
+        }
+        button {
+        }
+    }
+}
+#ships {
+    .wrapper {
+        #leftbar {
+            .top {
+                h3 {
+                }
+                .nav {
+                    select {
+                        option {
+                        }
+                    }
+                }
+
+            }
+            .filters {
+                .location-filter {
+                }
+            }
+            .tools {
+                .tool-control {
+                    padding: 5px;
+                    button {
+                        background: rgba(255,255,255,0.04);
+                        border: 1px solid #3a3838;
+                        cursor: pointer;
+                        &:hover {
+                            background: rgba(255,255,255,0.1);
+                        }
+                    }
+                }
+            }
+        }
+        #content {
+            .hide-scroll {
+            }
+            .viewport {
+            }
+        }
+        #rightbar {
+            .top {
+                .hide-scroll {
+                }
+                .viewport {
+                    .moon-details {
+                        .locations {
+                            .location {
+                                div {
+                                }
+                            }
+                        }
+
+                    }
+                    .ship-detail {
+                        .thrusters, .propulsions, .systems, .avionics {
+                            div {
+                            }
+                        }
+                    }
+                }
+
+            }
+            .bottom {
+                button {
+                }
+            }
+        }
+    }
+}

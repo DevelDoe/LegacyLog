@@ -2,5 +2,6 @@
 
 ## todo
 
-* ships
+* loadout
+* news
 * use fetch instead (article)

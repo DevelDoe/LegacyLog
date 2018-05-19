@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: AvionicControl.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 17-05-2018
+@Last modified time: 19-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -16,18 +16,11 @@
             </div>
             <div slot="bread">
                 <form id="modal-form-avionic-update">
-                    <input placeholder="Name" v-model="avionic.name">
+                    <input placeholder="Model" v-model="avionic.model">
                     <div class="">
                         <select v-model="avionic.organisation_id">
                             <option value="" selected>Manufacturer</option>
                             <option v-for="( organisation, i ) in manufacturers" :value="organisation._id" >{{ organisation.name }}</option>
-                        </select>
-                    </div>
-                    <div class="">
-                        <select v-model="avionic.model">
-                            <option value="" selected>Model</option>
-                            <option value="Radar">Radar</option>
-                            <option value="Computer">Computer</option>
                         </select>
                     </div>
                     <div class="">

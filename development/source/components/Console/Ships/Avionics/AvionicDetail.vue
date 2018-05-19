@@ -4,14 +4,15 @@
 @Email:  info@andreeray.se
 @Filename: AvionicDetails.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 17-05-2018
+@Last modified time: 19-05-2018
 @License: MIT
 -->
 <template lang="html">
     <div class="avionic-detail" v-if="avionic._id === avionic_id">
-        <h3>{{ avionic.name }}</h3>
+        <h3>{{ avionic.model }}</h3>
         <p v-if="organisation">Manufacturer: {{ organisation.name }}</p>
         <p v-else>Manufacturer: TBD</p>
+        <p>Size: {{ avionic.size }}</p>
     </div>
 </template>
 
