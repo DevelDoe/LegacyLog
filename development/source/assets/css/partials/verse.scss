@@ -3,7 +3,7 @@
 // @Email:  info@andreeray.se
 // @Filename: trade.scss
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 18-05-2018
+// @Last modified time: 28-05-2018
 // @License: MIT
 #headbar {
     height: 60px;
@@ -42,23 +42,14 @@
                 .nav {
                     padding: 20px 0;
                     select {
-                        background: transparent;
-                        width: 100%;
-                        border-radius: 5px;
-                        color: white;
-                        padding: 5px;
-                        outline: none;
                         option {
-                            color: #333;
-                            font-family: 'Gothic A1', sans-serif;
-                            background-color: transparent;
                         }
                     }
                 }
 
             }
             .filters {
-                height: 59%;
+                height: 49%;
                 .location-filter {
                     margin: 5px;
                     text-align: center;
@@ -67,18 +58,13 @@
                 }
             }
             .tools {
-                height: 26%;
                 button {
-                    padding: 10px;
-                    width: 100%;
                     &:hover {
-                        color: white;
                     }
                 }
             }
         }
         #content {
-            padding: 10%;
             background: #1C2022;
             border-radius: 5px;
             .hide-scroll {

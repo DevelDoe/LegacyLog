@@ -10,6 +10,7 @@
 <template lang="html">
     <div class="avionic-detail" v-if="avionic._id === avionic_id">
         <h3>{{ avionic.model }}</h3>
+        <p>Category: {{ avionic.category }}</p>
         <p v-if="organisation">Manufacturer: {{ organisation.name }}</p>
         <p v-else>Manufacturer: TBD</p>
         <p>Size: {{ avionic.size }}</p>

@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: OrganisationTools.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 16-05-2018
+@Last modified time: 19-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -26,8 +26,10 @@
                 </div>
             </div>
         </DevelModal>
+        <div class="tool-control">
+            <button @click="openModal('addCharacter')">add character</button>
+        </div>
 
-        <button @click="openModal('addCharacter')">add character</button>
     </div>
 </template>
 

@@ -3,7 +3,7 @@
 // @Email:  info@andreeray.se
 // @Filename: trade.scss
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 19-05-2018
+// @Last modified time: 30-05-2018
 // @License: MIT
 #headbar {
     .wrapper {
@@ -13,70 +13,84 @@
         }
     }
 }
-#ships {
-    .wrapper {
-        #leftbar {
-            .top {
-                h3 {
-                }
-                .nav {
-                    select {
-                        option {
-                        }
-                    }
-                }
 
+.wrapper {
+    #leftbar {
+        .top {
+            h3 {
             }
-            .filters {
-                .location-filter {
-                }
-            }
-            .tools {
-                .tool-control {
-                    padding: 5px;
-                    button {
-                        background: rgba(255,255,255,0.04);
-                        border: 1px solid #3a3838;
-                        cursor: pointer;
-                        &:hover {
-                            background: rgba(255,255,255,0.1);
-                        }
+            .nav {
+                select {
+                    background: transparent;
+                    width: 100%;
+                    border: 1px solid rgba(255,255,255,0.1);
+                    padding: 13px;
+                    outline: none;
+                    option {
+                        font-family: 'Gothic A1', sans-serif;
+                        background-color: #1c2022;
+                        color: rgba(255,255,255,0.5);
+                        height: 20px;
+                        outline: none;
                     }
                 }
+            }
+
+        }
+        .filters {
+            .location-filter {
             }
         }
-        #content {
-            .hide-scroll {
-            }
-            .viewport {
-            }
-        }
-        #rightbar {
-            .top {
-                .hide-scroll {
-                }
-                .viewport {
-                    .moon-details {
-                        .locations {
-                            .location {
-                                div {
-                                }
-                            }
-                        }
-
-                    }
-                    .ship-detail {
-                        .thrusters, .propulsions, .systems, .avionics {
-                            div {
-                            }
-                        }
-                    }
-                }
-
-            }
-            .bottom {
+        .tools {
+            .tool-control {
+                padding: 5px;
+                background: rgba(255,255,255,0.04);
                 button {
+                    background: rgba(255,255,255,0.04);
+                    cursor: pointer;
+                    padding: 10px;
+                    width: 100%;
+                    &:hover {
+                        background: rgba(255,255,255,0.1);
+                        color: white;
+                    }
                 }
+            }
+        }
+    }
+    #content {
+        padding: 10%;
+        .hide-scroll {
+        }
+        .viewport {
+        }
+    }
+    #rightbar {
+        p, table th, table td {
+            font-size: 12px;
+        }
+        .top {
+
+
+            .moon-details {
+                .locations {
+                    .location {
+                        div {
+                        }
+                    }
+                }
+
+            }
+            .ship-detail {
+                .thrusters, .propulsions, .systems, .avionics {
+                    div {
+                    }
+                }
+            }
+        }
+
+        .bottom {
+            button {
             }
         }
     }

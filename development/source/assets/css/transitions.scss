@@ -3,7 +3,7 @@
 // @Email:  info@andreeray.se
 // @Filename: transitions.scss
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 16-05-2018
+// @Last modified time: 30-05-2018
 // @License: MIT
 
 
@@ -13,7 +13,7 @@
   transition: all .5s ease;
 }
 .slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 }
 .slide-fade-enter, .slide-fade-leave-to
 /* .slide-fade-leave-active below version 2.1.8 */ {
@@ -30,3 +30,13 @@
 
 .tray-enter-active,
 .tray-leave-active { transition: opacity 300ms }
+
+
+@keyframes opacity {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

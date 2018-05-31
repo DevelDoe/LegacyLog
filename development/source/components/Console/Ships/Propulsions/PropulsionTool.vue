@@ -10,19 +10,29 @@
 <template lang="html">
     <div class="propulstion-tool">
 
-        <DevelModal modal="addAvionic">
-            <div slot="header"> <h2>Add Avionic</h2> </div>
+        <DevelModal modal="addPropulsion">
+            <div slot="header"> <h2>Add Propulsion</h2> </div>
             <div slot="bread">
-                <form id="modal-form-avionic-tool">
-                    <input placeholder="Model" v-model="avionic.model" />
+                <form id="modal-form-propulsion-tool">
+                    <input placeholder="Model" v-model="propulsion.model" />
                     <div class="">
-                        <select v-model="avionic.organisation_id">
+                        <select v-model="propulsion.organisation_id">
                             <option value="" selected>Manufacturer</option>
                             <option v-for="( organisation, i ) in manufacturers" :value="organisation._id" >{{ organisation.name }}</option>
                         </select>
                     </div>
                     <div class="">
-                        <select v-model="avionic.size">
+                        <select v-model="propulsion.category">
+                            <option value="" selected>Category</option>
+                            <option value="Fuel Intake">Fuel Intake</option>
+                            <option value="Fuel Tank">Fuel Tank</option>
+                            <option value="Quantum Drive">Quantum Drive</option>
+                            <option value="Jump Module">Jump Module</option>
+                            <option value="Quantum Fuel Tanks">Quantum Fuel Tanks</option>
+                        </select>
+                    </div>
+                    <div class="">
+                        <select v-model="propulsion.size">
                             <option value="" selected>Size</option>
                             <option value="S">S</option>
                             <option value="V">V</option>
@@ -33,7 +43,7 @@
             </div>
             <div slot="footer">
                 <div class="form-control">
-                    <button form="modal-form-ship-tool" @click="save('addAvionic')">save</button>
+                    <button form="modal-form-propulsion-tool" @click="save('addPropulsion')">save</button>
                 </div>
             </div>
         </DevelModal>
@@ -46,7 +56,41 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 export default {
+    name: 'PropulsionTool',
+    data() {
+        return {
+            propulsion: {
+                organisation_id: '',
+                model: '',
+                size: '',
+                category: ''
+            }
+        }
+    },
+    computed: {
+        ...mapGetters([  'meta_data', 'organisations' ]),
+        manufacturers() {
+            return this.organisations.filter( org => org.type === 'Manufacturer')
+        }
+    },
+    methods: {
+        openModal( modal ) {
+            this.$bus.$emit( 'toggleModal', modal )
+        },
+        save( modal ) {
+            const valid = this.validate( this.meta_data.validation_rules.propulsion, this.propulsion, 'propulsions')
+            if( valid === 'true' ) {
+                this.apiSave( 'propulsions', this.propulsion, 'addPropulsion', modal)
+                this.propulsion.organisation_id = ''
+                this.propulsion.model = ''
+                this.propulsion.size = ''
+                this.propulsion.category = ''
+
+            }
+        }
+    }
 }
 </script>
 

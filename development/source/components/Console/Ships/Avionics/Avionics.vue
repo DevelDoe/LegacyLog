@@ -4,13 +4,13 @@
 @Email:  info@andreeray.se
 @Filename: Avionics.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 19-05-2018
+@Last modified time: 20-05-2018
 @License: MIT
 -->
 <template lang="html">
     <div class="avionics">
         <div v-for="avionic in avionics">
-            <button @click="$bus.$emit( 'setId', [avionic._id] )">{{ avionic.model }} - size: {{ avionic.size }} </button>
+            <button @click="$bus.$emit( 'setId', [avionic._id] )">{{ avionic.model }}</button>
         </div>
     </div>
 </template>
@@ -25,6 +25,3 @@ export default {
     }
 }
 </script>
-
-<style lang="css">
-</style>

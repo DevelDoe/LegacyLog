@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Trade.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 16-05-2018
+@Last modified time: 19-05-2018
 @License: MIT
 -->
 <template>
@@ -25,7 +25,7 @@
                 <div class="main">
                     <ResourcesFilter v-if="selected === 'Resources'" />
                 </div>
-                <div class="bottom">
+                <div class="tools">
                     <ResourceTools />
                 </div>
             </section>

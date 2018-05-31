@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: app.css
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 19-05-2018
+// @Last modified time: 30-05-2018
  * @License: MIT
  */
 
@@ -44,7 +44,7 @@ body {
     font-smoothing: antialiased;
     font-weight: 300;
     font-size: 10px;
-    color: #ffffffb3 !important;
+    color: rgba(255,255,255,0.7) !important;
 }
 *, *:before, *:after {
     box-sizing: border-box;
@@ -58,46 +58,64 @@ body {
     display: flex;
 }
 a {
-    color: #ffffffb3 !important;
+    color: rgba(255,255,255,0.7) !important;
 }
 h1, h2 , h3 {
     font-family: 'Audiowide', cursive;
 }
 h1 {
-    font-size: 1.4em;
+    font-size: 1.45em;
 }
 h2 {
-    font-size: 1.35em;
+    font-size: 1.4em;
 }
 h3 {
-    font-size: 1.3em;
+    font-size: 1.35em;
 }
 h4 {
-    font-size: 1.25em;
+    font-size: 1.3em;
     font-weight: bold;
 }
 h5 {
-    font-size: 1.2em;
+    font-size: 1.25em;
 }
 h6 {
-    font-size: 1.15em;
+    font-size: 1.2em;
+}
+section {
+    margin: 10px auto;
 }
 input {
-    color: #333;
+    color: rgba(255,255,255,0.7) !important;
 }
 label {
-    color: #ffffffb3 !important;
+    color: rgba(255,255,255,0.7) !important;
 }
 select {
     background: #1c2022;
-    color: #ffffffb3;
+    color: rgba(255, 255, 255, 0.4) !important;
+    padding: 10px;
+    border: 1px solid;
+    outline: none;
 }
 option {
     background: #1c2022;
-    color: #ffffffb3;
+    color: rgba(255, 255, 255, 0.4) !important;
+    outline: none;
 }
 textarea {
     colro: #ffffffb3 !important;
+}
+table {
+    width: 100%;
+}
+th {
+    text-align: left;
+    padding: 2px;
+}
+td {
+    text-align: left;
+    padding: 2px;
 }
 #app {
 
@@ -119,7 +137,7 @@ input, textarea {
     border: none;
     width: 100%;
     font-size: 100%;
-    color: white;
+    color: rgba(255,255,255,0.7) !important;
     font-family: 'Gothic A1', sans-serif;
     /* font-size base 10 */
     -webkit-font-smoothing: antialiased;
@@ -133,20 +151,21 @@ textarea:focus, input:focus{
 }
 
 .screen {
-    background: rgba(8, 34, 45, .0) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAYAAACddGYaAAAAD0lEQVQIW2NkQABjRmQOAAM+AGkQsDBSAAAAAElFTkSuQmCC) repeat;
+    background: rgba(36,61,97, .1) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAYAAACddGYaAAAAD0lEQVQIW2NkQABjRmQOAAM+AGkQsDBSAAAAAElFTkSuQmCC) repeat;
     width: 97%;
     height: 100%;
     font-weight: 300;
-    color: #d9d9d9;
+    color: rgba(255,255,255,0.7) !important;
     line-height: 1.6;
     text-rendering: optimizeLegibility;
     letter-spacing: 2px;
     -webkit-font-smoothing: antialiased;
     text-shadow: rgba(169, 169, 169, 0.9) 0px 0px 8px;
+    box-shadow: rgba(0, 7, 17, 0.5) 0 0 3px 0;
 }
 button {
     font-weight: 300;
-    color: #d9d9d9;
+    color: rgba(255,255,255,0.7) !important;
     line-height: 1.6;
     text-rendering: optimizeLegibility;
     letter-spacing: 2px;

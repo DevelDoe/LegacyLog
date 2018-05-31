@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Main.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 18-05-2018
+@Last modified time: 29-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -97,8 +97,8 @@ export default {
                         document.location.reload(true)
                         this.$router.push({ name : 'console' })
                     }
-                    else  this.$bus.$emit( 'setResponse', res.body.message)
-                    setTimeout( () => { this.$bus.$emit('setResponse', '') }, 4000)
+                    else  this.$store.dispatch('setResponse', res.body.err)
+                    setTimeout( () => { this.$store.dispatch('setResponse', '' ) }, 4000 )
                 })
             }
         },
@@ -107,8 +107,8 @@ export default {
             this.$socket.emit('removeUser')
             this.$develLS.set('store', [{}])
             this.$router.push({ name: 'home' })
-            this.$bus.$emit( 'setResponse', 'loged out')
-            setTimeout( () => { this.$bus.$emit('setResponse', '') }, 4000)
+            this.$store.dispatch('setResponse', 'loged out')
+            setTimeout( () => { this.$store.dispatch('setResponse', '' ) }, 4000 )
         }
     },
     mounted() {

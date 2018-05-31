@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: ShipTool.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 19-05-2018
+@Last modified time: 27-05-2018
 @License: MIT
 -->
 <template lang="html">
@@ -12,7 +12,7 @@
         <LoadoutModal modal="addShip">
 
             <div slot="header">
-                <h2>Model Ship</h2>
+                <h2> Model </h2>
                 <input placeholder="Name" v-model="ship.name" />
                 <div class="">
                     <select v-model="ship.organisation_id">
@@ -23,94 +23,148 @@
             </div>
 
             <div slot="left">
-                <div @click="addAvionic">add avionic</div>
-                <div v-for="( avionic, i ) in ship.avionics">
-                    <select v-model="avionic.category">
-                        <option value="" selected>Select Category</option>
-                        <option value="Radar">Radar</option>
-                        <option value="Computer">Computer</option>
-                    </select>
-                    <select v-model="avionic.size">
-                        <option value="" selected>Select Size</option>
-                        <option value="S">S</option>
-                        <option value="V">V</option>
-                    </select>
-                    <span @click="removeAvionic(i)">delete</span>
+
+                <div class="avionics" v-if="ship.avionics.length > 0">
+                    <h4>Avionics</h4>
+                    <div v-for="( avionic, i ) in ship.avionics">
+                        <select v-model="avionic.category">
+                            <option value="" selected>Category</option>
+                            <option value="Radar">Radar</option>
+                            <option value="Computer">Computer</option>
+                        </select>
+                        <select v-model="avionic.size">
+                            <option value="" selected>Size</option>
+                            <option value="S">S</option>
+                            <option value="V">V</option>
+                        </select>
+                        <select v-model="avionic.model_id">
+                            <option value="" selected>avionics</option>
+                            <option v-for="( avionic, i) in avionics" :value="avionic._id">{{ avionic.model }}</option>
+                        </select>
+                        <span @click="removeAvionic(i)">&#xd7;</span>
+                    </div>
                 </div>
-                <div @click="addSystem">add system</div>
-                <div v-for="( sytem, i ) in ship.systems">
-                    <select v-model="sytem.category">
-                        <option value="" selected>Select TyCategorype</option>
-                        <option value="Power Plant">Power Plant</option>
-                        <option value="Cooler">Cooler</option>
-                        <option value="Shild Generator">Shield Generator</option>
-                    </select>
-                    <select v-model="sytem.size">
-                        <option value="" selected>Select Size</option>
-                        <option value="S">S</option>
-                        <option value="V">V</option>
-                    </select>
-                    <span @click="removeSystem(i)">delete</span>
+
+                <div class="systems" v-if="ship.systems.length > 0">
+                    <h4>Systems</h4>
+                        <div v-for="( system, i ) in ship.systems">
+                            <select v-model="system.category">
+                                <option value="" selected>Category</option>
+                                <option value="Power Plant">Power Plant</option>
+                                <option value="Cooler">Cooler</option>
+                                <option value="Shild Generator">Shield Generator</option>
+                            </select>
+                            <select v-model="system.size">
+                                <option value="" selected>Size</option>
+                                <option value="S">S</option>
+                                <option value="V">V</option>
+                            </select>
+                            <select v-model="system.model_id">
+                                <option value="" selected>systems</option>
+                                <option v-for="( system, i) in systems" :value="system._id">{{ system.model }}</option>
+                            </select>
+                            <span @click="removeSystem(i)">&#xd7;</span>
+                        </div>
                 </div>
+
+
             </div>
 
             <div slot="middle">
-                <div @click="addPropulsion">add propulsion</div>
-                <div v-for="( propulsion, i ) in ship.propulsions">
-                    <select v-model="propulsion.category">
-                        <option value="" selected>Select Category</option>
-                        <option value="Fuel Intake">Fuel Intake</option>
-                        <option value="Fuel Tank">Fuel Tank</option>
-                        <option value="Quantum Drive">Quantum Drive</option>
-                        <option value="Jump Module">Jump Module</option>
-                        <option value="Quantum Fuel Tank">Quantum Fuel Tank</option>
-                    </select>
-                    <select v-model="propulsion.size">
-                        <option value="" selected>Select Size</option>
-                        <option value="S">S</option>
-                        <option value="V">V</option>
-                    </select>
-                    <span @click="removePropulsion(i)">delete</span>
+
+                <div class="propulsions" v-if="ship.propulsions.length > 0">
+                    <h4>Propulsions</h4>
+                    <div v-for="( propulsion, i ) in ship.propulsions">
+                        <select v-model="propulsion.category">
+                            <option value="" selected>Category</option>
+                            <option value="Fuel Intake">Fuel Intake</option>
+                            <option value="Fuel Tank">Fuel Tank</option>
+                            <option value="Quantum Drive">Quantum Drive</option>
+                            <option value="Jump Module">Jump Module</option>
+                            <option value="Quantum Fuel Tank">Quantum Fuel Tank</option>
+                        </select>
+                        <select v-model="propulsion.size">
+                            <option value="" selected>Size</option>
+                            <option value="S">S</option>
+                            <option value="V">V</option>
+                        </select>
+                        <select v-model="propulsion.model_id">
+                            <option value="" selected>propulsions</option>
+                            <option v-for="( propulsion, i) in propulsions" :value="propulsion._id">{{ propulsion.model }}</option>
+                        </select>
+                        <span @click="removePropulsion(i)">&#xd7;</span>
+                    </div>
                 </div>
-                <div @click="addThruster">add thruser</div>
-                <div v-for="( thruster, i ) in ship.thrusters">
-                    <span>{{ thruster.category }}</span>
-                        <select v-model="thruster.type">
-                            <option value="" selected>Select type</option>
-                            <option value="Main">Main</option>
-                            <option value="Retro">Retro</option>
-                            <option value="Maneuvering">Maneuvering</option>
-                    </select>
-                    <input class="small" v-model="thruster.count" placeholder="Total Mount Points">
-                    <span @click="removeThruster(i)">delete</span>
+
+                <div class="thrusters" v-if="ship.thrusters.length > 0">
+                    <h4>Thrusters</h4>
+                    <div v-for="( thruster, i ) in ship.thrusters">
+                            <select v-model="thruster.type">
+                                <option value="" selected>type</option>
+                                <option value="Main">Main</option>
+                                <option value="Retro">Retro</option>
+                                <option value="Maneuvering">Maneuvering</option>
+                        </select>
+                        <input class="small" v-model="thruster.count" placeholder="Count">
+                        <select v-model="thruster.model_id">
+                            <option value="" selected>thrusters</option>
+                            <option v-for="( thruster, i) in thrusters" :value="thruster._id">{{ thruster.model }}</option>
+                        </select>
+                        <span @click="removeThruster(i)">&#xd7;</span>
+                    </div>
                 </div>
+
             </div>
 
             <div slot="right">
-                <div @click="addWeapon">add weapon</div>
-                <div v-for="( weapon, i ) in ship.weapons">
-                    <select v-model="weapon.category">
-                        <option value="" selected>Select Category</option>
-                        <option value="Weapon">Weapon</option>
-                        <option value="Turret">Turrets</option>
-                        <option value="Missile">Missile</option>
-                        <option value="Utility Item">Utility Item</option>
-                    </select>
-                    <select v-model="weapon.size">
-                        <option value="" selected>Select Size</option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                    <span @click="removeWeapon(i)">delete</span>
+
+                <div class="weapons" v-if="ship.weapons.length > 0">
+                    <h4>Weapons</h4>
+                    <div v-for="( weapon, i ) in ship.weapons">
+                        <select v-model="weapon.size">
+                            <option value="" selected>Size</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+
+                        <select v-if="weapon.size === '1' " v-model="weapon.model_id">
+                            <option v-for="( weapon, i) in weaponsSizeOne" :value="weapon._id">{{ weapon.model }}</option>
+                        </select>
+
+                        <select v-if="weapon.size === '2' " v-model="weapon.model_id">
+                            <option v-for="( weapon, i) in weaponsSizeTwo" :value="weapon._id">{{ weapon.model }}</option>
+                        </select>
+
+                        <select v-if="weapon.size === '3' " v-model="weapon.model_id">
+                            <option v-for="( weapon, i) in weaponsSizeThree" :value="weapon._id">{{ weapon.model }}</option>
+                        </select>
+
+                        <select v-if="weapon.size === '4' " v-model="weapon.model_id">
+                            <option v-for="( weapon, i) in weaponsSizeFour" :value="weapon._id">{{ weapon.model }}</option>
+                        </select>
+
+                        <select v-if="weapon.size === '5' " v-model="weapon.model_id">
+                            <option v-for="( weapon, i) in weaponsSizeFive" :value="weapon._id">{{ weapon.model }}</option>
+                        </select>
+
+                        <span @click="removeWeapon(i)">&#xd7;</span>
+                    </div>
                 </div>
+
+
             </div>
 
             <div slot="footer">
                 <div class="form-control">
-                    <button form="modal-form-ship-tool" @click="save('addShip')">save</button>
+                    <div @click="addAvionic">add avionic</div>
+                    <div @click="addSystem">add system</div>
+                    <div @click="addPropulsion">add propulsion</div>
+                    <div @click="addThruster">add thruser</div>
+                    <div @click="addWeapon">add weapon</div>
+                    <div form="modal-form-ship-tool" @click="save('addShip')">save</div>
                 </div>
             </div>
         </loadoutModal>
@@ -139,9 +193,24 @@ export default {
         }
     },
     computed: {
-        ...mapGetters([  'meta_data', 'organisations' ]),
+        ...mapGetters([  'meta_data', 'organisations', 'avionics', 'systems', 'propulsions', 'thrusters', 'weapons' ]),
         manufacturers() {
             return this.organisations.filter( org => org.type === 'Manufacturer')
+        },
+        weaponsSizeOne() {
+            return this.weapons.filter( weapon => weapon.size === 1 )
+        },
+        weaponsSizeTwo() {
+            return this.weapons.filter( weapon => weapon.size === 2 )
+        },
+        weaponsSizeThree() {
+            return this.weapons.filter( weapon => weapon.size === 3 )
+        },
+        weaponsSizeFour() {
+            return this.weapons.filter( weapon => weapon.size === 4 )
+        },
+        weaponsSizeFive() {
+            return this.weapons.filter( weapon => weapon.size === 5 )
         }
     },
     methods: {

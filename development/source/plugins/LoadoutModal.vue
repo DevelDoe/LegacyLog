@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: DevelModal.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 18-05-2018
+@Last modified time: 31-05-2018
 @License: MIT
 -->
 
@@ -16,12 +16,24 @@
                     <slot name="header"></slot>
                 </header>
                 <section class="d-modal-body-loadout">
+                    <div class="viewport">
+                        <div class="scroll">
                     <slot name="left" class="left"> </slot>
-                    <slot name="middle" class="middle"> </slot>
-                    <slot name="right" class="right"> </slot>
+                        </div>
+                    </div>
+                    <div class="viewport">
+                        <div class="scroll">
+                            <slot name="middle" class="middle"> </slot>
+                        </div>
+                    </div>
+                    <div class="viewport">
+                        <div class="scroll">
+                        <slot name="right" class="right"> </slot>
+                    </div>
+                </div>
                 </section>
                 <footer>
-                    <slot name="footer"></slot>
+                    <slot name="footer" class="box"></slot>
                 </footer>
             </div>
         </div>
@@ -56,7 +68,6 @@ export default {
         width: 100%;
         z-index: 1;
         overflow: auto;
-        padding: 5%;
         background: rgba(0, 0, 0, 0.7) url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAACCAYAAACddGYaAAAAD0lEQVQIW2NkQABjRmQOAAM+AGkQsDBSAAAAAElFTkSuQmCC) repeat;
     }
     .d-modal-open {
@@ -71,8 +82,11 @@ export default {
         animation-duration: .3s;
         margin: auto;
         padding: 20px;
+        position: relative;
         input {
-            width: 70%
+            width: 100%;
+            background: rgba(255,255,255,0.04);
+            padding: 10px;
         }
         input.small {
             width: 20%;
@@ -82,6 +96,31 @@ export default {
         }
         textarea {
             position: relative !important;
+            font-size: 14px !important;
+        }
+        footer {
+            position: absolute;
+            padding: 27px;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            .form-control {
+                width: 100%;
+                display: flex;
+                background: rgba(255,255,255,0.04);
+                padding: 5px;
+                div {
+                    width: 16.66666666%;
+                    text-align: center;
+                    background: rgba(255,255,255,0.04);
+                    padding: 10px;
+                    cursor: pointer;
+                    &:hover {
+                        background: rgba(255, 255, 255, 0.1);
+                        color: white;
+                    }
+                }
+            }
         }
     }
     .d-modal-content header {
@@ -91,7 +130,21 @@ export default {
     .d-modal-body-loadout {
         padding: 10px 20px;
         display: grid;
-        grid-template-columns: 33.333% 33.333% 33.33%;
+        grid-template-columns: 33.333% 33.333% 33.333%;
+        height: 95%;
+        div {
+            padding: 5px;
+        }
+        .viewport {
+            position: relative;
+            height: 90%;
+            .scroll {
+                position: absolute;
+                overflow: scroll;
+                margin-right: -17px;
+                margin-bottom: -17px;
+            }
+        }
     }
     .d-modal-content footer {
         padding: 10px;

@@ -3,11 +3,13 @@
 // @Email:  info@andreeray.se
 // @Filename: trade.scss
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 19-05-2018
+// @Last modified time: 31-05-2018
 // @License: MIT
+
 #headbar {
     height: 60px;
     border-top-left-radius: 10px;
+
     .wrapper {
         h2 {
             line-height: 60px;
@@ -16,49 +18,51 @@
         width: 100%;
         display: grid;
         grid-template-columns: 30% 50% 20%;
+
         button {
             width: 16%;
             font-size: 12px;
         }
     }
 }
+
 #ships {
     height: 100%;
+
     .wrapper {
         display: grid;
-        grid-template-columns: 23% 38% 33%;
+        grid-template-columns: 20% 30% 50% !important;
         margin: 0;
-        padding: 30px !important;
-        height:  100%;
+        padding: 30px 30px 0 !important;
+        height: 100%;
+
+        width: 100%;
+        background-size: cover;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
         #leftbar {
             padding: 10%;
             background: #1C2022;
             border-radius: 5px;
+
             .top {
                 height: 13% !important;
-                h3 {
 
-                }
+                h3 {}
+
                 .nav {
                     padding: 20px 0;
+
                     select {
-                        background: transparent;
-                        width: 100%;
-                        border-radius: 5px;
-                        color: white;
-                        padding: 5px;
-                        outline: none;
-                        option {
-                            color: #333;
-                            font-family: 'Gothic A1', sans-serif;
-                            background-color: transparent;
-                        }
+                        option {}
                     }
                 }
-
             }
+
             .filters {
-                height: 40%;
+                height: 28%;
+
                 .location-filter {
                     margin: 5px;
                     text-align: center;
@@ -66,85 +70,208 @@
                     width: 100%;
                 }
             }
+
             .tools {
-                height: 47%;
+                height: 59%;
+
                 button {
-                    padding: 10px;
+                    &:hover {}
+                }
+            }
+        }
+
+        #content {
+            position: relative;
+            padding: 10%;
+            background: #1C2022;
+            border-radius: 5px;
+            display: flex;
+            align-items: flex-start;
+            padding-bottom: 16px;
+            height: 100%;
+
+
+            .viewport {
+                position: absolute;
+                top: 0;
+                left: 20px;
+                right: 40px;
+                bottom: 0;
+                overflow: scroll;
+                margin-right: -17px;
+                margin-bottom: -17px;
+
+                .ammos,
+                .weapons {
                     width: 100%;
-                    &:hover {
-                        color: white;
+                    animation-name: opacity-change;
+                    animation-duration: 0.2s;
+                    .erg {
+                        width: 5px;
+                        height: 5px;
+                        background: red;
+                        display: inline-block;
+                        border-radius: 5px;
+                        margin-right: 4px;
+                    }
+
+                    .ther {
+                        width: 5px;
+                        height: 5px;
+                        background: #c100ff;
+                        display: inline-block;
+                        border-radius: 5px;
+                        margin-right: 4px;
+                    }
+
+                    .phys {
+                        width: 5px;
+                        height: 5px;
+                        background: #00ff8b;
+                        display: inline-block;
+                        border-radius: 5px;
+                        margin-right: 4px;
+                    }
+
+                    .dist {
+                        width: 5px;
+                        height: 5px;
+                        background: #00daff;
+                        display: inline-block;
+                        border-radius: 5px;
+                        margin-right: 4px;
+                    }
+
+                    .bio {
+                        width: 5px;
+                        height: 5px;
+                        background: #d7ff00;
+                        display: inline-block;
+                        border-radius: 5px;
+                        margin-right: 4px;
+                    }
+
+                    .btn {
+                        padding: 20px 15px;
+                        margin: 21px;
+                        background: rgba(255,255,255,0.04);
+                        &:hover {
+                            cursor: pointer;
+                            color: white;
+                        }
+
+                        h5 {
+                            font-size: 14px;
+                            text-align: center;
+                        }
+
+                        table {
+                            width: 100%;
+                            margin-top: 10px;
+                        }
+
+                        tr {
+                            border-top: 1px solid rgba(255,255,255,0.04);
+                        }
+
+                        tr:last-child {
+                            border-bottom: 1px solid rgba(255,255,255,0.04);
+                        }
+
+                        th {
+                            font-weight: bold;
+                            text-align: center;
+                        }
+
+                        td,
+                        th {
+                            font-size: 10px;
+
+                            padding: 5px;
+                        }
+
+                        td {
+                            text-align: center;
+                        }
                     }
                 }
             }
         }
-        #content {
-            padding: 10%;
-            background: #1C2022;
-            border-radius: 5px;
-            .hide-scroll {
-                overflow: hidden;
-            }
-            .viewport {
-                overflow: auto;
-                position: absolute;
 
-                /* Make sure the inner div is not larger than the container
-                 * so that we have room to scroll.
-                 */
-                max-height: 80%;
-
-                /* Pick an arbitrary margin/padding that should be bigger
-                 * than the max width of all the scroll bars across
-                 * the devices you are targeting.
-                 * padding = -margin
-                 */
-                margin-right: 10px;
-            }
-        }
         #rightbar {
-            padding: 10%;
-            background: #1C2022;
-            border-radius: 5px;
-            width: 105%;
+            position: relative;
+background: #1C2022;
+border-radius: 5px;
+width: 100%;
+
             .top {
-                height: 60%;
+                height: 95% !important;
+
                 .hide-scroll {
                     overflow: hidden;
                 }
+
                 .viewport {
                     overflow: auto;
                     position: absolute;
-                    max-height: 70%;
-                    margin-right: 10px;
+                    top: 5px;
+                    left: 30px;
+                    right: 30px;
+                    bottom: 100px;
+
+                    .weapon-detail {
+
+                        animation-name: opacity-change;
+                        animation-duration: 0.5s;
+                    }
                     .moon-details {
                         .locations {
                             padding: 5px 0;
+
                             .location {
                                 padding: 5px;
+
                                 div {
                                     font-size: 12px;
                                 }
-
                             }
                         }
-
                     }
+
                     .ship-detail {
-                        .thrusters, .propulsions, .systems, .avionics {
-                            div {
-                            }
+                        .avionics,
+                        .propulsions,
+                        .systems,
+                        .thrusters {
+                            div {}
                         }
                     }
                 }
-
             }
+
             .bottom {
-                height: 40%;
-                button {
-                    width: 100%;
-                    padding:10px;
+                position: absolute;
+                bottom: 0px;
+                left: 20px;
+                ul {
+                    li {
+                        float: left;
+                        padding: 10px 20px;
+                        background: rgba(255,255,255,0.01);
+                        margin: 5px;
+                        cursor: pointer;
+                        &:hover {
+                            background: rgba(255,255,255,0.1);
+                            color: white;
+                        }
+                    }
                 }
             }
         }
     }
+}
+
+@keyframes opacity-change {
+    from { opacity: 0 }
+    to { opacity: 1 }
 }

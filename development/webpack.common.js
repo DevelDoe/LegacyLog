@@ -3,8 +3,8 @@
  * @Date:   29-04-2018
  * @Email:  info@andreeray.se
  * @Filename: webpack.common.js
- * @Last modified by:   DevelDoe
- * @Last modified time: 11-05-2018
+ * @Last modified by:   Morgan Andree Ray
+ * @Last modified time: 21-05-2018
  * @License: MIT
  */
 
@@ -21,7 +21,7 @@ module.exports = {
     plugins: [
         new WriteFilePlugin(),
         new HtmlWebpackPlugin({
-            title: 'legacyfleet',
+            title: 'citizens legacy console',
             template: 'index.html'
         })
     ],

@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: store.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 19-05-2018
+ * @Last modified time: 28-05-2018
  * @License: MIT
  */
 import Vue from 'vue'
@@ -42,7 +42,13 @@ const store = new Vux.Store({
         thrusters: [],
         thruster_search: '',
         weapons: [],
-        weapon_search: ''
+        weapon_search: '',
+        ammos: [],
+        ammo_search: '',
+        systems: [],
+        system_search: '',
+        missile_racks: [],
+        missile_rack_search: ''
     },
     getters: {
         loading:             state => { return state.loading },
@@ -75,6 +81,12 @@ const store = new Vux.Store({
         thruster_search:     state => { return state.thruster_search },
         weapons:             state => { return state.weapons },
         weapon_search:       state => { return state.weapon_search },
+        ammos:               state => { return state.ammos },
+        ammo_search:         state => { return state.ammo_search },
+        systems:             state => { return state.systems },
+        system_search:       state => { return state.system_search },
+        missile_racks:       state => { return state.missile_racks },
+        missile_rack_search: state => { return state.missile_rack_search },
     },
     mutations: {
         setActiveOrgLink:      ( state , payload ) => { state.active_org_link = payload },
@@ -167,8 +179,34 @@ const store = new Vux.Store({
                 return weapon._id != payload
             })
         },
-        setWeaponSearch:     ( state , payload ) => { state.weapon_search = payload },
+        setWeaponSearch:      ( state , payload ) => { state.weapon_search = payload },
 
+        setAmmos:             ( state , payload ) => { state.ammos = payload },
+        addAmmo:              ( state , payload ) => { state.ammos.push(payload) },
+        delAmmo:            ( state , payload ) => {
+            state.ammos = state.ammos.filter( ammo => {
+                return ammo._id != payload
+            })
+        },
+        setAmmoSearch:        ( state , payload ) => { state.ammo_search = payload },
+
+        setSystems:           ( state , payload ) => { state.systems = payload },
+        addSystem:            ( state , payload ) => { state.systems.push(payload) },
+        delSystem:            ( state , payload ) => {
+            state.systems = state.systems.filter( system => {
+                return system._id != payload
+            })
+        },
+        setSystemSearch:     ( state , payload ) => { state.system_search = payload },
+
+        setMissileRacks:           ( state , payload ) => { state.missile_racks = payload },
+        addMissileRack:            ( state , payload ) => { state.missile_racks.push(payload) },
+        delMissileRack:            ( state , payload ) => {
+            state.missile_racks = state.missile_racks.filter( missile_rack => {
+                return missile_rack._id != payload
+            })
+        },
+        setMissileRackSearch:     ( state , payload ) => { state.missile_rack_search = payload },
 
     },
     actions: {
@@ -229,6 +267,21 @@ const store = new Vux.Store({
         addWeapon:            ( ctx , payload ) => { ctx.commit( 'addWeapon' , payload ) },
         delWeapon:            ( ctx , payload ) => { ctx.commit( 'delWeapon', payload) },
         setWeaponSearch:     ( ctx , payload ) => { ctx.commit( 'setWeaponSearch', payload) },
+
+        setAmmos:           ( ctx , payload ) => { ctx.commit( 'setAmmos' , payload ) },
+        addAmmo:            ( ctx , payload ) => { ctx.commit( 'addAmmo' , payload ) },
+        delAmmo:            ( ctx , payload ) => { ctx.commit( 'delAmmo', payload) },
+        setAmmoSearch:     ( ctx , payload ) => { ctx.commit( 'setAmmoSearch', payload) },
+
+        setSystems:           ( ctx , payload ) => { ctx.commit( 'setSystems' , payload ) },
+        addSystem:            ( ctx , payload ) => { ctx.commit( 'addSystem' , payload ) },
+        delSystem:            ( ctx , payload ) => { ctx.commit( 'delSystem', payload) },
+        setSystemSearch:     ( ctx , payload ) => { ctx.commit( 'setSystemSearch', payload) },
+
+        setMissileRacks:           ( ctx , payload ) => { ctx.commit( 'setMissileRacks' , payload ) },
+        addMissileRack:            ( ctx , payload ) => { ctx.commit( 'addMissileRack' , payload ) },
+        delMissileRack:            ( ctx , payload ) => { ctx.commit( 'delMissileRack', payload) },
+        setMissileRackSearch:     ( ctx , payload ) => { ctx.commit( 'setMissileRackSearch', payload) },
     },
     plugins: [createPersistedState()]
 })

@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Verse.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 19-05-2018
+@Last modified time: 29-05-2018
 @License: MIT
 -->
 
@@ -18,8 +18,14 @@
                         <select v-model="selected">
                             <option disabled  value="">Please select one</option>
                             <option>Loadouts</option>
-                            <option selected>Ships</option>
+                            <option selected>Ships Models</option>
                             <option>Avionics</option>
+                            <option>Systems</option>
+                            <option>Propulsions</option>
+                            <option>Thrusters</option>
+                            <option>Weapons</option>
+                            <option>Ammunition</option>
+                            <option>Missile Racks</option>
                         </select>
                     </div>
                 </div>
@@ -34,28 +40,44 @@
                     <PropulsionTool />
                     <ThrusterTool />
                     <WeaponTool />
+                    <AmmoTool />
+                    <MissileRackTool />
                 </div>
             </section>
             <section id="content" class="screen">
-                <div class="hide-scroll">
                     <div class="viewport">
-                        <Ships v-if="selected === 'Ships'" />
+                        <Ships v-if="selected === 'Ships Models'" />
                         <Avionics v-if="selected === 'Avionics'" />
+                        <Systems v-if="selected === 'Systems'" />
+                        <Propulsions v-if="selected === 'Propulsions'" />
+                        <Thrusters v-if="selected === 'Thrusters'" />
+                        <Weapons v-if="selected === 'Weapons'" v-for="(weapon, i) in weapons" :key="'wea'+i" :weapon="weapon" />
+                        <Ammos v-if="selected === 'Ammunition'" />
+                        <MissileRacks v-if="selected === 'Missile Racks'" />
                     </div>
-                </div>
             </section>
             <section id="rightbar" class="screen">
                 <div class="top">
-                    <div class="hide-scroll">
-                        <div class="viewport">
-                            <ShipDetail v-for="( ship, i ) in ships" :key="'shipdet'+i" :ship="ship" :ship_id="id" />
-                            <AvionicDetail v-for="( avionic, i ) in avionics" :key="'avidet'+i" :avionic="avionic" :avionic_id="id" />
-                        </div>
+                    <div class="viewport">
+                            <ShipDetail v-if="selected === 'Ships Models'" v-for="( ship, i ) in ships" :key="'shipdet'+i" :ship="ship" :ship_id="id" />
+                            <AvionicDetail  v-if="selected === 'Avionics'" v-for="( avionic, i ) in avionics" :key="'avidet'+i" :avionic="avionic" :avionic_id="id" />
+                            <SystemDetail v-if="selected === 'Systems'" v-for="( system, i ) in systems" :key="'sysdet'+i" :system="system" :system_id="id" />
+                            <PropulsionDetail v-if="selected === 'Propulsions'" v-for="( propulsion, i ) in propulsions" :key="'prodet'+i" :propulsion="propulsion" :propulsion_id="id" />
+                            <ThrusterDetail v-if="selected === 'Thrusters'" v-for="( thruster, i ) in thrusters" :key="'thrdet'+i" :thruster="thruster" :thruster_id="id" />
+                            <WeaponDetail v-if="selected === 'Weapons'" v-for="( weapon, i ) in weapons" :key="'weadet'+i" :weapon="weapon" :weapon_id="id" />
+                            <AmmoDetail v-if="selected === 'Ammunition'" v-for="( ammo, i ) in ammos" :key="'ammdet'+i" :ammo="ammo" :ammo_id="id" />
+                            <MissileRackDetail v-if="selected === 'Missile Racks'" v-for="( missile_rack, i ) in missile_racks" :key="'misdet'+i" :missile_rack="missile_rack" :missile_rack_id="id" />
                     </div>
-                        </div>
+                </div>
                 <div class="bottom">
-                    <ShipControl v-if="selected === 'Ships'" v-for="( ship , i ) in ships" :key="'shicon'+i" :ship="ship" :ship_id="id" :index="i" />
+                    <ShipControl v-if="selected === 'Ships Models'" v-for="( ship , i ) in ships" :key="'shicon'+i" :ship="ship" :ship_id="id" :index="i" />
                     <AvionicControl v-if="selected === 'Avionics'" v-for="( avionic , i ) in avionics" :key="'avicon'+i" :avionic="avionic" :avionic_id="id" :index="i" />
+                    <SystemControl v-if="selected === 'Systems'" v-for="( system , i ) in systems" :key="'syscon'+i" :system="system" :system_id="id" :index="i" />
+                    <PropulsionControl v-if="selected === 'Propulsions'" v-for="( propulsion , i ) in propulsions" :key="'procon'+i" :propulsion="propulsion" :propulsion_id="id" :index="i" />
+                    <ThrusterControl v-if="selected === 'Thrusters'" v-for="( thruster , i ) in thrusters" :key="'thucon'+i" :thruster="thruster" :thruster_id="id" :index="i" />
+                    <WeaponControl v-if="selected === 'Weapons'" v-for="( weapon , i ) in weapons" :key="'weacon'+i" :weapon="weapon" :weapon_id="id" :index="i" />
+                    <AmmoControl v-if="selected === 'Ammunition'" v-for="( ammo , i ) in ammos" :key="'ammcon'+i" :ammo="ammo" :ammo_id="id" :index="i" />
+                    <MissileRackControl v-if="selected === 'Missile Racks'" v-for="( missile_rack , i ) in missile_racks" :key="'weadet'+i" :missile_rack="missile_rack" :missile_rack_id="id" :index="i" />
                 </div>
             </section>
         </div>
@@ -64,25 +86,47 @@
 </template>
 
 <script>
-import ShipTool         from './Ships/ShipTool.vue'
-import Ships            from './Ships/Ships.vue'
-import ShipDetail       from './Ships/ShipDetail.vue'
-import ShipControl      from './Ships/ShipControl.vue'
+import ShipTool           from './Ships/ShipTool.vue'
+import Ships              from './Ships/Ships.vue'
+import ShipDetail         from './Ships/ShipDetail.vue'
+import ShipControl        from './Ships/ShipControl.vue'
 
-import AvionicTool      from './Avionics/AvionicTool.vue'
-import Avionics         from './Avionics/Avionics.vue'
-import AvionicDetail    from './Avionics/AvionicDetail.vue'
-import AvionicControl   from './Avionics/AvionicControl.vue'
+import AvionicTool        from './Avionics/AvionicTool.vue'
+import Avionics           from './Avionics/Avionics.vue'
+import AvionicDetail      from './Avionics/AvionicDetail.vue'
+import AvionicControl     from './Avionics/AvionicControl.vue'
 
-import LoadoutTool      from './Loadouts/LoadoutTool.vue'
+import LoadoutTool        from './Loadouts/LoadoutTool.vue'
 
-import SystemTool       from './Systems/SystemTool.vue'
+import SystemTool         from './Systems/SystemTool.vue'
+import Systems            from './Systems/Systems.vue'
+import SystemDetail       from './Systems/SystemDetail.vue'
+import SystemControl      from './Systems/SystemControl.vue'
 
-import PropulsionTool   from './Propulsions/PropulsionTool.vue'
+import PropulsionTool     from './Propulsions/PropulsionTool.vue'
+import Propulsions        from './Propulsions/Propulsions.vue'
+import PropulsionDetail   from './Propulsions/PropulsionDetail.vue'
+import PropulsionControl  from './Propulsions/PropulsionControl.vue'
 
-import ThrusterTool     from './Thrusters/ThrusterTool.vue'
+import ThrusterTool       from './Thrusters/ThrusterTool.vue'
+import Thrusters          from './Thrusters/Thrusters.vue'
+import ThrusterDetail     from './Thrusters/ThrusterDetail.vue'
+import ThrusterControl    from './Thrusters/ThrusterControl.vue'
 
-import WeaponTool       from './Weapons/WeaponTool.vue'
+import WeaponTool         from './Weapons/WeaponTool.vue'
+import Weapons            from './Weapons/Weapons.vue'
+import WeaponDetail       from './Weapons/WeaponDetail.vue'
+import WeaponControl      from './Weapons/WeaponControl.vue'
+
+import MissileRackTool    from './MissileRacks/MissileRackTool.vue'
+import MissileRacks       from './MissileRacks/MissileRacks.vue'
+import MissileRackDetail  from './MissileRacks/MissileRackDetail.vue'
+import MissileRackControl from './MissileRacks/MissileRackControl.vue'
+
+import AmmoTool           from './Ammo/AmmoTool.vue'
+import Ammos              from './Ammo/Ammos.vue'
+import AmmoDetail         from './Ammo/AmmoDetail.vue'
+import AmmoControl        from './Ammo/AmmoControl.vue'
 
 import { mapGetters }   from 'vuex'
 export default {
@@ -103,7 +147,7 @@ export default {
             if( type ) this.location_type = type
         })
     },
-    computed: { ...mapGetters([ 'meta_data', 'ships', 'avionics' ]) },
+    computed: { ...mapGetters([ 'meta_data', 'ships', 'avionics', 'systems', 'propulsions', 'thrusters', 'weapons', 'missile_racks', 'ammos' ]) },
     components: {
         ShipTool,
         Ships,
@@ -117,7 +161,27 @@ export default {
         SystemTool,
         PropulsionTool,
         ThrusterTool,
-        WeaponTool
+        WeaponTool,
+        Weapons,
+        Thrusters,
+        Propulsions,
+        Systems,
+        SystemDetail,
+        PropulsionDetail,
+        ThrusterDetail,
+        WeaponDetail,
+        SystemControl,
+        PropulsionControl,
+        ThrusterControl,
+        WeaponControl,
+        MissileRackTool,
+        MissileRacks,
+        MissileRackDetail,
+        MissileRackControl,
+        AmmoTool,
+        Ammos,
+        AmmoDetail,
+        AmmoControl
     }
 }
 </script>

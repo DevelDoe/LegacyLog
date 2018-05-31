@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: root.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 17-05-2018
+ * @Last modified time: 30-05-2018
  * @License: MIT
  */
 
@@ -12,6 +12,8 @@ import Vue from 'vue'
 import App from './components/Shell/App.vue'
 
 import './assets/css/app.scss'
+
+import '../node_modules/chart.js/dist/Chart.min.js'
 
 import develLS from  'devel-localstorage'
 Object.defineProperty(Vue.prototype, '$develLS', { get() { return this.$root.develLS } } )
@@ -99,6 +101,23 @@ const root = new Vue({
         this.$http.get( 'avionics/' ).then(res => {
             store.dispatch( 'setAvionics' , res.data )
         })
+        this.$http.get( 'propulsions/' ).then(res => {
+            store.dispatch( 'setPropulsions' , res.data )
+        })
+        this.$http.get( 'systems/' ).then(res => {
+            store.dispatch( 'setSystems' , res.data )
+        })
+        this.$http.get( 'thrusters/' ).then(res => {
+            store.dispatch( 'setThrusters' , res.data )
+        })
+        this.$http.get( 'weapons/' ).then(res => {
+            store.dispatch( 'setWeapons' , res.data )
+        })
+        this.$http.get( 'missile_racks/' ).then(res => {
+            store.dispatch( 'setMissileRacks' , res.data )
+        })
+        this.$http.get( 'ammos/' ).then(res => {
+            store.dispatch( 'setAmmos' , res.data )
+        })
     },
-
 })

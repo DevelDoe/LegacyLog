@@ -12,7 +12,7 @@
 
         <DevelModal modal="updateAvionic">
             <div slot="header">
-                <h2>Update {{ avionic.name }}</h2>
+                <h2>Update {{ avionic.model }}</h2>
             </div>
             <div slot="bread">
                 <form id="modal-form-avionic-update">
@@ -21,6 +21,13 @@
                         <select v-model="avionic.organisation_id">
                             <option value="" selected>Manufacturer</option>
                             <option v-for="( organisation, i ) in manufacturers" :value="organisation._id" >{{ organisation.name }}</option>
+                        </select>
+                    </div>
+                    <div class="">
+                        <select v-model="avionic.category">
+                            <option value="" selected>Category</option>
+                            <option value="Radar">Radar</option>
+                            <option value="Computer">Computer</option>
                         </select>
                     </div>
                     <div class="">
@@ -64,8 +71,8 @@ export default {
             this.$bus.$emit('toggleModal', modal )
         },
         del() {
-            this.apiDelete( 'avionic', this.avionic_id )
-            this.$store.dispatch('delAvionic', this.index )
+            this.apiDelete( 'avionics', this.avionic_id )
+            this.$store.dispatch('delAvionic', this.avionic_id )
         },
         update( modal ) {
             const valid = this.validate( this.meta_data.validation_rules.avionic, this.avionic, 'avionics', this.index)

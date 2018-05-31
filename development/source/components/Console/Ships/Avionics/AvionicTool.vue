@@ -9,6 +9,7 @@
 -->
 <template lang="html">
     <div class="avionic-tool">
+
         <DevelModal modal="addAvionic">
             <div slot="header"> <h2>Add Avionic</h2> </div>
             <div slot="bread">
@@ -18,6 +19,13 @@
                         <select v-model="avionic.organisation_id">
                             <option value="" selected>Manufacturer</option>
                             <option v-for="( organisation, i ) in manufacturers" :value="organisation._id" >{{ organisation.name }}</option>
+                        </select>
+                    </div>
+                    <div class="">
+                        <select v-model="avionic.category">
+                            <option value="" selected>Category</option>
+                            <option value="Radar">Radar</option>
+                            <option value="Computer">Computer</option>
                         </select>
                     </div>
                     <div class="">
@@ -36,6 +44,7 @@
                 </div>
             </div>
         </DevelModal>
+
         <div class="tool-control">
             <button @click="openModal('addAvionic')">add avionic</button>
         </div>
@@ -51,7 +60,8 @@ export default {
             avionic: {
                 organisation_id: '',
                 model: '',
-                size: ''
+                size: '',
+                category: ''
             }
         }
     },
@@ -69,11 +79,10 @@ export default {
             const valid = this.validate( this.meta_data.validation_rules.avionic, this.avionic, 'avionics')
             if( valid === 'true' ) {
                 this.apiSave( 'avionics', this.avionic, 'addAvionic', modal)
-                this.avionic.name = ''
                 this.avionic.organisation_id = ''
                 this.avionic.model = ''
                 this.avionic.size = ''
-
+                this.avionic.type = ''
             }
         }
     }
