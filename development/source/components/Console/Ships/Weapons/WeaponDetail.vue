@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: AvionicDetails.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 31-05-2018
+@Last modified time: 01-06-2018
 @License: MIT
 -->
 <template lang="html">
@@ -116,6 +116,35 @@
             </table>
         </section>
 
+        <section>
+            <table>
+                <tr>
+                    <th title="Power online">PO pwr/s</th>
+                    <th title="Heat Shot">heat/shot</th>
+                    <th title="heat rate online">HRO(heat/sec)</th>
+                    <th title="Temp Max">Temp Max</th>
+                    <th title="cooling coefficient">CC</th>
+                    <th title="heating coefficient">HC</th>
+                    <th title="Temp Ratio Overheat">TRO</th>
+                    <th title="Temp Ratio Recovery">TRR</th>
+                    <th title="heat recovery">HR(s)</th>
+                    <th title="Temp Ratio IR">TRI</th>
+                </tr>
+                <tr>
+                    <td title="Power online">{{ weapon.power_online }}</td>
+                    <td title="Heat Shot">{{ weapon.heat_shot }}</td>
+                    <td title="heat rate online">{{ weapon.heat_rate_online }}</td>
+                    <th title="Temp Max">{{ weapon.temp_max }}</th>
+                    <td title="cooling coefficient">{{ weapon.cooling_coefficient }}</td>
+                    <td title="heating coefficient">{{ weapon.heating_coefficient }}</td>
+                    <td title="Temp Ratio Overheat">{{ weapon.temp_ratio_overheat }}</td>
+                    <td title="Temp Ratio Recovery">{{ weapon.temp_ratio_recovery }}</td>
+                    <td title="heat recovery">{{ weapon.heat_recovery }}</td>
+                    <td title="Temp Ratio IR">{{ weapon.temp_ratio_ir }}</td>
+                </tr>
+            </table>
+        </section>
+
     </div>
 </template>
 
@@ -138,24 +167,27 @@ export default {
 
     },
     updated() {
-        var chart = new Chart(this.$refs.icanvas, {
-            // The type of chart we want to create
-            type: 'line',
+        if(this.weapon._id === this.weapon_id) {
+            var chart = new Chart(this.$refs.icanvas, {
+                // The type of chart we want to create
+                type: 'line',
 
-            // The data for our dataset
-            data: {
-                labels: ["3s", "10s", "30s", "60s", "90s"],
-                datasets: [{
-                    label: "DPS over time",
-                    backgroundColor: 'rgba(255, 99, 132,1)',
-                    borderColor: 'rgb(255, 99, 132)',
-                    data: [this.weapon.sim_dps_3s, this.weapon.sim_dps_10s, this.weapon.sim_dps_30s, this.weapon.sim_dps_60s, this.weapon.sim_dps_90s],
-                }]
-            },
+                // The data for our dataset
+                data: {
+                    labels: ["3s", "10s", "30s", "60s", "90s"],
+                    datasets: [{
+                        label: "DPS over time",
+                        backgroundColor: 'rgba(255, 99, 132,1)',
+                        borderColor: 'rgb(255, 99, 132)',
+                        data: [this.weapon.sim_dps_3s, this.weapon.sim_dps_10s, this.weapon.sim_dps_30s, this.weapon.sim_dps_60s, this.weapon.sim_dps_90s],
+                    }]
+                },
 
-            // Configuration options go here
-            options: {}
-        });
+                // Configuration options go here
+                options: {}
+            });
+        }
+
     }
 }
 </script>

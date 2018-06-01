@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: app.css
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 30-05-2018
+// @Last modified time: 01-06-2018
  * @License: MIT
  */
 
@@ -15,8 +15,10 @@
 @import './partials/shell/sidebar';
 @import './partials/shell/main';
 
+@import './partials/admin/console';
 @import './partials/admin/org';
 @import './partials/admin/dashboard';
+
 
 @import './partials/console';
 @import './partials/trade';

@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Avionics.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 30-05-2018
+@Last modified time: 01-06-2018
 @License: MIT
 -->
 <template lang="html">
@@ -19,6 +19,7 @@
                         <th title="Rate Of Fire">ROF</th>
                         <th title="Damage Per Second">DPS</th>
                         <th title="Velocity">VEL</th>
+                        <th title="Distance">DST</th>
                     </tr>
                     <tr>
                         <td title="Type Of Damage">
@@ -34,6 +35,7 @@
                         <td title="Rate Of Fire">{{ (weapon.shot_per_minute / 60).toFixed(2) }}</td>
                         <td title="Damage Per Second">{{ (ammos.find(ammo => ammo._id === weapon.ammo_id).damage_total * (weapon.shot_per_minute / 60) ).toFixed(2) }}</td>
                         <td title="Velocity">{{ ammos.find(ammo => ammo._id === weapon.ammo_id).speed }}</td>
+                        <td title="Distance">{{ ammos.find(ammo => ammo._id === weapon.ammo_id).range}}</td>
                     </tr>
                 </table>
             </transition>

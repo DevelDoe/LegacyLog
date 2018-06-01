@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Verse.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 29-05-2018
+@Last modified time: 01-06-2018
 @License: MIT
 -->
 
