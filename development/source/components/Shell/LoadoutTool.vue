@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: LoadoutTool.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 20-05-2018
+@Last modified time: 02-06-2018
 @License: MIT
 -->
 <template lang="html">
@@ -80,8 +80,8 @@
             </div>
 
         </LoadoutModal>
-        <div class="tool-control">
-            <button @click="openModal('createLoadout')">create loadout</button>
+        <div class="tool-control"  @click="openModal('createLoadout')">
+            <button>NEW LOADOUT</button>
         </div>
 
     </div>

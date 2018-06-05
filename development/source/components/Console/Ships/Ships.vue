@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Verse.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 01-06-2018
+@Last modified time: 02-06-2018
 @License: MIT
 -->
 
@@ -30,18 +30,10 @@
                     </div>
                 </div>
                 <div class="filters">
-
+                    <WeaponFilter v-if="selected === 'Weapons'" />
                 </div>
                 <div class="tools">
-                    <LoadoutTool />
-                    <ShipTool />
-                    <AvionicTool />
-                    <SystemTool />
-                    <PropulsionTool />
-                    <ThrusterTool />
-                    <WeaponTool />
-                    <AmmoTool />
-                    <MissileRackTool />
+
                 </div>
             </section>
             <section id="content" class="screen">
@@ -51,7 +43,7 @@
                         <Systems v-if="selected === 'Systems'" />
                         <Propulsions v-if="selected === 'Propulsions'" />
                         <Thrusters v-if="selected === 'Thrusters'" />
-                        <Weapons v-if="selected === 'Weapons'" v-for="(weapon, i) in weapons" :key="'wea'+i" :weapon="weapon" />
+                        <Weapons v-if="selected === 'Weapons'" v-for="(weapon, i) in weaponsFilter" :key="'wea'+i" :weapon="weapon" />
                         <Ammos v-if="selected === 'Ammunition'" />
                         <MissileRacks v-if="selected === 'Missile Racks'" />
                     </div>
@@ -86,56 +78,48 @@
 </template>
 
 <script>
-import ShipTool           from './Ships/ShipTool.vue'
 import Ships              from './Ships/Ships.vue'
 import ShipDetail         from './Ships/ShipDetail.vue'
 import ShipControl        from './Ships/ShipControl.vue'
 
-import AvionicTool        from './Avionics/AvionicTool.vue'
 import Avionics           from './Avionics/Avionics.vue'
 import AvionicDetail      from './Avionics/AvionicDetail.vue'
 import AvionicControl     from './Avionics/AvionicControl.vue'
 
-import LoadoutTool        from './Loadouts/LoadoutTool.vue'
-
-import SystemTool         from './Systems/SystemTool.vue'
 import Systems            from './Systems/Systems.vue'
 import SystemDetail       from './Systems/SystemDetail.vue'
 import SystemControl      from './Systems/SystemControl.vue'
 
-import PropulsionTool     from './Propulsions/PropulsionTool.vue'
 import Propulsions        from './Propulsions/Propulsions.vue'
 import PropulsionDetail   from './Propulsions/PropulsionDetail.vue'
 import PropulsionControl  from './Propulsions/PropulsionControl.vue'
 
-import ThrusterTool       from './Thrusters/ThrusterTool.vue'
 import Thrusters          from './Thrusters/Thrusters.vue'
 import ThrusterDetail     from './Thrusters/ThrusterDetail.vue'
 import ThrusterControl    from './Thrusters/ThrusterControl.vue'
 
-import WeaponTool         from './Weapons/WeaponTool.vue'
 import Weapons            from './Weapons/Weapons.vue'
 import WeaponDetail       from './Weapons/WeaponDetail.vue'
 import WeaponControl      from './Weapons/WeaponControl.vue'
+import WeaponFilter       from './Weapons/WeaponFilter.vue'
 
-import MissileRackTool    from './MissileRacks/MissileRackTool.vue'
 import MissileRacks       from './MissileRacks/MissileRacks.vue'
 import MissileRackDetail  from './MissileRacks/MissileRackDetail.vue'
 import MissileRackControl from './MissileRacks/MissileRackControl.vue'
 
-import AmmoTool           from './Ammo/AmmoTool.vue'
 import Ammos              from './Ammo/Ammos.vue'
 import AmmoDetail         from './Ammo/AmmoDetail.vue'
 import AmmoControl        from './Ammo/AmmoControl.vue'
 
 import { mapGetters }   from 'vuex'
 export default {
-    name: 'Items',
+    name: 'Ships',
     data() {
         return {
             selected        : '',
             id              : '',
             location_type   : '',
+            filterWeaponSize: [ ]
         }
     },
     mounted() {
@@ -146,22 +130,37 @@ export default {
             this.id = id
             if( type ) this.location_type = type
         })
+        this.$bus.$on('sizeFilter', (filter, size, checked) => {
+            this.mixFltrBy(filter, size, checked)
+        })
     },
-    computed: { ...mapGetters([ 'meta_data', 'ships', 'avionics', 'systems', 'propulsions', 'thrusters', 'weapons', 'missile_racks', 'ammos' ]) },
+    computed: {
+        ...mapGetters([ 'meta_data', 'ships', 'avionics', 'systems', 'propulsions', 'thrusters', 'weapons', 'weapon_search', 'missile_racks', 'ammos' ]),
+        weaponsFilter() {
+            return this.filterBySize.filter( weapon => {
+                return weapon.model.toLowerCase().indexOf( this.weapon_search.toLowerCase() ) > -1
+            })
+        },
+        filterBySize() {
+            return this.weapons.filter( weapon => {
+                if( !this.filterWeaponSize.length ) return true
+                else {
+                    return this.filterWeaponSize.find( filterSize => {
+                        console.log(weapon.size)
+                        console.log('filterSize', filterSize)
+                        return weapon.size == filterSize
+                    })
+                }
+            })
+        }
+    },
     components: {
-        ShipTool,
         Ships,
         ShipDetail,
         ShipControl,
-        AvionicTool,
         Avionics,
         AvionicDetail,
         AvionicControl,
-        LoadoutTool,
-        SystemTool,
-        PropulsionTool,
-        ThrusterTool,
-        WeaponTool,
         Weapons,
         Thrusters,
         Propulsions,
@@ -174,14 +173,13 @@ export default {
         PropulsionControl,
         ThrusterControl,
         WeaponControl,
-        MissileRackTool,
         MissileRacks,
         MissileRackDetail,
         MissileRackControl,
-        AmmoTool,
         Ammos,
         AmmoDetail,
-        AmmoControl
+        AmmoControl,
+        WeaponFilter
     }
 }
 </script>

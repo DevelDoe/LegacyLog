@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: meta.js
  * @Last modified by:   Morgan Andree Ray
- * @Last modified time: 30-05-2018
+ * @Last modified time: 02-06-2018
  * @License: MIT
  */
 
@@ -380,6 +380,19 @@ export default {
         'Station',
         'Moon',
         'Outpost',
+    ],
+    weapon_sizes: [
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+        '6',
+        '7',
+        '8',
+        '9',
+        '10',
+        '12'
     ],
     roles: [
         'Admin',

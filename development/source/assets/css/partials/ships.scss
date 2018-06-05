@@ -3,7 +3,7 @@
 // @Email:  info@andreeray.se
 // @Filename: trade.scss
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 31-05-2018
+// @Last modified time: 01-06-2018
 // @License: MIT
 
 #headbar {
@@ -96,7 +96,7 @@
                 top: 0;
                 left: 20px;
                 right: 40px;
-                bottom: 0;
+                bottom: 20px;
                 overflow: scroll;
                 margin-right: -17px;
                 margin-bottom: -17px;
@@ -200,9 +200,9 @@
 
         #rightbar {
             position: relative;
-background: #1C2022;
-border-radius: 5px;
-width: 100%;
+            background: #1C2022;
+            border-radius: 5px;
+            width: 100%;
 
             .top {
                 height: 95% !important;

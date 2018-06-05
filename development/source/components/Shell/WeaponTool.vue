@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Propulsions.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 30-05-2018
+@Last modified time: 02-06-2018
 @License: MIT
 -->
 <template lang="html">
@@ -175,7 +175,7 @@
                     <input v-model="weapon.dst_ratio_recovery" placeholder="Distance Ratio Recovery">
                 </div>
                 <div class="">
-                    <input v-model="weapon.dst_recovery" placeholder="Distance Ratio Recovery (s)">
+                    <input v-model="weapon.dst_recovery" placeholder="Distance Recovery (s)">
                 </div>
                 <div class="">
                     <input v-model="weapon.em_ratio" placeholder="EM Ratio">

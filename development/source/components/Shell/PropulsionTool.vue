@@ -4,11 +4,11 @@
 @Email:  info@andreeray.se
 @Filename: Propulsions.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 19-05-2018
+@Last modified time: 02-06-2018
 @License: MIT
 -->
 <template lang="html">
-    <div class="propulstion-tool">
+    <div class="propulsion-tool">
 
         <DevelModal modal="addPropulsion">
             <div slot="header"> <h2>Add Propulsion</h2> </div>

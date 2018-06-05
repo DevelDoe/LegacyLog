@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Locations.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 13-05-2018
+@Last modified time: 02-06-2018
 @License: MIT
 -->
 <template lang="html">
@@ -36,7 +36,6 @@ export default {
                 return location.name.toLowerCase().indexOf( this.location_search.toLowerCase() ) > - 1
             })
         },
-        srtLocationsLst () { return this.mixKeySrt(this.locations, 'name') },
         fltLoc () {
             return this.locations.filter( loc => {
                 if ( !this.filterLocations.length ) return true

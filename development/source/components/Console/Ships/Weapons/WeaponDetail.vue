@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: AvionicDetails.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 01-06-2018
+@Last modified time: 02-06-2018
 @License: MIT
 -->
 <template lang="html">
@@ -15,6 +15,7 @@
         </section>
 
         <section>
+            <h6>Basic Stats</h6>
             <table>
                 <tr>
                     <th>MANUFACTURER</th>
@@ -40,10 +41,11 @@
         </section>
 
         <section>
-            <canvas ref="icanvas" ></canvas>
+            <canvas ref="icanvas" width="400" height="100" ></canvas>
         </section>
 
         <section>
+            <h6>Ammunition</h6>
             <table>
                 <tr>
                     <th>AMMUNITION</th>
@@ -79,6 +81,7 @@
         </section>
 
         <section v-if="weapon.burst_rate">
+            <h6>Burst</h6>
             <table>
                 <tr>
                     <th>Burst Rate</th>
@@ -94,6 +97,7 @@
         </section>
 
         <section>
+            <h6>Spread</h6>
             <table>
                 <tr>
                     <th v-if="weapon.spread_first">Spread First</th>
@@ -117,6 +121,7 @@
         </section>
 
         <section>
+            <h6>Thermals</h6>
             <table>
                 <tr>
                     <th title="Power online">PO pwr/s</th>
@@ -141,6 +146,84 @@
                     <td title="Temp Ratio Recovery">{{ weapon.temp_ratio_recovery }}</td>
                     <td title="heat recovery">{{ weapon.heat_recovery }}</td>
                     <td title="Temp Ratio IR">{{ weapon.temp_ratio_ir }}</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h6>Distance</h6>
+            <table>
+                <tr>
+                    <th title="Distance Decay Rate (dst/s)">DDR</th>
+                    <th title="Distance Max">Distance Max</th>
+                    <th title="Distance Ratio Overload">DRO</th>
+                    <th title="Distance Ratio Recovery">DRR</th>
+                    <th title="Distance Recovery (s)">DR (s)</th>
+                    <th title="EM Ratio">EM Ratio (pwr/em)</th>
+                </tr>
+                <tr>
+                    <td title="Distance Decay Rate (dst/s)">{{ weapon.dst_decay_rate }}</td>
+                    <td title="Distance Max">{{ weapon.dst_max }}</td>
+                    <td title="Distance Ratio Overload">{{ weapon.dst_ratio_overload }}</td>
+                    <td title="Distance Ratio Recovery">{{ weapon.dst_ratio_recovery }}</td>
+                    <td title="Distance Recovery (s)">{{ weapon.dst_recovery }}</td>
+                    <td title="EM Ratio">{{ weapon.em_ratio }}</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h6>Damage Type</h6>
+            <table>
+                <tr>
+                    <th title="Damage Resist Physical">DRP</th>
+                    <th title="Damage Resist Energy">DRE</th>
+                    <th title="Damage Resist Distortion">DRD</th>
+                    <th title="Damage Resist Thermal">DRT</th>
+                    <th title="Damage Resist Biological">DRB</th>
+                </tr>
+                <tr>
+                    <td title="Damage Resist Physical">{{ weapon.dmg_resist_phys }}</td>
+                    <td title="Damage Resist Energy">{{ weapon.dmg_resist_nrg }}</td>
+                    <td title="Damage Resist Distortion">{{ weapon.dmg_resist_dst }}</td>
+                    <td title="Damage Resist Thermal">{{ weapon.dmg_resist_heat }}</td>
+                    <td title="Damage Resist Biological">{{ weapon.dmg_resist_bio }}</td>
+                </tr>
+            </table>
+        </section>
+
+        <section>
+            <h6>Wear</h6>
+            <table>
+                <tr>
+                    <th title="Wear Lifetime">DRP</th>
+                    <th title="Wear Initial Ratio">DRP</th>
+                    <th title="Wear Rate Max">DRP</th>
+                    <th title="Wear Degrade On Use">DRP</th>
+                    <th title="Wear Heat">DRP</th>
+                    <th title="Wear Overheat">DRP</th>
+                    <th title="Wear Overclock">DRP</th>
+                    <th title="Wear Damage Critical">DRP</th>
+                    <th title="Wear Performance">DRP</th>
+                    <th title="Wear Damage Perf">DRP</th>
+                    <th title="Wear Damage Efficiency">DRP</th>
+                    <th title="Wear Damage Heat">DRP</th>
+                    <th title="Wear Critical">DRP</th>
+                </tr>
+                <tr>
+                    <td title="Wear Lifetime">{{ weapon.wear_lifetime }}</td>
+                    <td title="Wear Initial Ratio">{{ weapon.wear_initial_ratio }}</td>
+                    <td title="Wear Rate Max">{{ weapon.wear_rate_max }}</td>
+                    <td title="Wear Degrade On Use">{{ weapon.wear_degrade_on_use }}</td>
+                    <td title="Wear Heat">{{ weapon.wear_heat }}</td>
+                    <td title="Wear Overheat">{{ weapon.wear_overheat }}</td>
+                    <td title="Wear Overclock">{{ weapon.wear_overclock }}</td>
+                    <td title="Wear Damage Critical">{{ weapon.wear_dmg_critical }}</td>
+                    <td title="Wear Performance">{{ weapon.wear_performance }}</td>
+                    <td title="Wear Damage Perf">{{ weapon.wear_dmg_perf }}</td>
+                    <td title="Wear Damage Efficiency">{{ weapon.wear_dmg_efficiency }}</td>
+                    <td title="Wear Damage Heat">{{ weapon.wear_dmg_heat }}</td>
+                    <td title="Wear Critical">{{ weapon.wear_critical }}</td>
                 </tr>
             </table>
         </section>

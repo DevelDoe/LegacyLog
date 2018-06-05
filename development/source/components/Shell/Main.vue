@@ -4,11 +4,13 @@
 @Email:  info@andreeray.se
 @Filename: Main.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 29-05-2018
+@Last modified time: 02-06-2018
 @License: MIT
 -->
 <template lang="html">
     <div id="main">
+
+
 
         <DevelToast :response="response"/>
         <DevelModal modal="login">
@@ -44,17 +46,40 @@
             </div>
 
             <i class="material-icons" @click="showNotepad = !showNotepad; "> edit </i>
+            <i class="material-icons menu" @click="showTools = !showTools; "> menu </i>
              <transition name="slide-fade">
-            <textarea class="notepad" v-if="showNotepad" v-model="note_data" placeholder="notepad">
-
-            </textarea>
+            <textarea class="notepad" v-if="showNotepad" v-model="note_data" placeholder="notepad"> </textarea>
+            </transition>
+            <transition name="tray">
+                <div id="tool-menu" v-if="showTools">
+                    <LoadoutTool />
+                    <ShipTool />
+                    <AvionicTool />
+                    <SystemTool />
+                    <PropulsionTool />
+                    <ThrusterTool />
+                    <WeaponTool />
+                    <AmmoTool />
+                    <MissileRackTool />
+                </div>
             </transition>
         </div>
+
+
 
     </div>
 </template>
 
 <script>
+import ShipTool           from './ShipTool.vue'
+import AvionicTool        from './AvionicTool.vue'
+import LoadoutTool        from './LoadoutTool.vue'
+import SystemTool         from './SystemTool.vue'
+import PropulsionTool     from './PropulsionTool.vue'
+import ThrusterTool       from './ThrusterTool.vue'
+import WeaponTool         from './WeaponTool.vue'
+import MissileRackTool    from './MissileRackTool.vue'
+import AmmoTool           from './AmmoTool.vue'
 import { mapGetters } from 'vuex'
 export default {
     name: 'Main',
@@ -66,6 +91,7 @@ export default {
             },
             sidebar: false,
             showNotepad: false,
+            showTools: false
         }
     },
     computed: {
@@ -118,6 +144,17 @@ export default {
         this.$develLS.set('notepad', [{
             notes: this.note_data
         }])
+    },
+    components: {
+        ShipTool,
+        AvionicTool,
+        LoadoutTool,
+        PropulsionTool,
+        SystemTool,
+        ThrusterTool,
+        WeaponTool,
+        AmmoTool,
+        MissileRackTool,
     }
 }
 </script>

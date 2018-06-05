@@ -4,7 +4,7 @@
  * @Email:  info@andreeray.se
  * @Filename: app.css
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 01-06-2018
+// @Last modified time: 02-06-2018
  * @License: MIT
  */
 
@@ -14,8 +14,8 @@
 
 @import './partials/shell/sidebar';
 @import './partials/shell/main';
+@import './partials/shell/tool-menu';
 
-@import './partials/admin/console';
 @import './partials/admin/org';
 @import './partials/admin/dashboard';
 
@@ -89,6 +89,8 @@ section {
 }
 input {
     color: rgba(255,255,255,0.7) !important;
+    background: rgba(255,255,255,0.04) !important;
+    padding: 10px;
 }
 label {
     color: rgba(255,255,255,0.7) !important;

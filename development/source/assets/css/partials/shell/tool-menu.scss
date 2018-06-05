@@ -3,10 +3,14 @@
 // @Email:  info@andreeray.se
 // @Filename: console.scss
 // @Last modified by:   Morgan Andree Ray
-// @Last modified time: 01-06-2018
+// @Last modified time: 02-06-2018
 // @License: MIT
-#console {
+#tool-menu {
+    position: absolute;
+    top: 0;
+    right: 0;
     height: 100%;
-    width: 100%;
     background: #1c2022;
+    width: 300px;
+    padding: 20px;
 }

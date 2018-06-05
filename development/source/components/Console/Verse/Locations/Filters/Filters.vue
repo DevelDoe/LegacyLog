@@ -4,7 +4,7 @@
 @Email:  info@andreeray.se
 @Filename: Filters.vue
 @Last modified by:   Morgan Andree Ray
-@Last modified time: 11-05-2018
+@Last modified time: 02-06-2018
 @License: MIT
 -->
 
@@ -28,11 +28,7 @@ export default {
         }
     },
     computed: { ...mapGetters([ 'locations' , 'meta_data', 'location_search' ]) },
-    updated() {
-        this.$store.dispatch('setLocationSearch', this.filter_search)
-    },
-    components: {
-        Location
-    }
+    updated() { this.$store.dispatch('setLocationSearch', this.filter_search) },
+    components: { Location }
 }
 </script>
