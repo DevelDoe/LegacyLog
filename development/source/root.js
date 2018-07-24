@@ -83,6 +83,7 @@ const root = new Vue({
         this.$http.get( 'resources/' ).then(res => {
             store.dispatch( 'setResources' , res.data )
         })
+
         this.$http.get( 'locations/' ).then(res => {
             store.dispatch( 'setLocations' , res.data )
         })

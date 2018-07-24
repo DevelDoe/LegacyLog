@@ -10,9 +10,8 @@
 <template lang="html">
     <div id="main">
 
-
-
         <DevelToast :response="response"/>
+
         <DevelModal modal="login">
             <div slot="header"><h2>SIGN IN</h2></div>
             <div slot="bread">
@@ -71,15 +70,17 @@
 </template>
 
 <script>
-import ShipTool           from './ShipTool.vue'
-import AvionicTool        from './AvionicTool.vue'
-import LoadoutTool        from './LoadoutTool.vue'
-import SystemTool         from './SystemTool.vue'
-import PropulsionTool     from './PropulsionTool.vue'
-import ThrusterTool       from './ThrusterTool.vue'
-import WeaponTool         from './WeaponTool.vue'
-import MissileRackTool    from './MissileRackTool.vue'
-import AmmoTool           from './AmmoTool.vue'
+
+import ShipTool           from '../Console/Tools/ShipTool.vue'
+import AvionicTool        from '../Console/Tools/AvionicTool.vue'
+import LoadoutTool        from '../Console/Tools/LoadoutTool.vue'
+import SystemTool         from '../Console/Tools/SystemTool.vue'
+import PropulsionTool     from '../Console/Tools/PropulsionTool.vue'
+import ThrusterTool       from '../Console/Tools/ThrusterTool.vue'
+import WeaponTool         from '../Console/Tools/WeaponTool.vue'
+import MissileRackTool    from '../Console/Tools/MissileRackTool.vue'
+import AmmoTool           from '../Console/Tools/AmmoTool.vue'
+
 import { mapGetters } from 'vuex'
 export default {
     name: 'Main',
@@ -91,7 +92,8 @@ export default {
             },
             sidebar: false,
             showNotepad: false,
-            showTools: false
+            showTools: false,
+            response: ''
         }
     },
     computed: {
@@ -117,7 +119,6 @@ export default {
                         let token = res.body.token || this.token
                         this.$http.get('users/', { headers: { 'Authorization': token, 'Accept': 'application/json' }}).then(res => {
                             this.$store.dispatch( 'setUsers' , res.data)
-
                         })
                         this.$bus.$emit('toggleModal', modal )
                         document.location.reload(true)

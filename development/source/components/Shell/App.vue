@@ -8,11 +8,8 @@
 -->
 <template>
     <div id="app" class="box">
-
-        <Sidebar :sidebar="sidebar"  />
-
+        <Sidebar />
         <Main />
-
     </div>
 </template>
 
@@ -22,9 +19,12 @@ import Main from './Main.vue'
 export default {
     name: 'app',
     data() { return { showNotepad: false } },
-    components: { Sidebar, Main },
     mounted() {
         document.getElementById('loading').style.display = 'none'
+    },
+    components: {
+      Sidebar,
+      Main
     }
 }
 </script>

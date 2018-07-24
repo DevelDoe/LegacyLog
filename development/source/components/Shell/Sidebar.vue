@@ -27,7 +27,6 @@
                         settings
                     </i>
                 </div>
-
             </div>
         </div>
 
@@ -54,11 +53,10 @@ import { mapGetters } from 'vuex'
 import jQuery from 'jquery'
 export default {
     name: 'Sidebar',
-    props: [ 'sidebar' ],
     computed: {
         ...mapGetters([ 'token', 'user', 'users' , 'active_org_link', 'show_nav' ]),
         logged() {
-            return this.users.find(user => user._id === this.user.id) || null 
+            return this.users.find(user => user._id === this.user.id) || null
         }
     },
 }
